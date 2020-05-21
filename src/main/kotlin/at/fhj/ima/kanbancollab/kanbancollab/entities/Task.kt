@@ -1,30 +1,26 @@
 package at.fhj.ima.kanbancollab.kanbancollab.entities
 
-import java.io.Serializable
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
-class User(
+class Task(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
-        var username: String? = null,
-        var pwhash: String? = null,
-        var firstName: String? = null,
-        var lastName: String? = null,
-        var email: String? = null
-): Comparable<User>, Serializable {
-    override fun compareTo(other: User): Int {
+        var name: String? = null,
+        var description: String? = null,
+        var segment: String? = null, //column is bei sql reserved also könn mas nicht nehmen
+        @ManyToMany
+        var subTasks: List<Task>? = null //passt so?
+): Comparable<Task> {
+    override fun compareTo(other: Task): Int {
         return compareValues(id, other.id)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-        other as User
+        other as Task
         if (id != other.id) return false
         return true
     }
