@@ -1,26 +1,28 @@
 package at.fhj.ima.kanbancollab.kanbancollab.entities
 
-import javax.persistence.*
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
 
 @Entity
-class Task(
+class Subtask(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
-        var name: String? = null,
         var description: String? = null,
-        var segment: String? = null,
-        @ManyToMany
-        var subtasks: List<Subtask>? = null
-): Comparable<Task> {
-    override fun compareTo(other: Task): Int {
+        var state: Boolean? = false,
+        var parentTaskId: Int? = null
+): Comparable<Subtask> {
+
+    override fun compareTo(other: Subtask): Int {
         return compareValues(id, other.id)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-        other as Task
+        other as Subtask
         if (id != other.id) return false
         return true
     }
