@@ -64,31 +64,33 @@
                         </h5>
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="row">
                         <c:forEach items="${projects}" var="project">
+                            <div class="col-lg-4">
                             <div class="card-body">
-                                <div class="card" style="width: 18rem;">
+                                <div class="card">
                                     <%--Geht das noch einfacher? (Card = Link)--%>
-                                    <a href="#" class="card-link">
                                     <div class="card-body">
-                                        <table class="table table-borderless"  >
-                                        <thead>
-                                        <tr>
-                                            <th scope="col"><h5 class="card-title"> ${project.name}</h5></th>
-                                            <th scope="col">
+                                        <div class="row">
+                                            <div class="col-lg-10">
+                                                <h5 class="card-title"> ${project.name}</h5>
+                                            </div>
+                                            <div class="col-lg-2">
                                                 <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                 </svg>
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        </table>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="card-link">
                                         <h6 class="card-subtitle mb-2 text-muted">Created by: ${project.owner.username}</h6>
                                         <p class="card-text">${project.description}</p>
+                                        </a>
                                     </div>
-                                    </a>
                                 </div>
                             </div>
+                            </div>
                         </c:forEach>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
