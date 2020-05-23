@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <p>
-                <a href="/editProjects" class="btn btn-success">Create new project</a>
+                <a href="/editProject" class="btn btn-success">Create new project</a>
             </p>
         </div>
     </div>
@@ -73,18 +73,22 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
+                                                <a href="#" class="card-link">
                                                 <h5 class="card-title"> ${project.name}</h5>
+                                                </a>
                                             </div>
                                             <div class="col-lg-2.5">
+                                                <a href="#" class="card-link">
                                                 <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                 </svg>
+                                                </a>
                                             </div>
                                         </div>
-                                        <a href="#" class="card-link">
+
                                         <h6 class="card-subtitle mb-2 text-muted">Created by: ${project.owner.username}</h6>
                                         <p class="card-text">${project.description}</p>
-                                        </a>
+
                                     </div>
                                 </div>
                             </div>
