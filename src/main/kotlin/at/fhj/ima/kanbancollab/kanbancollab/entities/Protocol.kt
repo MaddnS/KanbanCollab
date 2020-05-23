@@ -10,7 +10,7 @@ import javax.persistence.Id
 class Protocol(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Int? = null,
+        var protocolId: Int? = null,
         var taskId: Int? = null,
         var username: String? = null,
         var date: LocalDate? = null,
@@ -18,18 +18,18 @@ class Protocol(
         var newState: String? = null // und hier auch
         ): Comparable<Protocol> {
     override fun compareTo(other: Protocol): Int {
-        return compareValues(id, other.id)
+        return compareValues(protocolId, other.protocolId)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
         other as Protocol
-        if (id != other.id) return false
+        if (protocolId != other.protocolId) return false
         return true
     }
 
     override fun hashCode(): Int {
-        return id.hashCode()
+        return protocolId.hashCode()
     }
 }

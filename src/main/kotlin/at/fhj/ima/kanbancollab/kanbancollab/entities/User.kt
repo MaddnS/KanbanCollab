@@ -10,7 +10,7 @@ import javax.persistence.Id
 class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Int? = null,
+        var userId: Int? = null,
         var username: String? = null,
         var pwhash: String? = null,
         var firstName: String? = null,
@@ -18,18 +18,18 @@ class User(
         var email: String? = null
 ): Comparable<User>, Serializable {
     override fun compareTo(other: User): Int {
-        return compareValues(id, other.id)
+        return compareValues(userId, other.userId)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
         other as User
-        if (id != other.id) return false
+        if (userId != other.userId) return false
         return true
     }
 
     override fun hashCode(): Int {
-        return id.hashCode()
+        return userId.hashCode()
     }
 }

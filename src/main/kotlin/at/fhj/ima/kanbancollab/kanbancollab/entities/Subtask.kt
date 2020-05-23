@@ -9,25 +9,25 @@ import javax.persistence.Id
 class Subtask(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var id: Int? = null,
+        var subtaskId: Int? = null,
         var description: String? = null,
         var state: Boolean? = false,
         var parentTaskId: Int? = null
 ): Comparable<Subtask> {
 
     override fun compareTo(other: Subtask): Int {
-        return compareValues(id, other.id)
+        return compareValues(subtaskId, other.subtaskId)
     }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
         other as Subtask
-        if (id != other.id) return false
+        if (subtaskId != other.subtaskId) return false
         return true
     }
 
     override fun hashCode(): Int {
-        return id.hashCode()
+        return subtaskId.hashCode()
     }
 }
