@@ -3,7 +3,7 @@ INSERT INTO user (username) VALUES ('user2');
 INSERT INTO user (username) VALUES ('user3');
 INSERT INTO user (username) VALUES ('user4');
 INSERT INTO user (username) VALUES ('user5');
-INSERT INTO project (name, owner_user_id, description) VALUES ('Project 1', 1, 'Description 1 bla bla bla');
+INSERT INTO project (name, owner_user_id, description) VALUES ('Project 1', 1, 'Description 1 bla bla bla djiasdjasiodj iasojdioasjdoi asjidosajiodjasiodjsaiodjasiodjsaiodjjasiodjasiodjiasodjoaisjdioasjdioajsdioasjidoasjiodjasoidoiasjdioasjdiasodjasiodjasiodjasiodasjdioasjdioasjdasiodjasiodjasoidasjiodasjiodasoidjasoidasjdas');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 2', 2, 'Description 2 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 3', 3, 'Description 3 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 4', 4, 'Description 4 bla bla bla');
