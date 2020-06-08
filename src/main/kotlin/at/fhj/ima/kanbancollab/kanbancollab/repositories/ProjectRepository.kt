@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ProjectRepository :JpaRepository<Project,Int>{
-    @Query("FROM Project Where projectId = : projectId")
+    @Query("FROM Project WHERE projectId = :projectId")
     fun findByProjectId (@Param("projectId") projectId: Int):Project
 
 }

@@ -8,12 +8,12 @@
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%--<layout:page-container title="KanbanCollab" activePage="editProject">--%>
+<layout:page-container title="KanbanCollab" activePage="editProject">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
             <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post" action="changeProject" novalidate="novalidate">
-                <input type="hidden" name="id" value="<c:out value="${project.projectId}"/>">
+                <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
                 <fieldset>
                     <legend>Change Project ${project.projectId}</legend>
 
@@ -36,10 +36,29 @@
                     </div>
 
                     <! ---------------- Members ---------------- -->
+                    <%--
+                    <div class="form-group">
+                        <label for="inputMembers" class="col-md-2 control-label">Members</label>
+                        <div class="col-md-10"> --%>
+                            <%--<form:input id="inputMembers" path="members" type="text" class="form-control"/>--%>
+                            <%--<form:input id="inputMembers" path="members" type="text" class="js-example-basic-multiple" multiple="multiple">--%>
+                            <%--<select id="inputMembers" class="js-example-basic-multiple" name="users[]" multiple="multiple">
+                                <c:forEach items="${users}" var="user">
+
+                                <option>${user.username}</option>
+                                </c:forEach>
+
+                            </select>
+                            <form:errors path="members" cssClass="invalid-feedback d-block"/>
+                        </div>
+                    </div> --%>
+
                     <div class="form-group">
                         <label for="inputMembers" class="col-md-2 control-label">Members</label>
                         <div class="col-md-10">
-                            <form:input id="inputMembers" path="members" type="text" class="form-control"/>
+                            <form:select id="inputMembers" path="members" class="js-example-basic-multiple" style="width: 100%">
+                            <form:options items="${users}" itemValue="userId" itemLabel="username"/>
+                            </form:select>
                             <form:errors path="members" cssClass="invalid-feedback d-block"/>
                         </div>
                     </div>
@@ -56,4 +75,5 @@
             </form:form>
         </div>
     </div>
-<%--</layout:page-container>--%>
+</layout:page-container>
+

@@ -5,6 +5,9 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
+<%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
+<%--<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> commented out because no such folder yet --%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -78,7 +81,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-lg-2.5">
-                                                <a href="#" class="card-link">
+                                                <a href="editProject?projectId=${project.projectId}" class="card-link">
                                                 <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                 </svg>
