@@ -1,5 +1,6 @@
 package at.fhj.ima.kanbancollab.kanbancollab.entities
 
+import at.fhj.ima.kanbancollab.kanbancollab.controller.advice.CurrentUserControllerAdvice
 import javax.persistence.*
 
 @Entity
@@ -7,7 +8,7 @@ class Project(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var projectId: Int? = null,
-        @ManyToOne
+        @ManyToOne //(cascade=arrayOf(javax.persistence.CascadeType.ALL)) fuer Fehler mit owner casting
         var owner: User? = null,
         @ManyToMany
         var members: Set<User>? = null,

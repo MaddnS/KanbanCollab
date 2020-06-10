@@ -1,21 +1,25 @@
 package at.fhj.ima.kanbancollab.kanbancollab.entities
 
 import java.io.Serializable
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
+
+enum class UserRole {
+    ROLE_USER,
+    ROLE_ADMIN
+}
 
 @Entity
 class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var userId: Int? = null,
-        var username: String? = null,
-        var pwhash: String? = null,
+        var username: String,
+        var pwhash: String,
         var firstName: String? = null,
         var lastName: String? = null,
-        var email: String? = null
+        var email: String? = null,
+        @Enumerated(EnumType.STRING)
+        var role: UserRole
 ): Comparable<User>, Serializable {
     override fun compareTo(other: User): Int {
         return compareValues(userId, other.userId)

@@ -14,6 +14,7 @@
             <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
             <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post" action="changeProject" novalidate="novalidate">
                 <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
+                <input type="hidden" name="projectOwner" value="<c:out value="${project.owner.username}"/>">
                 <fieldset>
                     <legend>Change Project ${project.projectId}</legend>
 
@@ -26,20 +27,33 @@
                         </div>
                     </div>
 
-                    <! ---------------- Description ---------------- -->
-                    <div class="form-group">
-                        <label for="inputDescription" class="col-md-2 control-label">Description</label>
-                        <div class="col-md-10">
-                            <form:input id="inputDescription" path="description" type="text" class="form-control"/>
-                            <form:errors path="description" cssClass="invalid-feedback d-block"/>
-                        </div>
+                    <! ---------------- Project Owner ---------------- -->
+                    <! dieser Weg funktioniert leider noch nicht, currentUser.username kann nicht in project.owner.username gecasted werden... --->
+                    <! derzeit fallen "created by:" attribute weg sobald man die card bearbeitet --->
+                        <%--<div class="form-group">
+                            <label for="inputProjectOwner" class="col-md-2 control-label">Project Owner</label>
+                            <div class="col-md-10">
+                                <%--<form:input id="inputProjectOwner" path="owner.username" type="text" value="${project.owner.username == null ? currentUser.username : project.owner.username}"
+                                            readonly="${not empty project.owner.username || not empty currentUser.username}" cssClass="form-control"/> --%>
+                        <%--<form:input id="inputProjectOwner" path="owner.username" type="text" readonly="${not empty project.owner}" cssClass="form-control"/>
+                        <form:errors path="owner.username" cssClass="invalid-feedback d-block" />
                     </div>
+                </div>--%>
 
-                    <! ---------------- Members ---------------- -->
-                    <%--
-                    <div class="form-group">
-                        <label for="inputMembers" class="col-md-2 control-label">Members</label>
-                        <div class="col-md-10"> --%>
+                <! ---------------- Description ---------------- -->
+                <div class="form-group">
+                    <label for="inputDescription" class="col-md-2 control-label">Description</label>
+                    <div class="col-md-10">
+                        <form:input id="inputDescription" path="description" type="text" class="form-control"/>
+                        <form:errors path="description" cssClass="invalid-feedback d-block"/>
+                    </div>
+                </div>
+
+                <! ---------------- Members ---------------- -->
+                <%--
+                <div class="form-group">
+                    <label for="inputMembers" class="col-md-2 control-label">Members</label>
+                    <div class="col-md-10"> --%>
                             <%--<form:input id="inputMembers" path="members" type="text" class="form-control"/>--%>
                             <%--<form:input id="inputMembers" path="members" type="text" class="js-example-basic-multiple" multiple="multiple">--%>
                             <%--<select id="inputMembers" class="js-example-basic-multiple" name="users[]" multiple="multiple">
