@@ -12,7 +12,7 @@ enum class UserRole {
 class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var userId: Int? = null,
+        var userId: Int,
         var username: String,
         var pwhash: String,
         var firstName: String? = null,

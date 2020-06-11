@@ -25,6 +25,7 @@ class MyUserPrincipal(val user: User) : UserDetails {
         return user.username;
     }
 
+
     override fun isCredentialsNonExpired(): Boolean {
         return true;
     }

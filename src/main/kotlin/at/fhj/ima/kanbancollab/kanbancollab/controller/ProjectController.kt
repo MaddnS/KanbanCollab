@@ -2,6 +2,7 @@ package at.fhj.ima.kanbancollab.kanbancollab.controller
 
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Project
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.ProjectRepository
+import at.fhj.ima.kanbancollab.kanbancollab.repositories.TaskRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.UserRepository
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.stereotype.Controller
@@ -17,7 +18,8 @@ import javax.validation.Valid
 
 @Controller
 class ProjectController (val projectRepository: ProjectRepository,
-                         val userRepository: UserRepository) {
+                         val userRepository: UserRepository,
+                         val taskRepository: TaskRepository) {
 
     fun showEditProjectView(model: Model): String {
 
@@ -62,6 +64,16 @@ class ProjectController (val projectRepository: ProjectRepository,
             //}
         //}
         return "redirect:/editProject?projectId=" + project.projectId
+    }
+
+    @RequestMapping("/viewProject", method = [RequestMethod.GET])
+
+    fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String{
+        val project = projectRepository.findByProjectId(projectId)
+        model.set("tasks", taskRepository.findAll())
+        model.set("project", project)
+
+        return "viewProject"
     }
 
 

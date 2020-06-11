@@ -48,7 +48,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <p>
-                <a href="/editProject" class="btn btn-success">Create new project</a>
+                <a href="/editProject" class="btn btn-success">Create New Project</a>
             </p>
         </div>
     </div>
@@ -72,11 +72,10 @@
                             <div class="col-lg-4">
                             <div class="card-body">
                                 <div class="card">
-                                    <%--Geht das noch einfacher? (Card = Link)--%>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="#" class="card-link">
+                                                <a href="viewProject?projectId=${project.projectId}" class="card-link">
                                                 <h5 class="card-title"> ${project.name}</h5>
                                                 </a>
                                             </div>

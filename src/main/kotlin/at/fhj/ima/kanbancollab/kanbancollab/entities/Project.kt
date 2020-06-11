@@ -8,7 +8,7 @@ class Project(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var projectId: Int? = null,
-        @ManyToOne //(cascade=arrayOf(javax.persistence.CascadeType.ALL)) fuer Fehler mit owner casting
+        @ManyToOne
         var owner: User? = null,
         @ManyToMany
         var members: Set<User>? = null,

@@ -8,8 +8,9 @@ class Task(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var taskId: Int? = null,
         var name: String? = null,
+        var project: Int? = null,
         var description: String? = null,
-        var segment: String? = null,
+        var segment: Int? = null,
         @ManyToMany
         var subtasks: List<Subtask>? = null
 ): Comparable<Task> {

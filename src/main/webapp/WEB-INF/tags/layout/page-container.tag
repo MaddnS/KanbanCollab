@@ -13,7 +13,15 @@
         <bootstrap:bootstrap-metadata/>
         <title>${title}</title>
         <bootstrap:bootstrap-css/>
-        <link rel="stylesheet" href="<c:url value="/css/custom.css"/>">
+
+        <c:if test="${activePage == 'listProjects' or activePage == 'editProjects'}">
+                <link rel="stylesheet" href="<c:url value="/css/custom.css"/>">
+        </c:if>
+
+        <c:if test="${activePage == 'viewProject'}">
+                <link rel="stylesheet" href="<c:url value="/css/kanban.css"/>">
+        </c:if>
+
         </head>
         <body>
 

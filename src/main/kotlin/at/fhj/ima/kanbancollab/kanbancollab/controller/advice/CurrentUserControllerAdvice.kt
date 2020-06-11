@@ -14,8 +14,12 @@ class CurrentUserControllerAdvice(val userRepository: UserRepository) {
 
         val auth = SecurityContextHolder.getContext().authentication
         val username = auth.name
+        //val userId  = auth
 
         val currentUser = userRepository.findByUsername(username)
         model.addAttribute("currentUser", currentUser)
+
+        //val currentUserId = userRepository.findByUserId(userId)
+        //model.addAttribute("currentUserId", currentUserId)
     }
 }

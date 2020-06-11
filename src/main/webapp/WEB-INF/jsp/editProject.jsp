@@ -14,9 +14,14 @@
             <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
             <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post" action="changeProject" novalidate="novalidate">
                 <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
-                <input type="hidden" name="projectOwner" value="<c:out value="${project.owner.username}"/>">
+
                 <fieldset>
-                    <legend>Change Project ${project.projectId}</legend>
+                    <c:if test="${project.projectId != null}">
+                    <legend>Change "${project.name}"</legend>
+                    </c:if>
+                    <c:if test="${project.projectId == null}">
+                        <legend>Create New Project</legend>
+                    </c:if>
 
                     <! ---------------- Project Name ---------------- -->
                     <div class="form-group">
@@ -28,17 +33,11 @@
                     </div>
 
                     <! ---------------- Project Owner ---------------- -->
-                    <! dieser Weg funktioniert leider noch nicht, currentUser.username kann nicht in project.owner.username gecasted werden... --->
-                    <! derzeit fallen "created by:" attribute weg sobald man die card bearbeitet --->
-                        <%--<div class="form-group">
-                            <label for="inputProjectOwner" class="col-md-2 control-label">Project Owner</label>
-                            <div class="col-md-10">
-                                <%--<form:input id="inputProjectOwner" path="owner.username" type="text" value="${project.owner.username == null ? currentUser.username : project.owner.username}"
-                                            readonly="${not empty project.owner.username || not empty currentUser.username}" cssClass="form-control"/> --%>
-                        <%--<form:input id="inputProjectOwner" path="owner.username" type="text" readonly="${not empty project.owner}" cssClass="form-control"/>
-                        <form:errors path="owner.username" cssClass="invalid-feedback d-block" />
-                    </div>
-                </div>--%>
+
+                    <form:input id="inputProjectOwner" path="owner.userId" type="hidden" value="${project.owner.userId == null ? currentUser.userId : project.owner.userId}"
+                                readonly="${not empty project.owner.userId || not empty currentUser.userId}" cssClass="form-control"/>
+
+                       <%-- <form:errors path="owner.userId" cssClass="invalid-feedback d-block" /> --%>
 
                 <! ---------------- Description ---------------- -->
                 <div class="form-group">
