@@ -9,7 +9,7 @@ INSERT INTO project (name, owner_user_id, description) VALUES ('Project 2', 2, '
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 3', 3, 'Description 3 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 4', 4, 'Description 4 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 5', 5, 'Description 5 bla bla bla');
-INSERT INTO task (name, project, description, segment) VALUES ('Task 1', 1, 'Task 1 , in ToDo', 1);
+INSERT INTO task (name, project, description, segment) VALUES ('Task 1', 1, 'Task 1 , in ToDo SHESSSSSSSSSSSSSSSSSSSSSSSSSsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssSSH', 1);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 2', 1, 'Task 2 , in ToDo', 1);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 3', 1, 'Task 3 , in ToDo', 1);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 4', 1, 'Task 4 , in InProgress', 2);

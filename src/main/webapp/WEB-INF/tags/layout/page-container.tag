@@ -24,21 +24,32 @@
 
         </head>
         <body>
-
+                <!--todo -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-        <a class="navbar-brand" href="/">KanbanCollab</a>
+        <a class="navbar-brand" href="/">
+                <svg class="bi bi-kanban-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-1z"/>
+                </svg> KanbanCollab</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        <c:if test="${activePage == 'listProjects' or activePage == 'editProjects'}">
+
+        <ul class="nav navbar-nav navbar-center">
+
+        <%-- <c:if test="${activePage == 'listProjects' or activePage == 'editProjects'}">
             <c:set var="projectsMenuActive">active</c:set>
-        </c:if>
-        <li class="nav-item ${projectsMenuActive} dropdown">
+        </c:if> --%>
+
+                <c:if test="${activePage == 'viewProject'}">
+                        ${project.name}
+                </c:if>
+
+
+        <%-- <li class="nav-item ${projectsMenuActive} dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Projects
@@ -50,23 +61,38 @@
         </sec:authorize>--%>
 
 
-                </div>
-        </li>
+            <%--    </div>
+        </li> --%>
+
+
         </ul>
+        <ul class="navbar-nav ml-auto" style="white-space: normal ">
+
+                <div style="align-self: center">
                 Logged in as ${currentUser.username} |
+                </div>
+
                 <form:form method="post" action="/logout">
-                        <button class="btn btn-link" type="submit">Log Out</button>
+                        <button class="btn btn-link" style="align-items: center" type="submit">Log Out</button>
                 </form:form>
+
+        </ul>
+
+
+
         </div>
         </div>
+
+
 
 
 
                 </nav>
 
         <div class="container" role="main">
-        <div class="page-header">
-        <h1>KanbanCollab</h1>
+        <div class="page-header" style="margin-bottom:25px">
+
+        <%-- <h1>KanbanCollab</h1> --%>
         </div>
 
         <!-- Messages ----------------------------------------------------------- -->
