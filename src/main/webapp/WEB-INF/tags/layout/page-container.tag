@@ -24,7 +24,6 @@
 
         </head>
         <body>
-                <!--todo -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
         <a class="navbar-brand" href="/">
@@ -38,7 +37,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <ul class="nav navbar-nav navbar-center">
+        <ul class="nav navbar-nav navbar-center" style="font-size: large; font-weight: bold">
 
         <%-- <c:if test="${activePage == 'listProjects' or activePage == 'editProjects'}">
             <c:set var="projectsMenuActive">active</c:set>
