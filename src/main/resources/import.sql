@@ -11,10 +11,10 @@ INSERT INTO project (name, owner_user_id, description) VALUES ('Project 4', 4, '
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 5', 5, 'Description 5 bla bla bla');
 INSERT INTO task (name, project, description, segment) VALUES ('Task 1', 1, 'Task 1 , in ToDo SHESSSSSSSSSSSSSSSSSSSSSSSSSsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssSSH', 1);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 2', 1, 'Task 2 , in ToDo', 1);
-INSERT INTO task (name, project, description, segment) VALUES ('Task 3', 1, 'Task 3 , in ToDo', 1);
-INSERT INTO task (name, project, description, segment) VALUES ('Task 4', 1, 'Task 4 , in InProgress', 2);
-INSERT INTO task (name, project, description, segment) VALUES ('Task 5', 1, 'Task 5 , in InProgress', 2);
-INSERT INTO task (name, project, description, segment) VALUES ('Task 6', 1, 'Task 6 , in InProgress', 2);
-INSERT INTO task (name, project, description, segment) VALUES ('Task 7', 1, 'Task 7 , in Done', 3);
-INSERT INTO task (name, project, description, segment) VALUES ('Task 8', 1, 'Task 8 , in Done', 3);
+INSERT INTO task (name, project, description, segment) VALUES ('Task 3', 2, 'Task 3 , in ToDo', 1);
+INSERT INTO task (name, project, description, segment) VALUES ('Task 4', 2, 'Task 4 , in InProgress', 2);
+INSERT INTO task (name, project, description, segment) VALUES ('Task 5', 3, 'Task 5 , in InProgress', 2);
+INSERT INTO task (name, project, description, segment) VALUES ('Task 6', 3, 'Task 6 , in InProgress', 2);
+INSERT INTO task (name, project, description, segment) VALUES ('Task 7', 3, 'Task 7 , in Done', 3);
+INSERT INTO task (name, project, description, segment) VALUES ('Task 8', 2, 'Task 8 , in Done', 3);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 9', 1, 'Task 9 , in Done', 3);

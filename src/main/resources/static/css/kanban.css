@@ -1,11 +1,77 @@
-.navbar-nav.navbar-center {
-    position: absolute;
-    left:50%;
-    transform: translatex(-50%);
+.main-container {
+    display: flex;
 }
 
-/*.navbar-nav.navbar-right {
-    position: absolute;
-    left:100%;
-    transform: translatex(-100%);
-}*/
+.columns {
+    display: flex;
+    align-items: flex-start;
+    margin: auto;
+}
+
+.column {
+    width: 20rem;
+
+}
+
+.card-body {
+    width:100%;
+}
+
+.column-header {
+    padding: 0.5rem;
+}
+
+.column-header h4 {
+    text-align: center;
+}
+
+.inprogress-column{
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
+}
+
+.task-list {
+    min-height: 15rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: -1rem;
+}
+
+
+/* Dragula CSS Release 3.2.0 from: https://github.com/bevacqua/dragula */
+
+
+.gu-mirror {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+}
+
+.gu-hide {
+    display: none !important;
+}
+
+.gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+.gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+}

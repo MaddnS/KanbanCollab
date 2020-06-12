@@ -71,7 +71,8 @@ class ProjectController (val projectRepository: ProjectRepository,
     fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String{
         val project = projectRepository.findByProjectId(projectId)
         val allTasks = taskRepository.findAll()
-        model.set("tasks", allTasks)
+        val projectTasks = taskRepository.findTaskByProject(projectId)
+        model.set("tasks", projectTasks)
         model.set("project", project)
 
         return "viewProject"
