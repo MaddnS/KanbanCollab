@@ -1,17 +1,19 @@
-
-
 $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
 });
 
+
+
 /* Custom Dragula JS */
+
+
 
 dragula([
     document.getElementById("to-do"),
     document.getElementById("in-progress"),
     document.getElementById("done")
-]);
-removeOnSpill: false
+])/*;
+removeOnSpill: false*/
     .on("drag", function(el) {
         el.className.replace("ex-moved", "");
     })
@@ -25,6 +27,8 @@ removeOnSpill: false
         container.className.replace("ex-over", "");
     });
 
+
+
 /*// wait for the DOM to be loaded
 $(document).ready(function() {
     // bind 'myForm' and provide a simple callback function
@@ -32,3 +36,4 @@ $(document).ready(function() {
         alert("Thank you for your comment!");
     });
 });*/
+ 
