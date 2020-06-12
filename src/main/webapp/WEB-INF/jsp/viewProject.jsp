@@ -60,7 +60,7 @@
                     <div class="column-header" style="border-bottom: 1px solid #ccc;">
                         <h4>In Progress</h4>
                     </div>
-                    <ul class="task-list" id="doing">
+                    <ul class="task-list" id="in-progress">
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 2}">
                                 <li class="task">
@@ -125,5 +125,10 @@
             </ul>
         </div>
     </form:form>
+    <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
+    <%--<form id="formular" action="viewProject" method="post">
+        <input id="taskId" path="taskId" name="task"/>
+        <input id="segment" path="segment" name="segment"/>
+    </form>--%>
 </layout:page-container>
 

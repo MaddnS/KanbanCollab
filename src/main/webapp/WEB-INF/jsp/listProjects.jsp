@@ -9,42 +9,8 @@
 <%--<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> commented out because no such folder yet --%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html>
-<head>
-    <bootstrap:bootstrap-metadata/>
-    <title>KanbanCollab</title>
-    <bootstrap:bootstrap-css/>
-</head>
-<body>
-<div class="container" role="main">
-
-    <div class="page-header">
-        <h1>KanbanCollab</h1>
-    </div>
-
-    <!--  Messages  ----------------------------------------------------------- -->
-
-    <!--  Error message ----------------------------------------------------------- -->
-    <c:if test="${not empty errorMessage}">
-        <div class="alert alert-danger" role="alert">${errorMessage}</div>
-    </c:if>
-    <!--  Error message ----------------------------------------------------------- -->
-
-    <!--  Warning message ----------------------------------------------------------- -->
-    <c:if test="${not empty warningMessage}">
-        <div class="alert alert-warning" role="warning">${warningMessage}</div>
-    </c:if>
-    <!--  Warning message ----------------------------------------------------------- -->
-
-    <!--  successful message ----------------------------------------------------------- -->
-    <c:if test="${not empty message}">
-        <div class="alert alert-success" role="warning">${message}</div>
-    </c:if>
-    <!--  successful message ----------------------------------------------------------- -->
-
-    <!--  Messages  ----------------------------------------------------------- -->
-
-    <!--  2 simple buttons ----------------------------------------------------------- -->
+<layout:page-container title="KanbanCollab" activePage="editProject">
+    <!-- simple button ----------------------------------------------------------- -->
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <p>
@@ -52,7 +18,7 @@
             </p>
         </div>
     </div>
-    <!--  2 simple buttons ----------------------------------------------------------- -->
+    <!-- simple button ----------------------------------------------------------- -->
 
 
     <div class="row">
@@ -128,43 +94,9 @@
                     </div>
                 </div>
             </div>
-            <%--<table data-toggle="table" class="table table-striped">
-                <thead>
-                <tr>
-                    <th data-sortable="true">SSN</th>
-                    <th data-sortable="true">First Name</th>
-                    <th data-sortable="true">Last Name</th>
-                    <th data-sortable="true">Day of birth</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!--  list all employees ----------------------------------------------------------- -->
-                <c:forEach items="${employees}" var="employee">
-                    <tr>
-                        <td>${employee.ssn}</td>
-                        <td>${employee.firstName}</td>
-                        <td>${employee.lastName}</td>
-                        <td>
-                            <fmt:parseDate value="${employee.dayOfBirth}" pattern="yyyy-MM-dd" var="parsedDate" type="date"/>
-                            <fmt:formatDate value="${parsedDate}" type="date" pattern="dd.MM.yyyy"/>
-                        </td>
-                        <td>
-                            <a href="editEmployee?ssn=${employee.ssn}" class="btn btn-xs btn-success">Edit</a>
-                            <a href="deleteEmployee?ssn=${employee.ssn}" class="btn btn-xs btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                <!--  list all employees ----------------------------------------------------------- -->
-                </tbody>
-            </table>--%>
         </div>
     </div>
 
 
 </div>    <!--  End of container -->
-
-<bootstrap:bootstrap-js/>
-
-</body>
-</html>
+</layout:page-container>

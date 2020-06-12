@@ -70,7 +70,6 @@ class ProjectController (val projectRepository: ProjectRepository,
 
     fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String{
         val project = projectRepository.findByProjectId(projectId)
-        val allTasks = taskRepository.findAll()
         val projectTasks = taskRepository.findTaskByProject(projectId)
         model.set("tasks", projectTasks)
         model.set("project", project)
@@ -78,5 +77,13 @@ class ProjectController (val projectRepository: ProjectRepository,
         return "viewProject"
     }
 
+    /*@RequestMapping("/changeSegment", method = [RequestMethod.POST])
 
+    fun changeSegment(model: Model, @RequestParam(required = false) taskId: Int): String {
+        val task = taskRepository.findTaskById(taskId)
+        model.set("task", task)
+
+        return "changeSegment"
+    }
+*/
 }

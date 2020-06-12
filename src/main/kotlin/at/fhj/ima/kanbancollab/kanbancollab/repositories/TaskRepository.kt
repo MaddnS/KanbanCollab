@@ -12,4 +12,6 @@ interface TaskRepository : JpaRepository<Task,Int>{
     @Query("FROM Task WHERE project = :projectId")
     fun findTaskByProject (@Param("projectId") projectId: Int): Set<Task>
 
+    @Query("FROM Task WHERE taskId = :taskId")
+    fun findTaskById (@Param("taskId") taskId: Int): Task
 }
