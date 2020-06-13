@@ -81,6 +81,12 @@
                         <div class="col-md-10 col-md-offset-2">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <a href="listProjects" class="btn btn-default">Cancel</a>
+                            <%--<a href="deleteProject?projectId=${project.projectId}" method="post "class="btn btn-default">Delete Project</a>--%>
+                            <%--<form:form method="post" action="/deleteProject?projectId=${project.projectId}">
+                                <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                            </form:form>--%>
+                            <%--<button type="submit" class="btn btn-xs btn-danger"><spring:message code="employees.delete"/></button>--%>
+
                         </div>
                     </div>
 

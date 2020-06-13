@@ -29,7 +29,7 @@
                     </div>
                     <ul class="task-list" id="to-do">
                         <c:forEach items="${tasks}" var="task">
-                            <c:if test="${task.segment == 1}">
+                            <c:if test="${task.segment == 1}"> <!---- NICHT IDEAL!!! ---->
                                 <li class="task">
                                     <div class="card-body">
                                         <div class="card">

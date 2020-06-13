@@ -29,8 +29,10 @@ class ProjectController (val projectRepository: ProjectRepository,
 
     @RequestMapping("/listProjects", method = [RequestMethod.GET])
     //fun listProjects (model: Model, @RequestParam userId: Int): String {
-    fun listProjects (model: Model, @RequestParam(required = false) userId: Int?): String {
+    fun listProjects (model: Model/*, @RequestParam(required = false) userId: Int?*/): String {
         model.set("projects", projectRepository.findAll())
+        //model.set("sharedProjects",projectRepository.findProjectByMembers(userId))
+        // SQL Statement funktioniert net, einen anderen Weg hab ich bis jetzt noch nicht gefunden
         return "listProjects"
     }
 
@@ -66,8 +68,16 @@ class ProjectController (val projectRepository: ProjectRepository,
         return "redirect:/editProject?projectId=" + project.projectId
     }
 
-    @RequestMapping("/viewProject", method = [RequestMethod.GET])
+    @RequestMapping("/deleteProject", method = [RequestMethod.POST])
+    //@Secured("ROLE_ADMIN")
+    fun deleteProject(model: Model, @RequestParam projectId: Int): String {
+        projectRepository.delete(projectRepository.findByProjectId(projectId))
+        model.set("message", "Project $projectId deleted")
+        return listProjects(model) //; "redirect:listProjects"
+        // Wunsch wäre es von der editView aus deleten zu können. Leider habe ich das nicht geschafft
+    }
 
+    @RequestMapping("/viewProject", method = [RequestMethod.GET])
     fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String{
         val project = projectRepository.findByProjectId(projectId)
         val projectTasks = taskRepository.findTaskByProject(projectId)

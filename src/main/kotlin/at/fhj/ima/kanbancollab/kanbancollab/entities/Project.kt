@@ -11,7 +11,7 @@ class Project(
         @ManyToOne
         var owner: User? = null,
         @ManyToMany
-        var members: Set<User>? = null,
+        var members: List<User>? = null,
         var name: String? = null,
         var description: String? = null
 ): Comparable<Project> {

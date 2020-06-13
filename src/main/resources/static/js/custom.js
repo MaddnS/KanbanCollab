@@ -12,8 +12,8 @@ dragula([
     document.getElementById("to-do"),
     document.getElementById("in-progress"),
     document.getElementById("done")
-])/*;
-removeOnSpill: false*/
+])
+removeOnSpill: false
     .on("drag", function(el) {
         el.className.replace("ex-moved", "");
     })
