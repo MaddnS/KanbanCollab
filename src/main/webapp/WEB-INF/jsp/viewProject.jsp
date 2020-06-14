@@ -19,15 +19,33 @@
                         document.getElementById('add').click()">
             <button id="add" class="button add-button" onclick="addTask()">Add New Task</button>
         </div>--%>
-
         <div class="main-container">
             <ul class="columns">
+
+                <li class="membersAndOptions">
+
+                        <div class="mao-header">
+                            <h5>Project-Members:</h5>
+
+                            <ul class="members-list">
+                                <c:forEach items="${project.members}" var="member">
+                                    <li class="mao-list-entry">
+                                            ${member.username}
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+
+
+
+                </li>
 
                 <li class="column to-do-column">
                     <div class="column-header" style="border-bottom: 1px solid #ccc;">
                         <h4>To Do</h4>
                     </div>
                     <ul class="task-list" id="to-do">
+                        &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 1}"> <!---- NICHT IDEAL!!! ---->
                                 <li class="task">
@@ -53,6 +71,7 @@
                                 </li>
                             </c:if>
                         </c:forEach>
+
                     </ul>
                 </li>
 
@@ -61,6 +80,7 @@
                         <h4>In Progress</h4>
                     </div>
                     <ul class="task-list" id="in-progress">
+                        &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 2}">
                                 <li class="task">
@@ -86,6 +106,7 @@
                                 </li>
                             </c:if>
                         </c:forEach>
+
                     </ul>
                 </li>
 
@@ -94,6 +115,7 @@
                         <h4>Done</h4>
                     </div>
                     <ul class="task-list" id="done">
+                        &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 3}">
                                 <li class="task">
@@ -119,8 +141,31 @@
                                 </li>
                             </c:if>
                         </c:forEach>
+
                     </ul>
                 </li>
+
+
+                <li class="membersAndOptions">
+
+                    <div class="mao-header">
+                        <h5>Options:</h5>
+
+                        <ul class="options-list">
+                            <li class="mao-list-entry">
+                                Create New Task
+                            </li>
+
+                            <li class="mao-list-entry">
+                            Invite
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                </li>
+
 
             </ul>
         </div>

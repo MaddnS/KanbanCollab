@@ -1,3 +1,17 @@
+h5{
+    font-size: small;
+    text-align: center;
+}
+
+.membersAndOptions {
+    width: 10rem;
+}
+.mao-list-entry{
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: small
+}
+
 .navbar-nav.navbar-center {
     position: absolute;
     left: 50%;
@@ -14,7 +28,7 @@
 }
 
 .column {
-    width: 20rem;
+    width: 16rem;
 
 }
 
