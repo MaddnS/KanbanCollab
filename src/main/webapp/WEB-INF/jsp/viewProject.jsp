@@ -50,6 +50,7 @@
                             <c:if test="${task.segment == 1}"> <!---- NICHT IDEAL!!! ---->
                                 <li class="task">
                                     <div class="card-body">
+                                        <input type="hidden" name="taskSegment" value="${task.segment}"/>
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="row">
@@ -62,7 +63,6 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-
                                                 <p class="card-text">${task.description}</p>
 
                                             </div>
