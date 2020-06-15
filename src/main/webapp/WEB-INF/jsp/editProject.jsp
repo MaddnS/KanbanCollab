@@ -49,28 +49,12 @@
                 </div>
 
                 <! ---------------- Members ---------------- -->
-                <%--
-                <div class="form-group">
-                    <label for="inputMembers" class="col-md-2 control-label">Members</label>
-                    <div class="col-md-10"> --%>
-                            <%--<form:input id="inputMembers" path="members" type="text" class="form-control"/>--%>
-                            <%--<form:input id="inputMembers" path="members" type="text" class="js-example-basic-multiple" multiple="multiple">--%>
-                            <%--<select id="inputMembers" class="js-example-basic-multiple" name="users[]" multiple="multiple">
-                                <c:forEach items="${users}" var="user">
-
-                                <option>${user.username}</option>
-                                </c:forEach>
-
-                            </select>
-                            <form:errors path="members" cssClass="invalid-feedback d-block"/>
-                        </div>
-                    </div> --%>
 
                     <div class="form-group">
                         <label for="inputMembers" class="col-md-2 control-label">Members</label>
                         <div class="col-md-10">
                             <form:select id="inputMembers" path="members" class="js-example-basic-multiple" style="width: 100%">
-                            <form:options items="${users}" itemValue="userId" itemLabel="username"/>
+                                <form:options items="${usersWithoutOwner}" itemValue="userId" itemLabel="username"/>
                             </form:select>
                             <form:errors path="members" cssClass="invalid-feedback d-block"/>
                         </div>

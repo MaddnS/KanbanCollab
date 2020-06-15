@@ -26,18 +26,19 @@ class ProjectController (val projectRepository: ProjectRepository,
                          val userRepository: UserRepository,
                          val taskRepository: TaskRepository) {
 
-    fun showEditProjectView(model: Model): String {
 
+    fun showEditProjectView(model: Model): String {
+        val filteredUsers = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
         model.set("users", userRepository.findAll())
+        model.set("usersWithoutOwner", filteredUsers)
         return "editProject"
     }
 
+
     @RequestMapping("/listProjects", method = [RequestMethod.GET])
-    //fun listProjects (model: Model, @RequestParam userId: Int): String {
     fun listProjects (model: Model/*, @RequestParam(required = false) userId: Int?*/): String {
-        var allProjects = projectRepository.findAll()
-        var userCurrent = userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
-        var sharedProjects = findSharedProjects(userCurrent,  allProjects)
+        val allProjects = projectRepository.findAll()
+        val sharedProjects = findSharedProjects(getCurrentUser(),  allProjects)
         model.set("projects", allProjects)
         model.set("sharedProjects",sharedProjects)
         return "listProjects"
@@ -95,9 +96,15 @@ class ProjectController (val projectRepository: ProjectRepository,
     }
 
     fun findSharedProjects(user:User, allProj:List<Project>):List<Project>{
-        var uId = user.userId
+        val uId = user.userId
         return allProj.filter { it.members.any{it.userId == uId}}
     }
+
+    fun getCurrentUser():User{
+
+        return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
+    }
+
 
     /*@RequestMapping("/changeSegment", method = [RequestMethod.POST])
 
