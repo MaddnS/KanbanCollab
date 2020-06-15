@@ -1,10 +1,14 @@
 package at.fhj.ima.kanbancollab.kanbancollab.controller
 
+import at.fhj.ima.kanbancollab.kanbancollab.controller.advice.CurrentUserControllerAdvice
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Project
+import at.fhj.ima.kanbancollab.kanbancollab.entities.User
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.ProjectRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.TaskRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.UserRepository
+import org.aspectj.weaver.Member
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 import java.time.LocalDate
 import javax.validation.Valid
+import kotlin.system.measureTimeMillis
 
 @Controller
 class ProjectController (val projectRepository: ProjectRepository,
@@ -30,7 +35,11 @@ class ProjectController (val projectRepository: ProjectRepository,
     @RequestMapping("/listProjects", method = [RequestMethod.GET])
     //fun listProjects (model: Model, @RequestParam userId: Int): String {
     fun listProjects (model: Model/*, @RequestParam(required = false) userId: Int?*/): String {
-        model.set("projects", projectRepository.findAll())
+        var allProjects = projectRepository.findAll()
+        var userCurrent = userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
+        var sharedProjects = findSharedProjects(userCurrent,  allProjects)
+        model.set("projects", allProjects)
+        model.set("sharedProjects",sharedProjects)
         //model.set("sharedProjects",projectRepository.findProjectByMembers(userId))
         // SQL Statement funktioniert net, einen anderen Weg hab ich bis jetzt noch nicht gefunden
         return "listProjects"
@@ -85,6 +94,11 @@ class ProjectController (val projectRepository: ProjectRepository,
         model.set("project", project)
 
         return "viewProject"
+    }
+
+    fun findSharedProjects(user:User, allProj:List<Project>):List<Project>{
+        var uId = user.userId
+        return allProj.filter { it.members.any{it.userId == uId}}
     }
 
     /*@RequestMapping("/changeSegment", method = [RequestMethod.POST])

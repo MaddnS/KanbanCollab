@@ -94,7 +94,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="row">
                                 <%--<c:if test="${projects.owner.userId == currentUser.userId}">--%>
-                            <c:forEach items="${projects}" var="project">
+                            <c:forEach items="${sharedProjects}" var="project">
                                 <%--<c:forEach items="${projects.members}" var="member">--%>
 
                                 <!---- Wie geht das mit den Projekte auslesen nur für die jeweiligen Members??
