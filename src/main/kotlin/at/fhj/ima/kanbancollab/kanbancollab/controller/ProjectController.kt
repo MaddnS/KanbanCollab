@@ -40,8 +40,6 @@ class ProjectController (val projectRepository: ProjectRepository,
         var sharedProjects = findSharedProjects(userCurrent,  allProjects)
         model.set("projects", allProjects)
         model.set("sharedProjects",sharedProjects)
-        //model.set("sharedProjects",projectRepository.findProjectByMembers(userId))
-        // SQL Statement funktioniert net, einen anderen Weg hab ich bis jetzt noch nicht gefunden
         return "listProjects"
     }
 
