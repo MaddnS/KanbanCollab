@@ -11,8 +11,8 @@ class Subtask(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var subtaskId: Int? = null,
         var description: String? = null,
-        var state: Boolean? = false,
-        var parentTaskId: Int? = null
+        var state: Boolean = false,
+        var parentTaskId: Int
 ): Comparable<Subtask> {
 
     override fun compareTo(other: Subtask): Int {

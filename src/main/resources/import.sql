@@ -18,3 +18,4 @@ INSERT INTO task (name, project, description, segment) VALUES ('Task 6', 3, 'Tas
 INSERT INTO task (name, project, description, segment) VALUES ('Task 7', 3, 'Task 7 , in Done', 3);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 8', 2, 'Task 8 , in Done', 3);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 9', 1, 'Task 9 , in Done', 3);
+INSERT INTO subtask (description,parent_task_id,state) VALUES ('subtaskNr01',1,true)

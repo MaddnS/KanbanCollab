@@ -13,6 +13,7 @@ class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var userId: Int,
+        @Column(unique = true)
         var username: String,
         var pwhash: String,
         var firstName: String? = null,

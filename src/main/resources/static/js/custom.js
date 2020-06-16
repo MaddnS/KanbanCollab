@@ -1,7 +1,8 @@
 
 
 $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
+    //console.log($(el).data('task-id'))
+    //$('.js-example-basic-multiple').select2();
 });
 
 /* Custom Dragula JS */
@@ -37,3 +38,75 @@ $(document).ready(function() {
         alert("Thank you for your comment!");
     });
 });*/
+
+// AJAX Submit Task
+/*const form = {
+    task_name: document.getElementById('task_name_input'),
+    task_description: document.getElementById('task_description_input'),
+    task_project: document.getElementById('task_project_input'),
+    task_segment: document.getElementById('task_segment_input'),
+    task_submit:document.getElementById('task_submit')
+};
+
+form.task_submit.addEventListener('click',() =>{
+    console.log('button pressed')
+    const request = new XMLHttpRequest();
+
+    request.onload = () =>{
+        console.log(request.responseText)
+    };
+
+    const requestData = `name=${form.task_name.value}&description=${form.task_description.value}`;
+console.log(requestData)
+    request.open('post','task.php');
+    request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    request.send(requestData);
+});*/
+
+/*
+//NÄCHSTER VERSUCH -....
+$('form.inputTask').on('submit',function () {
+    var that = $(this),
+        url = that.attr('action'),
+        method = that.attr('method'),
+        date = {};
+
+    that.find('[name]').each(function () {
+        var that = $(this),
+            name = that.attr('name'),
+            value = that.val();
+
+        data[name] = value;
+    });
+
+    $.ajax({
+       url: url,
+       type: type,
+       data: data,
+       success: function (response) {
+            console.log(response);
+       }
+    });
+    return false;
+})
+ */
+
+//Krausler GET Ansatz
+/*
+$.ajax({
+    url: "/task/1/DONE",
+    cache: false
+})
+    .done(function( html ) {
+        alert('hat funktioniert');
+    });
+    */
+
+$.ajax({
+    url: "/changeSegment?taskId="+taskId+"&segment="+segment,
+    cache: false
+})
+    .done(function( html ) {
+        alert('hat funktioniert');
+    });
+

@@ -6,8 +6,12 @@ h5{
 .membersAndOptions {
     width: 10rem;
 }
+.po-header{
+    margin-bottom: 1.5rem;
+}
+
 .mao-list-entry{
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-align: center;
     font-size: small
 }

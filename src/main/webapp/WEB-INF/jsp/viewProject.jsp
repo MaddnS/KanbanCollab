@@ -21,24 +21,32 @@
         </div>--%>
         <div class="main-container">
             <ul class="columns">
-
-                <li class="membersAndOptions">
-
-                        <div class="mao-header">
-                            <h5>Project-Members:</h5>
-
-                            <ul class="members-list">
-                                <c:forEach items="${project.members}" var="member">
-                                    <li class="mao-list-entry">
-                                            ${member.username}
-                                    </li>
-                                </c:forEach>
-                            </ul>
+                <ul class="containerMaO">
+                    <li class="projOwner">
+                        <div class="po-header">
+                            <h5>Project-Owner: </h5>
                         </div>
+                    <li class="mao-list-entry">
+                        ${project.owner.username}
+                    </li>
 
+                    </li>
 
+                    <li class="membersAndOptions">
 
-                </li>
+                            <div class="mao-header">
+                                <h5>Project-Members:</h5>
+
+                                <ul class="members-list">
+                                    <c:forEach items="${project.members}" var="member">
+                                        <li class="mao-list-entry">
+                                                ${member.username}
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                    </li>
+                </ul>
 
                 <li class="column to-do-column">
                     <div class="column-header" style="border-bottom: 1px solid #ccc;">
@@ -118,7 +126,7 @@
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 3}">
-                                <li class="task">
+                                <li class="task" data-task-id="${task.taskId}">
                                     <div class="card-body">
                                         <div class="card">
                                             <div class="card-body">
@@ -145,7 +153,7 @@
                     </ul>
                 </li>
 
-
+<%-- ---------------------------- OPTIONS: CREATE TASK, INVITE, ... ------------------------------- --%>
                 <li class="membersAndOptions">
 
                     <div class="mao-header">
@@ -153,7 +161,50 @@
 
                         <ul class="options-list">
                             <li class="mao-list-entry">
-                                Create New Task
+                                <button type="button" class="newTaskCreate" data-toggle = "modal" data-target = "#createNewTaskModal">
+                                    New Task
+                                </button>
+
+                                <div class="modal fade" id="createNewTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Create New Task</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <%--  MIT AJAX MACHEN ?  --%>
+                                                    <! ---------------- Task Name & Description ---------------- -->
+                                                    <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
+                                                   <%--  <form:form modelAttribute="task" class="needs-validation form-horizontal" method="post" action="viewProject" novalidate="novalidate">
+                                                            <%-- <form:form id="inputTask" method="post" action="/changeTask?taskId=${task.taskId}"> --%>
+                                                           <%--     <div class="field">
+                                                                    <label for="task_name_input">Task Name: </label>
+                                                                    <%-- <input type="text" id="task_name_input" required> --%>
+                                                               <%--     <form:input type="text" path="name" id="task_name_input"/>
+                                                                </div>
+                                                                <div class="field">
+                                                                    <label for="task_description_input">Description: </label>
+                                                                    <form:input type="text" path="description" id="task_description_input"/>
+                                                                </div>
+
+                                                                    <form:input type="hidden" path="project" id="task_project_input" name="project" value="${project.projectId}"/>
+                                                                    <form:input type="hidden" path="segment" id="task_segment_input" name="segment" value="1" />
+
+                                                                 <button type="submit" id="task_submit" class="task_submit">Create</button>
+                                                             </form:form> --%>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </li>
 
                             <li class="mao-list-entry">
@@ -175,5 +226,6 @@
         <input id="taskId" path="taskId" name="task"/>
         <input id="segment" path="segment" name="segment"/>
     </form>--%>
+
 </layout:page-container>
 

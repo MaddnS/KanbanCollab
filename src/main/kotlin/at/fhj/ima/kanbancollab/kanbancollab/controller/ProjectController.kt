@@ -2,6 +2,7 @@ package at.fhj.ima.kanbancollab.kanbancollab.controller
 
 import at.fhj.ima.kanbancollab.kanbancollab.controller.advice.CurrentUserControllerAdvice
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Project
+import at.fhj.ima.kanbancollab.kanbancollab.entities.Task
 import at.fhj.ima.kanbancollab.kanbancollab.entities.User
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.ProjectRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.TaskRepository
@@ -33,7 +34,6 @@ class ProjectController (val projectRepository: ProjectRepository,
         model.set("usersWithoutOwner", filteredUsers)
         return "editProject"
     }
-
 
     @RequestMapping("/listProjects", method = [RequestMethod.GET])
     fun listProjects (model: Model/*, @RequestParam(required = false) userId: Int?*/): String {
@@ -92,6 +92,57 @@ class ProjectController (val projectRepository: ProjectRepository,
         model.set("tasks", projectTasks)
         model.set("project", project)
 
+        return "viewProject"
+    }
+    /*
+        fun showEditTaskView(model: Model): String {
+            val filteredUsers = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
+            model.set("users", userRepository.findAll())
+            model.set("usersWithoutOwner", filteredUsers)
+            return "editTask"
+        }
+*/
+        //TESTEREI --> kenn mi nix aus
+/*
+        @RequestMapping("/deleteTask", method = [RequestMethod.POST])
+        //@Secured("ROLE_ADMIN")
+        fun deleteTask(model: Model, @RequestParam taskId: Int, projectId: Int): String {
+            taskRepository.delete(taskRepository.findTaskById(taskId))
+            model.set("message", "Task $taskId deleted")
+            return viewProject(model,projectId)
+
+        }
+
+        @RequestMapping("/editTask", method = [RequestMethod.GET])
+        fun editTask(model: Model, @RequestParam(required = false)taskId: Int, projectId: Int?): String{
+            if (taskId != null) {
+                val task = taskRepository.findTaskById(taskId)
+                model.set("task", task)
+            } else {
+                val newTask = Task()
+                model.set("task", newTask)
+            }
+            return "viewProject"
+        }
+
+        @RequestMapping("/changeTask", method = [RequestMethod.POST])
+        // @Secured("ROLE_ADMIN")ber
+        fun changeTask(@ModelAttribute("project") @Valid task: Task, bindingResult: BindingResult, model: Model): String {
+            if (bindingResult.hasErrors()) {
+                return "editTask"
+            }
+
+           taskRepository.save(task)
+
+            return "redirect:/editTask?taskId=" + task.taskId
+        }
+*/
+
+    @RequestMapping("/changeSegment", method = [RequestMethod.GET])
+    fun changeSegment(model: Model, @RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int):String {
+        val task = taskRepository.findTaskById(taskId)
+        task.segment = segmentId;
+        taskRepository.save(task);
         return "viewProject"
     }
 
