@@ -12,6 +12,7 @@ import at.fhj.ima.kanbancollab.kanbancollab.repositories.UserRepository
 import org.aspectj.weaver.Member
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.http.ResponseEntity
+import org.springframework.security.authentication.AnonymousAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -152,6 +153,18 @@ class ProjectController (val projectRepository: ProjectRepository,
     fun addUser (@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult, model: Model): String {
         userService.save(user)
         return "listProjects"
+    }
+
+    @RequestMapping("/anonymousAndNotAnonymous", method = [RequestMethod.GET])
+    fun anonymous(model: Model): String {
+
+        val auth = SecurityContextHolder.getContext().authentication
+        if (auth is AnonymousAuthenticationToken) {
+            model.set("showAnonymouspage", true);
+            return "anonymous";
+        }
+        model.set("showAnonymouspage", false);
+        return "notanonymous"
     }
 /*
         @RequestMapping("/changeTask", method = [RequestMethod.POST])

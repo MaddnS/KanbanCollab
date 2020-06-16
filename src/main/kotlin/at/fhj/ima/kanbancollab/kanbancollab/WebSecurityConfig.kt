@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 
+
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig : WebSecurityConfigurerAdapter() {
@@ -16,17 +17,20 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity) {
         http
-                .authorizeRequests()
-                // you anonymous urls here
+            .authorizeRequests()
+            // you anonymous urls here
+                .antMatchers("/registerUser").permitAll()
                 .antMatchers("/anonymous").permitAll()
+                .antMatchers("/anonymousAndNotAnonymous").permitAll()
                 //.antMatchers("/anonymous1").permitAll()
                 //.antMatchers("/anonymous2").permitAll()
                 //.antMatchers("/anonymous3").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+            .formLogin()
+                .permitAll()
                 .and()
-                .rememberMe().key("uniqueAndSecret").userDetailsService(myUserDetailsService);
+            .rememberMe().key("uniqueAndSecret").userDetailsService(myUserDetailsService)
     }
 
 }
