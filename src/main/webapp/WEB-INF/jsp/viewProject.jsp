@@ -240,10 +240,10 @@
         </div>
     </form:form>
     <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
-    <%--<form id="formular" action="viewProject" method="post">
-        <input id="taskId" path="taskId" name="task"/>
-        <input id="segment" path="segment" name="segment"/>
-    </form>--%>
+    <%-- <form:form id="segmForm" action="changeSegment" method="post">
+        <input type="hidden" id="taskIdForm" value="${task.taskId}"/>
+        <input type="hidden" id="segmentForm" value="${task.segment}"/>
+    </form:form> --%>
 
 </layout:page-container>
 

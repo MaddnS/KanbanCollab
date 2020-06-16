@@ -2,7 +2,6 @@ package at.fhj.ima.kanbancollab.kanbancollab.controller
 
 import at.fhj.ima.kanbancollab.kanbancollab.controller.advice.CurrentUserControllerAdvice
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Project
-import at.fhj.ima.kanbancollab.kanbancollab.entities.Task
 import at.fhj.ima.kanbancollab.kanbancollab.entities.User
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Task
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.ProjectRepository
@@ -172,14 +171,4 @@ class ProjectController (val projectRepository: ProjectRepository,
         return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
     }
 
-
-    /*@RequestMapping("/changeSegment", method = [RequestMethod.POST])
-
-    fun changeSegment(model: Model, @RequestParam(required = false) taskId: Int): String {
-        val task = taskRepository.findTaskById(taskId)
-        model.set("task", task)
-
-        return "changeSegment"
-    }
-*/
 }
