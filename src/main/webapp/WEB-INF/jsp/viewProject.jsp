@@ -52,11 +52,11 @@
                     <div class="column-header" style="border-bottom: 1px solid #ccc;">
                         <h4>To Do</h4>
                     </div>
-                    <ul class="task-list" id="to-do">
+                    <ul class="task-list" id="to-do" data-seg-id="1">
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 1}"> <!---- NICHT IDEAL!!! ---->
-                                <li class="task">
+                                <li class="task" data-task-id="${task.taskId}">
                                     <div class="card-body">
                                         <input type="hidden" name="taskSegment" value="${task.segment}"/>
                                         <div class="card">
@@ -87,11 +87,11 @@
                     <div class="column-header" style="border-bottom: 1px solid #ccc;">
                         <h4>In Progress</h4>
                     </div>
-                    <ul class="task-list" id="in-progress">
+                    <ul class="task-list" id="in-progress" data-seg-id="2">
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 2}">
-                                <li class="task">
+                                <li class="task" data-task-id="${task.taskId}">
                                     <div class="card-body">
                                         <div class="card">
                                             <div class="card-body">
@@ -122,7 +122,7 @@
                     <div class="column-header" style="border-bottom: 1px solid #ccc;">
                         <h4>Done</h4>
                     </div>
-                    <ul class="task-list" id="done">
+                    <ul class="task-list" id="done" data-seg-id="3">
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 3}">

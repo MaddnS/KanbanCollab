@@ -9,7 +9,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <layout:page-container title="KanbanCollab" activePage="editProject">
-    <c:if test="${currentUser.userId == project.owner.userId || currentUser.username == 'admin'}"> <!---- temporärer Fix---->
+    <%-- <c:if test="${currentUser.userId == project.owner.userId || currentUser.username == 'admin'}"> --%><!---- temporärer Fix---->
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                     <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
@@ -84,6 +84,6 @@
                 </form:form>
             </div>
         </div>
-    </c:if>
+   <%-- </c:if> --%>
 </layout:page-container>
 

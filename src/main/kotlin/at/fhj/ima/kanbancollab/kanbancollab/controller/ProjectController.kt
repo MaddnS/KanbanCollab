@@ -9,6 +9,7 @@ import at.fhj.ima.kanbancollab.kanbancollab.repositories.TaskRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.UserRepository
 import org.aspectj.weaver.Member
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -139,11 +140,11 @@ class ProjectController (val projectRepository: ProjectRepository,
 */
 
     @RequestMapping("/changeSegment", method = [RequestMethod.GET])
-    fun changeSegment(model: Model, @RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int):String {
+    fun changeSegment(@RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int): ResponseEntity<Void> {
         val task = taskRepository.findTaskById(taskId)
-        task.segment = segmentId;
-        taskRepository.save(task);
-        return "viewProject"
+        task.segment = segmentId
+        taskRepository.save(task)
+        return ResponseEntity.ok().build();
     }
 
     fun findSharedProjects(user:User, allProj:List<Project>):List<Project>{
