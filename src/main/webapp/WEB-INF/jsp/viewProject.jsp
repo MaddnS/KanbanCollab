@@ -10,7 +10,8 @@
 
 <layout:page-container title="KanbanCollab - ${project.name}" activePage="viewProject">
     <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
-    <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post" action="viewProject" novalidate="novalidate">
+    <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post" action="viewProject"
+               novalidate="novalidate">
         <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
 
 
@@ -66,8 +67,11 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                        <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
+                                                             viewBox="0 0 16 16" fill="currentColor"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -83,7 +87,7 @@
                     </ul>
                 </li>
 
-                <li class="column inprogress-column" >
+                <li class="column inprogress-column">
                     <div class="column-header" style="border-bottom: 1px solid #ccc;">
                         <h4>In Progress</h4>
                     </div>
@@ -100,8 +104,11 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                        <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
+                                                             viewBox="0 0 16 16" fill="currentColor"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -135,8 +142,11 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                        <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
+                                                             viewBox="0 0 16 16" fill="currentColor"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -160,6 +170,12 @@
                         <h5>Options:</h5>
 
                         <ul class="options-list">
+                            <%--<form:form method="post"
+                                       action="/createTask">
+                                <button type="submit" <class="btn btn-xs btn-danger">--%>
+                                    <li class="mao-list-entry">
+                                        Create New Task
+                                    </li>
                             <li class="mao-list-entry">
                                 <button type="button" class="newTaskCreate" data-toggle = "modal" data-target = "#createNewTaskModal">
                                     New Task
@@ -207,12 +223,14 @@
 
                             </li>
 
+                                <%--</button>
+                            </form:form>--%>
+
                             <li class="mao-list-entry">
-                            Invite
+                                Invite
                             </li>
                         </ul>
                     </div>
-
 
 
                 </li>

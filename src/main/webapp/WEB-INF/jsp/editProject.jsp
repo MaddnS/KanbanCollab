@@ -9,7 +9,12 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <layout:page-container title="KanbanCollab" activePage="editProject">
-    <%-- <c:if test="${currentUser.userId == project.owner.userId || currentUser.username == 'admin'}"> --%><!---- temporärer Fix---->
+        <! ---------------- If a user tries to edit a project he's not the owner of
+                            he gets an empty site and gets redirected immediately after to the error page ---------------- -->
+    <c:if test="${currentUser.username != 'admin' && currentUser.userId != project.owner.userId
+    && project.projectId != null}"><meta http-equiv = "refresh" content = "0; url = /error" /></c:if>
+    <c:if test="${currentUser.userId == project.owner.userId || currentUser.username == 'admin' || project.projectId == null}"> <!---- temporärer Fix---->
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                     <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
@@ -29,9 +34,12 @@
                         <div class="form-group">
                             <label for="inputProjectName" class="col-md-2 control-label">Project Name*</label>
                             <div class="col-md-10">
-                                <form:input id="inputProjectName" path="name" type="text" class="form-control"
+                                <form:input id="inputProjectName" path="name" type="text" class="form-control" maxLength="50"
                                             required="required"/>
                                 <form:errors path="name" cssClass="invalid-feedback d-block"/>
+                                <div class="invalid-feedback">
+                                    Projectname may not be larger than 50 characters
+                                </div>
                             </div>
                         </div>
 
@@ -48,7 +56,7 @@
                         <div class="form-group">
                             <label for="inputDescription" class="col-md-2 control-label">Description</label>
                             <div class="col-md-10">
-                                <form:input id="inputDescription" path="description" type="text" class="form-control"/>
+                                <form:textarea id="inputDescription" rows="6" path="description" maxLength="240" type="text" class="form-control"/>
                                 <form:errors path="description" cssClass="invalid-feedback d-block"/>
                             </div>
                         </div>
@@ -84,6 +92,6 @@
                 </form:form>
             </div>
         </div>
-   <%-- </c:if> --%>
+    </c:if>
 </layout:page-container>
 

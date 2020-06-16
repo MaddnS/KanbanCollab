@@ -2,6 +2,7 @@ package at.fhj.ima.kanbancollab.kanbancollab.entities
 
 import java.io.Serializable
 import javax.persistence.*
+import javax.validation.constraints.NotNull
 
 enum class UserRole {
     ROLE_USER,

@@ -67,7 +67,7 @@
                                                         <h6 class="col-lg-9">Created by: ${project.owner.username}</h6>
                                                         <div class="col-lg-3">
                                                             <form:form method="post"
-                                                                       action="/deleteProject?projectId=${project.projectId}">
+                                                                       action="/deleteProject?projectId=${project.projectId}&name=${project.name}">
                                                                 <button type="submit" class="btn btn-xs btn-danger">
                                                                     <svg class="bi bi-trash" width="0.8em" height="1em"
                                                                          viewBox="0 0 16 16" fill="currentColor"

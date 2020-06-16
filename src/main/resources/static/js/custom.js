@@ -1,6 +1,18 @@
-$(document).ready(function() {
-    //console.log($(el).data('task-id'))
-    //$('.js-example-basic-multiple').select2();
+$(function () {
+    var forms = $('.needs-validation');
+    forms.find('[name]').on('focusout', function () {
+        var input = $(this);
+        input.removeClass('is-valid is-invalid').addClass(this.checkValidity() ? 'is-valid' : 'is-invalid');
+        input.parent().find('.invalid-feedback').remove();
+    });
+});
+
+
+$(document).ready(function () {
+    $('.js-example-basic-multiple').select2();
+
+
+
 });
 /* Custom Dragula JS */
 dragula([

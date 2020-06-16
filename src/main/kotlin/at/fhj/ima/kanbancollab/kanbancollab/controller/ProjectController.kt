@@ -4,6 +4,7 @@ import at.fhj.ima.kanbancollab.kanbancollab.controller.advice.CurrentUserControl
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Project
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Task
 import at.fhj.ima.kanbancollab.kanbancollab.entities.User
+import at.fhj.ima.kanbancollab.kanbancollab.entities.Task
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.ProjectRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.TaskRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.UserRepository
@@ -64,27 +65,41 @@ class ProjectController (val projectRepository: ProjectRepository,
             return showEditProjectView(model)
         }
 
-        //try {
+        try {
             projectRepository.save(project)
-        //} catch (dive: DataIntegrityViolationException) {
-            //if (dive.message.orEmpty().contains("constraint [ssn_UK]")) {
-                //bindingResult.rejectValue("ssn", "ssn.alreadyInUse", "Project Id already in use.");
-                //return showEditProjectView(model)
-            //} else {
-            //    throw dive;
-            //}
-        //}
+        } catch (dive: DataIntegrityViolationException) {
+            if (dive.message.orEmpty().contains("constraint [projectname_UK]")) {
+                bindingResult.rejectValue("name", "name.alreadyInUse", "Project Name already in use.");
+                return showEditProjectView(model)
+            } else {
+                throw dive;
+            }
+        }
         return "redirect:/editProject?projectId=" + project.projectId
     }
 
     @RequestMapping("/deleteProject", method = [RequestMethod.POST])
     //@Secured("ROLE_ADMIN")
-    fun deleteProject(model: Model, @RequestParam projectId: Int): String {
+    fun deleteProject(model: Model, @RequestParam projectId: Int, @RequestParam name: String): String {
         projectRepository.delete(projectRepository.findByProjectId(projectId))
-        model.set("message", "Project $projectId deleted")
+        model.set("message", "'$name' was deleted")
         return listProjects(model) //; "redirect:listProjects"
         // Wunsch wäre es von der editView aus deleten zu können. Leider habe ich das nicht geschafft
     }
+
+    /*@RequestMapping("/createTask", method = [RequestMethod.POST])
+    //@Secured("ROLE_ADMIN")
+    fun createTask(model: Model, @RequestParam projectId: Int, taskId: Int): String {
+        //taskRepository.delete(projectRepository.findByProjectId(projectId))
+        val project = projectRepository.findByProjectId(projectId)
+        val newTask = Task(project = projectId, segment = 1)
+        model.set("task", newTask)
+        model.set("project", project)
+        //model.set("message", "Task $taskId created")
+        return "redirect:viewProject?projectId=" + project.projectId
+        //"viewProject" //viewProject(model) //; "redirect:listProjects"
+        // Wunsch wäre es von der editView aus deleten zu können. Leider habe ich das nicht geschafft
+    }*/
 
     @RequestMapping("/viewProject", method = [RequestMethod.GET])
     fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String{

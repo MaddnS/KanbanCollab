@@ -2,8 +2,11 @@ package at.fhj.ima.kanbancollab.kanbancollab.entities
 
 import at.fhj.ima.kanbancollab.kanbancollab.controller.advice.CurrentUserControllerAdvice
 import javax.persistence.*
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.Size
 
 @Entity
+@Table(uniqueConstraints = [UniqueConstraint(name = "projectname_UK", columnNames = ["name"])])
 class Project(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +15,10 @@ class Project(
         var owner: User? = null,
         @ManyToMany
         var members: List<User> = listOf(),
+        @field:NotNull()
+        @field:Size(min = 1, max = 50)
         var name: String? = null,
+        @field:Size(min = 0, max = 240)
         var description: String? = null
 ): Comparable<Project> {
     override fun compareTo(other: Project): Int {
