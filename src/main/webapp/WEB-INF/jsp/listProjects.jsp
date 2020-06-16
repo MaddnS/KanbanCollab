@@ -8,7 +8,7 @@
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
+<%@taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
 
 <layout:page-container title="KanbanCollab" activePage="editProject">
     <!-- simple button ----------------------------------------------------------- -->

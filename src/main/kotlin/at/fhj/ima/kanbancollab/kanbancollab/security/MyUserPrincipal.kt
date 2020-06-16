@@ -30,7 +30,7 @@ class MyUserPrincipal(val user: User) : UserDetails {
         return true;
     }
 
-    override fun getPassword(): String {
+    override fun getPassword(): String? {
         return user.pwhash;
     }
 

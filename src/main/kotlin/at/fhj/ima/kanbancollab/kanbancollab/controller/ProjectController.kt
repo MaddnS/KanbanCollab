@@ -1,6 +1,8 @@
 package at.fhj.ima.kanbancollab.kanbancollab.controller
 
-import at.fhj.ima.kanbancollab.kanbancollab.controller.advice.CurrentUserControllerAdvice
+
+import at.fhj.ima.kanbancollab.kanbancollab.dto.UserDto
+import at.fhj.ima.kanbancollab.kanbancollab.service.UserService
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Project
 import at.fhj.ima.kanbancollab.kanbancollab.entities.User
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Task
@@ -19,14 +21,14 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
-import java.time.LocalDate
 import javax.validation.Valid
-import kotlin.system.measureTimeMillis
+
 
 @Controller
 class ProjectController (val projectRepository: ProjectRepository,
                          val userRepository: UserRepository,
-                         val taskRepository: TaskRepository) {
+                         val taskRepository: TaskRepository,
+                         val userService: UserService) {
 
 
     fun showEditProjectView(model: Model): String {
@@ -138,8 +140,20 @@ class ProjectController (val projectRepository: ProjectRepository,
                 model.set("task", newTask)
             }
             return "viewProject"
-        }
+        }*/
 
+    @RequestMapping("/registerUser", method = [RequestMethod.GET])
+    fun registerUser(model: Model): String{
+        model.set("UserDto", userService.createNewUser())
+        return "registerUser"
+    }
+
+    @RequestMapping("/addUser", method = [RequestMethod.POST])
+    fun addUser (@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult, model: Model): String {
+        userService.save(user)
+        return "listProjects"
+    }
+/*
         @RequestMapping("/changeTask", method = [RequestMethod.POST])
         // @Secured("ROLE_ADMIN")ber
         fun changeTask(@ModelAttribute("project") @Valid task: Task, bindingResult: BindingResult, model: Model): String {
@@ -167,7 +181,6 @@ class ProjectController (val projectRepository: ProjectRepository,
     }
 
     fun getCurrentUser():User{
-
         return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
     }
 

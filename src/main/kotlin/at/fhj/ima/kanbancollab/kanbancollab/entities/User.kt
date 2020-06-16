@@ -13,15 +13,15 @@ enum class UserRole {
 class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        var userId: Int,
+        var userId: Int? = null,
         @Column(unique = true)
-        var username: String,
-        var pwhash: String,
+        var username: String = "",
+        var pwhash: String? = null,
         var firstName: String? = null,
         var lastName: String? = null,
-        var email: String? = null,
+        var email: String = "",
         @Enumerated(EnumType.STRING)
-        var role: UserRole
+        var role: UserRole? = UserRole.ROLE_USER
 ): Comparable<User>, Serializable {
     override fun compareTo(other: User): Int {
         return compareValues(userId, other.userId)
