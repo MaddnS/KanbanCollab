@@ -21,7 +21,6 @@
         <c:if test="${activePage == 'viewProject'}">
                 <link rel="stylesheet" href="<c:url value="/css/kanban.css"/>">
         </c:if>
-
                 </head>
         <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -71,7 +70,7 @@
                 Logged in as ${currentUser.username} |
                 </div>
 
-                <form:form method="post" action="/login?logout">
+                <form:form method="post" action="/logout">
                         <button class="btn btn-link" style="align-items: center" type="submit">Log Out</button>
                 </form:form>
 
