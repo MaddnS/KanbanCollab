@@ -12,4 +12,9 @@ class HomePageController {
         return "redirect:listProjects"
     }
 
+    @RequestMapping("/login", method= [RequestMethod.GET])
+    fun login(): String {
+        return "login"
+    }
+
 }

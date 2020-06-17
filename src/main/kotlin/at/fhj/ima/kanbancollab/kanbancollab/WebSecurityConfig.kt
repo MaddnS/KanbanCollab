@@ -28,6 +28,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
+                .loginPage("/login")
                 .permitAll()
                 .and()
             .rememberMe().key("uniqueAndSecret").userDetailsService(myUserDetailsService)

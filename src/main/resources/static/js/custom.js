@@ -10,9 +10,6 @@ $(function () {
 
 $(document).ready(function () {
     $('.js-example-basic-multiple').select2();
-
-
-
 });
 
 /* Custom Dragula JS */
@@ -28,8 +25,8 @@ dragula([
         el.className.replace("ex-moved", "");
     })
     .on("drop", function(el) {
-        var taskId = $(el).data('task-id');
-        var segmId = $(el).closest("ul").data('seg-id');
+        const taskId = $(el).data('task-id');
+        const segmId = $(el).closest("ul").data('seg-id');
 
         $.ajax({
             method: "GET",
