@@ -95,3 +95,27 @@ $("#inputTaskForm").submit(function(e) {
 });
 
 
+$("#changeTaskForm").submit(function(e) {
+
+    e.preventDefault(); //prevent default action
+    var taskFId = document.getElementById("points").closest("li").value;
+    var taskFDesc = document.getElementById("ctask_description").value
+    var taskFName = document.getElementById("ctask_name").value
+    var taskFProj = document.getElementById("ctask_project").value
+
+    $.ajax({
+        method: "GET",
+        url: "/changeTask",
+        data: {
+            tId: taskFId,
+            tname: taskFName,
+            tdesc: taskFDesc,
+            tproj: taskFProj
+        },
+        cache: false
+    })
+        .done(function( html ) {
+            alert('change task funzt');
+        });
+
+});

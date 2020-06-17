@@ -71,7 +71,7 @@
                 Logged in as ${currentUser.username} |
                 </div>
 
-                <form:form method="post" action="/logout">
+                <form:form method="post" action="/login?logout">
                         <button class="btn btn-link" style="align-items: center" type="submit">Log Out</button>
                 </form:form>
 

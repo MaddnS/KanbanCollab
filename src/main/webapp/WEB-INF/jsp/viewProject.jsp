@@ -57,7 +57,7 @@
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 1}"> <!---- NICHT IDEAL!!! ---->
-                                <li class="task" data-task-id="${task.taskId}">
+                                <li class="task" data-task-id="${task.taskId}" value="${task.taskId}">
                                     <div class="card-body">
                                         <input type="hidden" name="taskSegment" value="${task.segment}"/>
                                         <div class="card">
@@ -95,7 +95,7 @@
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 2}">
-                                <li class="task" data-task-id="${task.taskId}">
+                                <li class="task" data-task-id="${task.taskId}" value="${task.taskId}">
                                     <div class="card-body">
                                         <div class="card">
                                             <div class="card-body">
@@ -104,12 +104,14 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" id="points1">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                   d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                         </svg>
+                                                        </a>
                                                     </div>
                                                 </div>
 
@@ -133,7 +135,7 @@
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 3}">
-                                <li class="task" data-task-id="${task.taskId}">
+                                <li class="task" data-task-id="${task.taskId}" value="${task.taskId}">
                                     <div class="card-body">
                                         <div class="card">
                                             <div class="card-body">
@@ -142,12 +144,14 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" id="points">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                   d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                         </svg>
+                                                        </a>
                                                     </div>
                                                 </div>
 
@@ -186,8 +190,9 @@
                                 <div class="modal fade" id="createNewTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
+
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Create New Task</h5>
+                                                <h5 class="modal-title" id="modalcreate">Create New Task</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -195,8 +200,7 @@
                                             <div class="modal-body">
                                                 <%--  MIT AJAX MACHEN ?  --%>
                                                     <! ---------------- Task Name & Description ---------------- -->
-                                                    <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
-                                                   <%--  <form:form modelAttribute="task" class="needs-validation form-horizontal" method="post" action="viewProject" novalidate="novalidate"> --%>
+
                                                             <form:form id="inputTaskForm" method="GET" action="/createTask">
                                                                 <div class="field">
                                                                     <label for="task_name">Task Name: </label>
@@ -219,8 +223,7 @@
                                             </div>
                                             <div class="modal-footer">
 
-
-                                            </div>
+                                        </div>
 
                                         </div>
                                     </div>
@@ -237,9 +240,51 @@
 
 
                 </li>
-
-
             </ul>
+
+
+    <div class="modal fade" id="changeTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changemodal">Change Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <%--  MIT AJAX MACHEN ?  --%>
+                    <! ---------------- Task Name & Description ---------------- -->
+                    <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
+                    <form:form id="changeTaskForm" method="GET" action="/changeTask">
+                        <div class="field">
+                            <label for="ctask_name">Task Name: </label>
+                            <input type="text" id="ctask_name">
+                                <%-- <form:input type="text" value="" id="task_name_input"/> --%>
+                        </div>
+                        <div class="field">
+                            <label for="ctask_description">Description: </label>
+                            <input type="text" id="ctask_description" required>
+                                <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
+                        </div>
+                        <input type="hidden" id="ctask_project" name="project" value="${project.projectId}"/>
+                        <input type="hidden" id="ctask_id" name="tId" value="${task.taskId}"/>
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="task_submit" class="btn btn-secondary">Create</button>
+                    </form:form>
+
+
+                </div>
+                <div class="modal-footer">
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
         </div>
 
 
