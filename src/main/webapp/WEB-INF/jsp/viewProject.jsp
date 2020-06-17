@@ -157,12 +157,19 @@
                                         </div>
                                     </div>
                                 </li>
+
+                              <%--  <form:form  id="postchangeSegmForm" method="get" action="/changeSegment">
+
+                                    <input type="hidden" id="postSegmTaskId" value="${task.taskId}"/>
+
+                                </form:form> --%>
+
                             </c:if>
                         </c:forEach>
 
                     </ul>
                 </li>
-
+    </form:form>
 <%-- ---------------------------- OPTIONS: CREATE TASK, INVITE, ... ------------------------------- --%>
                 <li class="membersAndOptions">
 
@@ -170,15 +177,10 @@
                         <h5>Options:</h5>
 
                         <ul class="options-list">
-                            <%--<form:form method="post"
-                                       action="/createTask">
-                                <button type="submit" <class="btn btn-xs btn-danger">--%>
-                                    <li class="mao-list-entry">
-                                        Create New Task
-                                    </li>
+
                             <li class="mao-list-entry">
                                 <button type="button" class="newTaskCreate" data-toggle = "modal" data-target = "#createNewTaskModal">
-                                    New Task
+                                    Create New Task
                                 </button>
 
                                 <div class="modal fade" id="createNewTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -194,26 +196,29 @@
                                                 <%--  MIT AJAX MACHEN ?  --%>
                                                     <! ---------------- Task Name & Description ---------------- -->
                                                     <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
-                                                   <%--  <form:form modelAttribute="task" class="needs-validation form-horizontal" method="post" action="viewProject" novalidate="novalidate">
-                                                            <%-- <form:form id="inputTask" method="post" action="/changeTask?taskId=${task.taskId}"> --%>
-                                                           <%--     <div class="field">
-                                                                    <label for="task_name_input">Task Name: </label>
-                                                                    <%-- <input type="text" id="task_name_input" required> --%>
-                                                               <%--     <form:input type="text" path="name" id="task_name_input"/>
+                                                   <%--  <form:form modelAttribute="task" class="needs-validation form-horizontal" method="post" action="viewProject" novalidate="novalidate"> --%>
+                                                            <form:form id="inputTaskForm" method="GET" action="/createTask">
+                                                                <div class="field">
+                                                                    <label for="task_name">Task Name: </label>
+                                                                     <input type="text" id="task_name">
+                                                                     <%-- <form:input type="text" value="" id="task_name_input"/> --%>
                                                                 </div>
                                                                 <div class="field">
-                                                                    <label for="task_description_input">Description: </label>
-                                                                    <form:input type="text" path="description" id="task_description_input"/>
+                                                                    <label for="task_description">Description: </label>
+                                                                    <input type="text" id="task_description" required>
+                                                                    <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
                                                                 </div>
+                                                                    <input type="hidden" id="task_project" name="project" value="${project.projectId}"/>
+                                                                    <input type="hidden" id="task_id" name="project" value="${task.taskId}"/>
 
-                                                                    <form:input type="hidden" path="project" id="task_project_input" name="project" value="${project.projectId}"/>
-                                                                    <form:input type="hidden" path="segment" id="task_segment_input" name="segment" value="1" />
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" id="task_submit" class="btn btn-secondary">Create</button>
+                                                             </form:form>
 
-                                                                 <button type="submit" id="task_submit" class="task_submit">Create</button>
-                                                             </form:form> --%>
+
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
 
                                             </div>
 
@@ -223,8 +228,6 @@
 
                             </li>
 
-                                <%--</button>
-                            </form:form>--%>
 
                             <li class="mao-list-entry">
                                 Invite
@@ -238,12 +241,7 @@
 
             </ul>
         </div>
-    </form:form>
-    <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
-    <%-- <form:form id="segmForm" action="changeSegment" method="post">
-        <input type="hidden" id="taskIdForm" value="${task.taskId}"/>
-        <input type="hidden" id="segmentForm" value="${task.segment}"/>
-    </form:form> --%>
+
 
 </layout:page-container>
 

@@ -9,7 +9,6 @@ import at.fhj.ima.kanbancollab.kanbancollab.entities.Task
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.ProjectRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.TaskRepository
 import at.fhj.ima.kanbancollab.kanbancollab.repositories.UserRepository
-import org.aspectj.weaver.Member
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AnonymousAuthenticationToken
@@ -74,7 +73,7 @@ class ProjectController (val projectRepository: ProjectRepository,
                 bindingResult.rejectValue("name", "name.alreadyInUse", "Project Name already in use.");
                 return showEditProjectView(model)
             } else {
-                throw dive;
+                throw dive
             }
         }
         return "redirect:/editProject?projectId=" + project.projectId
@@ -89,19 +88,6 @@ class ProjectController (val projectRepository: ProjectRepository,
         // Wunsch wäre es von der editView aus deleten zu können. Leider habe ich das nicht geschafft
     }
 
-    /*@RequestMapping("/createTask", method = [RequestMethod.POST])
-    //@Secured("ROLE_ADMIN")
-    fun createTask(model: Model, @RequestParam projectId: Int, taskId: Int): String {
-        //taskRepository.delete(projectRepository.findByProjectId(projectId))
-        val project = projectRepository.findByProjectId(projectId)
-        val newTask = Task(project = projectId, segment = 1)
-        model.set("task", newTask)
-        model.set("project", project)
-        //model.set("message", "Task $taskId created")
-        return "redirect:viewProject?projectId=" + project.projectId
-        //"viewProject" //viewProject(model) //; "redirect:listProjects"
-        // Wunsch wäre es von der editView aus deleten zu können. Leider habe ich das nicht geschafft
-    }*/
 
     @RequestMapping("/viewProject", method = [RequestMethod.GET])
     fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String{
@@ -112,60 +98,58 @@ class ProjectController (val projectRepository: ProjectRepository,
 
         return "viewProject"
     }
-    /*
-        fun showEditTaskView(model: Model): String {
-            val filteredUsers = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
-            model.set("users", userRepository.findAll())
-            model.set("usersWithoutOwner", filteredUsers)
-            return "editTask"
-        }
-*/
-        //TESTEREI --> kenn mi nix aus
-/*
-        @RequestMapping("/deleteTask", method = [RequestMethod.POST])
-        //@Secured("ROLE_ADMIN")
-        fun deleteTask(model: Model, @RequestParam taskId: Int, projectId: Int): String {
-            taskRepository.delete(taskRepository.findTaskById(taskId))
-            model.set("message", "Task $taskId deleted")
-            return viewProject(model,projectId)
+  // --------------------------------------------  TASK AREA ---------------------------------------------------
+
+    @RequestMapping("/createTask", method = [RequestMethod.GET])
+    fun createTask(tname: String?, tdesc: String?,tproj: Int): ResponseEntity<Void> {
+            val newTask = Task()
+            //model.set("task", newTask)
+            newTask.description = tdesc
+            newTask.name = tname
+            newTask.project = tproj
+            newTask.segment = 1
+            taskRepository.save(newTask)
+             return ResponseEntity.ok().build()
 
         }
 
-        @RequestMapping("/editTask", method = [RequestMethod.GET])
-        fun editTask(model: Model, @RequestParam(required = false)taskId: Int, projectId: Int?): String{
-            if (taskId != null) {
-                val task = taskRepository.findTaskById(taskId)
-                model.set("task", task)
-            } else {
-                val newTask = Task()
-                model.set("task", newTask)
+
+    @RequestMapping("/changeTask", method = [RequestMethod.GET])
+    fun changeTask(@RequestParam(required = true) tId: Int, tname: String?, tdesc: String?,tproj: Int): ResponseEntity<Void> {
+            val task = taskRepository.findTaskById(tId)
+            //model.set("task", task)
+            task.description = tdesc
+            task.name = tname
+            task.project = tproj
+            taskRepository.save(task)
+            return ResponseEntity.ok().build()
+
+
+    }
+
+        @RequestMapping("/registerUser", method = [RequestMethod.GET])
+        fun registerUser(model: Model): String {
+            model.set("UserDto", userService.createNewUser())
+            return "registerUser"
+        }
+
+        @RequestMapping("/addUser", method = [RequestMethod.POST])
+        fun addUser(@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult, model: Model): String {
+            userService.save(user)
+            return "listProjects"
+        }
+
+        @RequestMapping("/anonymousAndNotAnonymous", method = [RequestMethod.GET])
+        fun anonymous(model: Model): String {
+
+            val auth = SecurityContextHolder.getContext().authentication
+            if (auth is AnonymousAuthenticationToken) {
+                model.set("showAnonymouspage", true);
+                return "anonymous";
             }
-            return "viewProject"
-        }*/
-
-    @RequestMapping("/registerUser", method = [RequestMethod.GET])
-    fun registerUser(model: Model): String{
-        model.set("UserDto", userService.createNewUser())
-        return "registerUser"
-    }
-
-    @RequestMapping("/addUser", method = [RequestMethod.POST])
-    fun addUser (@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult, model: Model): String {
-        userService.save(user)
-        return "listProjects"
-    }
-
-    @RequestMapping("/anonymousAndNotAnonymous", method = [RequestMethod.GET])
-    fun anonymous(model: Model): String {
-
-        val auth = SecurityContextHolder.getContext().authentication
-        if (auth is AnonymousAuthenticationToken) {
-            model.set("showAnonymouspage", true);
-            return "anonymous";
+            model.set("showAnonymouspage", false);
+            return "notanonymous"
         }
-        model.set("showAnonymouspage", false);
-        return "notanonymous"
-    }
 /*
         @RequestMapping("/changeTask", method = [RequestMethod.POST])
         // @Secured("ROLE_ADMIN")ber
@@ -180,21 +164,21 @@ class ProjectController (val projectRepository: ProjectRepository,
         }
 */
 
-    @RequestMapping("/changeSegment", method = [RequestMethod.GET])
-    fun changeSegment(@RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int): ResponseEntity<Void> {
-        val task = taskRepository.findTaskById(taskId)
-        task.segment = segmentId
-        taskRepository.save(task)
-        return ResponseEntity.ok().build();
-    }
+        @RequestMapping("/changeSegment", method = [RequestMethod.GET])
+        fun changeSegment(@RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int): ResponseEntity<Void> {
+            val task = taskRepository.findTaskById(taskId)
+            task.segment = segmentId
+            taskRepository.save(task)
+            return ResponseEntity.ok().build()
+        }
 
-    fun findSharedProjects(user:User, allProj:List<Project>):List<Project>{
-        val uId = user.userId
-        return allProj.filter { it.members.any{it.userId == uId}}
-    }
+        fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
+            val uId = user.userId
+            return allProj.filter { it.members.any { it.userId == uId } }
+        }
 
-    fun getCurrentUser():User{
-        return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
-    }
+        fun getCurrentUser(): User {
+            return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
+        }
 
 }
