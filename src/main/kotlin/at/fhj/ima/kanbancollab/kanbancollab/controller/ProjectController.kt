@@ -150,6 +150,7 @@ class ProjectController (val projectRepository: ProjectRepository,
             model.set("showAnonymouspage", false);
             return "notanonymous"
         }
+
 /*
         @RequestMapping("/changeTask", method = [RequestMethod.POST])
         // @Secured("ROLE_ADMIN")ber

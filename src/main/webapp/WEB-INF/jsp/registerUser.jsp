@@ -6,85 +6,104 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <html>
-<head></head>
+<head>
+    <title>Sign up</title>
+    <style>
+        .registerForm {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .registerText {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .registerInput {
+            width: 100%;
+            max-width: 100%;
+            margin-right: 5px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
 <body>
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <%--@elvariable id="UserDto" type="at.fhj.ima.kanbancollab.kanbancollab.dto.UserDto"--%>
-        <form:form modelAttribute="UserDto" class="needs-validation form-horizontal" method="post"
-                   action="addUser" novalidate="novalidate">
-            <fieldset>
-                <legend>Create your account</legend>
-
-                <! ---------------- FirstName ---------------- -->
-                <div class="form-group">
-                    <label for="inputFirstName" class="col-md-2 control-label">First name*</label>
-                    <div class="col-md-10">
-                        <form:input id="inputFirstName" path="firstName" type="text" class="form-control"
-                                    required="required"/>
-                        <form:errors path="firstName" cssClass="invalid-feedback d-block"/>
-                    </div>
+<div class="registerForm">
+    <%--@elvariable id="UserDto" type="at.fhj.ima.kanbancollab.kanbancollab.dto.UserDto"--%>
+    <form:form modelAttribute="UserDto" class="needs-validation form-horizontal" method="post"
+               action="addUser" novalidate="novalidate">
+        <div>
+            <div style="font-size: 16px; text-align: center; padding-top: 40px; color: gray">
+                Join KanbanCollab!
+            </div>
+            <div style="font-weight: 500; font-size: 48px; text-align: center; padding-bottom: 20px">
+            Create your account
+            </div>
+            <! ---------------- FirstName ---------------- -->
+            <div class="form-group">
+                <label for="inputFirstName" class="registerText">First name *</label>
+                <div class="registerInput">
+                    <form:input id="inputFirstName" path="firstName" type="text" class="form-control"
+                                required="required"/>
+                    <form:errors path="firstName" cssClass="invalid-feedback d-block"/>
                 </div>
+            </div>
 
-                <! ---------------- LastName ---------------- -->
-                <div class="form-group">
-                    <label for="inputLastName" class="col-md-2 control-label">Last name*</label>
-                    <div class="col-md-10">
-                        <form:input id="inputLastName" path="lastName" type="text" class="form-control"
-                                    required="required"/>
-                        <form:errors path="lastName" cssClass="invalid-feedback d-block"/>
-                    </div>
+            <! ---------------- LastName ---------------- -->
+            <div class="form-group">
+                <label for="inputLastName" class="registerText">Last name *</label>
+                <div class="registerInput">
+                    <form:input id="inputLastName" path="lastName" type="text" class="form-control"
+                                required="required"/>
+                    <form:errors path="lastName" cssClass="invalid-feedback d-block"/>
                 </div>
+            </div>
 
-                <! ---------------- Username ---------------- -->
-                <div class="form-group">
-                    <label for="inputUsername" class="col-md-2 control-label">Username*</label>
-                    <div class="col-md-10">
-                        <form:input id="inputUsername" path="username" type="text" class="form-control"
-                                    required="required"/>
-                        <form:errors path="username" cssClass="invalid-feedback d-block"/>
-                    </div>
+            <! ---------------- Username ---------------- -->
+            <div class="form-group">
+                <label for="inputUsername" class="registerText">Username *</label>
+                <div class="registerInput">
+                    <form:input id="inputUsername" path="username" type="text" class="form-control"
+                                required="required"/>
+                    <form:errors path="username" cssClass="invalid-feedback d-block"/>
                 </div>
+            </div>
 
-                <! ---------------- Email ---------------- -->
-                <div class="form-group">
-                    <label for="inputEmail" class="col-md-2 control-label">Email address*</label>
-                    <div class="col-md-10">
-                        <form:input id="inputEmail" path="email" type="text" class="form-control"
-                                    required="required"/>
-                        <form:errors path="email" cssClass="invalid-feedback d-block"/>
-                    </div>
+            <! ---------------- Email ---------------- -->
+            <div class="form-group">
+                <label for="inputEmail" class="registerText">Email address *</label>
+                <div class="registerInput">
+                    <form:input id="inputEmail" path="email" type="text" class="form-control"
+                                required="required"/>
+                    <form:errors path="email" cssClass="invalid-feedback d-block"/>
                 </div>
+            </div>
 
-                <! ---------------- Password ---------------- -->
-                <div class="form-group">
-                    <label for="inputPassword" class="col-md-2 control-label">Password*</label>
-                    <div class="col-md-10">
-                        <form:input id="inputPassword" path="password" type="password" class="form-control"
-                                    required="required"/>
-                        <form:errors path="password" cssClass="invalid-feedback d-block"/>
-                    </div>
+            <! ---------------- Password ---------------- -->
+            <div class="form-group">
+                <label for="inputPassword" class="registerText">Password *</label>
+                <div class="registerInput">
+                    <form:input id="inputPassword" path="password" type="password" class="form-control"
+                                required="required"/>
+                    <form:errors path="password" cssClass="invalid-feedback d-block"/>
                 </div>
+            </div>
 
-                <! ---------------- Confirm Password ---------------- -->
-                <div class="form-group">
-                    <label for="inputConfirmPassword" class="col-md-2 control-label">Confirm your password*</label>
-                    <div class="col-md-10">
-                        <form:input id="inputConfirmPassword" path="confirmPassword" type="password" class="form-control"
-                                    required="required"/>
-                        <form:errors path="confirmPassword" cssClass="invalid-feedback d-block"/>
-                    </div>
+            <! ---------------- Confirm Password ---------------- -->
+            <div class="form-group">
+                <label for="inputConfirmPassword" class="registerText">Confirm your password *</label>
+                <div class="registerInput">
+                    <form:input id="inputConfirmPassword" path="confirmPassword" type="password" class="form-control"
+                                required="required"/>
+                    <form:errors path="confirmPassword" cssClass="invalid-feedback d-block"/>
                 </div>
+            </div>
 
-                <! ---------------- buttons ---------------- -->
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <button type="submit" class="btn btn-primary">Create account</button>
-                    </div>
-                </div>
-            </fieldset>
-        </form:form>
-    </div>
+            <! ---------------- buttons ---------------- -->
+            <div style="padding-top: 15px">
+                    <button type="submit" style="width: 100%; padding:10px" class="btn btn-primary">Create account</button>
+            </div>
+        </div>
+    </form:form>
 </div>
 </body>
 </html>

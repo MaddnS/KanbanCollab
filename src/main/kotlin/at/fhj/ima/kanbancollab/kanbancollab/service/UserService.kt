@@ -17,7 +17,7 @@ class UserService(val userRepository: UserRepository) {
 
     private fun convertEntityToDto(entity: User): UserDto {
         return UserDto(entity.userId, entity.email, entity.firstName, entity.lastName,
-                entity.username, entity.pwhash, role = UserRole.ROLE_USER,confirmPassword = null)
+                entity.username, entity.pwhash, role = UserRole.ROLE_USER, confirmPassword = null)
     }
 
     private fun convertDtoToEntity(dto: UserDto): User {
@@ -29,7 +29,7 @@ class UserService(val userRepository: UserRepository) {
         user.email = dto.email
         user.firstName = dto.firstName
         user.lastName = dto.lastName
-        user.role = dto.role
+        user.role = UserRole.ROLE_USER
         return user
     }
 

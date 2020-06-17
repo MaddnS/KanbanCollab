@@ -33,9 +33,7 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
         <ul class="nav navbar-nav navbar-center" style="font-size: large; font-weight: bold">
 
         <%-- <c:if test="${activePage == 'listProjects' or activePage == 'editProjects'}">
@@ -45,8 +43,6 @@
                 <c:if test="${activePage == 'viewProject'}">
                         ${project.name}
                 </c:if>
-
-
         <%-- <li class="nav-item ${projectsMenuActive} dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -61,31 +57,18 @@
 
             <%--    </div>
         </li> --%>
-
-
         </ul>
         <ul class="navbar-nav ml-auto" style="white-space: normal ">
-
                 <div style="align-self: center">
                 Logged in as ${currentUser.username} |
                 </div>
-
                 <form:form method="post" action="/logout">
                         <button class="btn btn-link" style="align-items: center" type="submit">Log Out</button>
                 </form:form>
-
         </ul>
-
-
-
         </div>
         </div>
-
-
-
-
-
-                </nav>
+        </nav>
         <div class="container" role="main">
         <div class="page-header" style="margin-bottom:25px">
 
