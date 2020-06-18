@@ -30,7 +30,17 @@ class ProjectController (val projectRepository: ProjectRepository,
                          val taskRepository: TaskRepository,
                          val userService: UserService) {
 
+// ---------------------------------------------------- Functions ----------------------------------------------
+fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
+    val uId = user.userId
+    return allProj.filter { it.members.any { it.userId == uId } }
+}
 
+    fun getCurrentUser(): User {
+        return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
+    }
+
+// ---------------------------------------------------- Project ------------------------------------------------
     fun showEditProjectView(model: Model): String {
         val filteredUsers = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
         model.set("users", userRepository.findAll())
@@ -98,12 +108,12 @@ class ProjectController (val projectRepository: ProjectRepository,
 
         return "viewProject"
     }
+
   // --------------------------------------------  TASK AREA ---------------------------------------------------
 
-    @RequestMapping("/createTask", method = [RequestMethod.GET])
+    @RequestMapping("/createTask", method = [RequestMethod.POST])
     fun createTask(tname: String?, tdesc: String?,tproj: Int): ResponseEntity<Void> {
             val newTask = Task()
-            //model.set("task", newTask)
             newTask.description = tdesc
             newTask.name = tname
             newTask.project = tproj
@@ -114,18 +124,27 @@ class ProjectController (val projectRepository: ProjectRepository,
         }
 
 
-    @RequestMapping("/changeTask", method = [RequestMethod.GET])
-    fun changeTask(@RequestParam(required = true) tId: Int, tname: String?, tdesc: String?,tproj: Int): ResponseEntity<Void> {
+    @RequestMapping("/changeTask", method = [RequestMethod.POST])
+    fun changeTask(@RequestParam(required = true) tId: Int, tname: String?, tdesc: String?): ResponseEntity<Void> {
             val task = taskRepository.findTaskById(tId)
-            //model.set("task", task)
             task.description = tdesc
             task.name = tname
-            task.project = tproj
             taskRepository.save(task)
             return ResponseEntity.ok().build()
 
 
     }
+
+    @RequestMapping("/changeSegment", method = [RequestMethod.POST])
+    fun changeSegment(@RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int): ResponseEntity<Void> {
+        val task = taskRepository.findTaskById(taskId)
+        task.segment = segmentId
+        taskRepository.save(task)
+        return ResponseEntity.ok().build()
+    }
+
+
+// -------------------------------------------- USER ---------------------------------------------------------------------
 
         @RequestMapping("/registerUser", method = [RequestMethod.GET])
         fun registerUser(model: Model): String {
@@ -158,37 +177,6 @@ class ProjectController (val projectRepository: ProjectRepository,
             }
             model.set("showAnonymouspage", false);
             return "notanonymous"
-        }
-
-/*
-        @RequestMapping("/changeTask", method = [RequestMethod.POST])
-        // @Secured("ROLE_ADMIN")ber
-        fun changeTask(@ModelAttribute("project") @Valid task: Task, bindingResult: BindingResult, model: Model): String {
-            if (bindingResult.hasErrors()) {
-                return "editTask"
-            }
-
-           taskRepository.save(task)
-
-            return "redirect:/editTask?taskId=" + task.taskId
-        }
-*/
-
-        @RequestMapping("/changeSegment", method = [RequestMethod.GET])
-        fun changeSegment(@RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int): ResponseEntity<Void> {
-            val task = taskRepository.findTaskById(taskId)
-            task.segment = segmentId
-            taskRepository.save(task)
-            return ResponseEntity.ok().build()
-        }
-
-        fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
-            val uId = user.userId
-            return allProj.filter { it.members.any { it.userId == uId } }
-        }
-
-        fun getCurrentUser(): User {
-            return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
         }
 
 }

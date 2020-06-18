@@ -18,6 +18,8 @@
         </c:if>
 
         <c:if test="${activePage == 'viewProject'}">
+                <meta name="_csrf" content="${_csrf.token}">
+                <meta name="_csrf_header" content="${_csrf.headerName}">
                 <link rel="stylesheet" href="<c:url value="/css/kanban.css"/>">
         </c:if>
 

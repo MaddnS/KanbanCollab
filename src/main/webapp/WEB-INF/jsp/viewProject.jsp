@@ -21,7 +21,7 @@
             <button id="add" class="button add-button" onclick="addTask()">Add New Task</button>
         </div>--%>
         <div class="main-container">
-            <ul class="columns">
+            <ul class="columns" id="columnsC">
                 <ul class="containerMaO">
                     <li class="projOwner">
                         <div class="po-header">
@@ -67,12 +67,14 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                   d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                         </svg>
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <p class="card-text">${task.description}</p>
@@ -104,7 +106,7 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" id="points1">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +137,7 @@
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 3}">
-                                <li class="task" data-task-id="${task.taskId}" value="${task.taskId}">
+                                <li class="task" data-task-id="${task.taskId}">
                                     <div class="card-body">
                                         <div class="card">
                                             <div class="card-body">
@@ -144,7 +146,7 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" id="points">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" data-t-Id="${task.taskId}" class="open-changeTask">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
@@ -160,9 +162,11 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </li>
 
-                              <%--  <form:form  id="postchangeSegmForm" method="get" action="/changeSegment">
+                               <%--<form:form  id="postchangeSegmForm" method="post" action="/changeSegment">
 
                                     <input type="hidden" id="postSegmTaskId" value="${task.taskId}"/>
 
@@ -183,9 +187,9 @@
                         <ul class="options-list">
 
                             <li class="mao-list-entry">
-                                <button type="button" class="newTaskCreate" data-toggle = "modal" data-target = "#createNewTaskModal">
+                                <a href="#" class="newTaskCreate" data-toggle = "modal" data-target = "#createNewTaskModal">
                                     Create New Task
-                                </button>
+                                </a>
 
                                 <div class="modal fade" id="createNewTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -201,7 +205,7 @@
                                                 <%--  MIT AJAX MACHEN ?  --%>
                                                     <! ---------------- Task Name & Description ---------------- -->
 
-                                                            <form:form id="inputTaskForm" method="GET" action="/createTask">
+                                                            <form:form id="inputTaskForm" method="POST" action="/createTask">
                                                                 <div class="field">
                                                                     <label for="task_name">Task Name: </label>
                                                                      <input type="text" id="task_name">
@@ -214,9 +218,10 @@
                                                                 </div>
                                                                     <input type="hidden" id="task_project" name="project" value="${project.projectId}"/>
                                                                     <input type="hidden" id="task_id" name="project" value="${task.taskId}"/>
+                                                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="submit" id="task_submit" class="btn btn-secondary">Create</button>
+                                                                <button type="submit" id="task_submi" class="btn btn-secondary" >Create</button>
                                                              </form:form>
 
 
@@ -243,6 +248,8 @@
             </ul>
 
 
+    <%--------------------------------------------------------------Change Task - MODAL -----------------------------------------------------------------------%>
+
     <div class="modal fade" id="changeTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -255,8 +262,8 @@
                 <div class="modal-body">
                         <%--  MIT AJAX MACHEN ?  --%>
                     <! ---------------- Task Name & Description ---------------- -->
-                    <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
-                    <form:form id="changeTaskForm" method="GET" action="/changeTask">
+                        <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
+                    <form:form id="changeTaskForm" method="POST" action="/changeTask">
                         <div class="field">
                             <label for="ctask_name">Task Name: </label>
                             <input type="text" id="ctask_name">
@@ -267,11 +274,10 @@
                             <input type="text" id="ctask_description" required>
                                 <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
                         </div>
-                        <input type="hidden" id="ctask_project" name="project" value="${project.projectId}"/>
                         <input type="hidden" id="ctask_id" name="tId" value="${task.taskId}"/>
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" id="task_submit" class="btn btn-secondary">Create</button>
+                        <button type="submit" id="task_submit" class="btn btn-secondary">Change</button>
                     </form:form>
 
 
@@ -284,8 +290,11 @@
             </div>
         </div>
     </div>
+    <%-------------------------------------------------- End of Modal -----------------------------------------------------------------%>
 
-        </div>
+
+
+    </div>
 
 
 </layout:page-container>
