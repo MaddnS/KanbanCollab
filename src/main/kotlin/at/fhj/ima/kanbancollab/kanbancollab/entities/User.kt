@@ -3,6 +3,7 @@ package at.fhj.ima.kanbancollab.kanbancollab.entities
 import java.io.Serializable
 import javax.persistence.*
 import javax.validation.constraints.NotNull
+import javax.validation.constraints.Size
 
 enum class UserRole {
     ROLE_USER,
@@ -15,10 +16,19 @@ class User(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var userId: Int? = null,
         @Column(unique = true)
+        @field:NotNull()
+        @field:Size(min = 1, max = 32)
         var username: String = "",
+        @field:NotNull()
         var pwhash: String? = null,
+        @field:NotNull()
+        @field:Size(min = 1, max = 64)
         var firstName: String? = null,
+        @field:NotNull()
+        @field:Size(min = 1, max = 64)
         var lastName: String? = null,
+        @field:NotNull()
+        @field:Size(min = 1, max = 320)
         var email: String = "",
         @Enumerated(EnumType.STRING)
         var role: UserRole? = UserRole.ROLE_USER

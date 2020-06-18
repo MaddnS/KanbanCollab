@@ -135,6 +135,15 @@ class ProjectController (val projectRepository: ProjectRepository,
 
         @RequestMapping("/addUser", method = [RequestMethod.POST])
         fun addUser(@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult, model: Model): String {
+            /*try {
+                userService.save(user)
+            } catch (dive: DataIntegrityViolationException) {
+                if (dive.message.orEmpty().contains("constraint [username_UK]")) {
+                    bindingResult.rejectValue("username", "name.alreadyInUse", "Username already in use.");
+                } else {
+                    throw dive
+                }
+            }*/
             userService.save(user)
             return "login"
         }

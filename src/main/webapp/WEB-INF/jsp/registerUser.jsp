@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -42,7 +43,7 @@
                 <div class="form-group">
                     <label for="inputFirstName" class="registerText">First name *</label>
                     <div class="registerInput">
-                        <form:input id="inputFirstName" path="firstName" type="text" class="form-control"
+                        <form:input id="inputFirstName" path="firstName" type="text" class="form-control" maxlength="64"
                                     required="required"/>
                         <form:errors path="firstName" cssClass="invalid-feedback d-block"/>
                     </div>
@@ -52,7 +53,7 @@
                 <div class="form-group">
                     <label for="inputLastName" class="registerText">Last name *</label>
                     <div class="registerInput">
-                        <form:input id="inputLastName" path="lastName" type="text" class="form-control"
+                        <form:input id="inputLastName" path="lastName" type="text" class="form-control" maxlength="64"
                                     required="required"/>
                         <form:errors path="lastName" cssClass="invalid-feedback d-block"/>
                     </div>
@@ -62,7 +63,7 @@
                 <div class="form-group">
                     <label for="inputUsername" class="registerText">Username *</label>
                     <div class="registerInput">
-                        <form:input id="inputUsername" path="username" type="text" class="form-control"
+                        <form:input id="inputUsername" path="username" type="text" class="form-control" maxlength="32"
                                     required="required"/>
                         <form:errors path="username" cssClass="invalid-feedback d-block"/>
                     </div>
@@ -72,7 +73,7 @@
                 <div class="form-group">
                     <label for="inputEmail" class="registerText">Email address *</label>
                     <div class="registerInput">
-                        <form:input id="inputEmail" path="email" type="text" class="form-control"
+                        <form:input id="inputEmail" path="email" type="email" class="form-control" maxlength="320"
                                     required="required"/>
                         <form:errors path="email" cssClass="invalid-feedback d-block"/>
                     </div>
@@ -83,7 +84,7 @@
                     <label for="inputPassword" class="registerText">Password *</label>
                     <div class="registerInput">
                         <form:input id="inputPassword" path="password" type="password" class="form-control"
-                                    required="required"/>
+                                    maxlength="128" required="required"/>
                         <form:errors path="password" cssClass="invalid-feedback d-block"/>
                     </div>
                 </div>
@@ -93,7 +94,7 @@
                     <label for="inputConfirmPassword" class="registerText">Confirm your password *</label>
                     <div class="registerInput">
                         <form:input id="inputConfirmPassword" path="confirmPassword" type="password" class="form-control"
-                                    required="required"/>
+                                    maxlength="128" required="required"/>
                         <form:errors path="confirmPassword" cssClass="invalid-feedback d-block"/>
                     </div>
                 </div>
@@ -109,5 +110,6 @@
             </div>
         </form:form>
     </div>
+    <script type="text/javascript" src="/js/custom.js"></script>
 </body>
 <%--</layout:page-container>--%>

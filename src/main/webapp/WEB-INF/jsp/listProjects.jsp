@@ -78,11 +78,9 @@
                                                                     </svg>
                                                                 </button>
                                                             </form:form>
-                                                                <%--</div>--%>
                                                         </div>
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
-
                                                 </div>
                                             </div>
                                         </div>
