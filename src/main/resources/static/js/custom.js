@@ -36,7 +36,7 @@ dragula([
     })
 
     .on("drop", function(el) {
-        var taskId = $(el).data('task-id');//document.getElementById("postSegmTaskId")//
+        var taskId = $(el).data('task-id');
         var segmId = $(el).closest("ul").data('seg-id');
         var token = $("meta[name='_csrf']").attr("content");
 
@@ -47,7 +47,7 @@ dragula([
             data: {
                 taskId: taskId,
                 segmentId: segmId,
-                "_csrf": token
+                CSRF: token
             }
             //cache: false
         })
@@ -97,21 +97,21 @@ $("#inputTaskForm").submit(function(e) {
 });
 
 
-$(document).on("click", ".open-changeTask", function (e) {
-    const taId = $(e).data('t-Id');
-    console.log(taId + 'sheesh')
-    //$(".modal-body #bookId").val( tId );
+$(document).on("click", ".open-changeTask", function () {
+    var taId = $(this).closest('li').data('task-id');
+    //console.log(taId + ' sheesh')
 
-});
+
+
 
 $("#changeTaskForm").submit(function(ele) {
 
     ele.preventDefault(); //prevent default action
 
 
-    var taskFId = 5
-    var taskFDesc = document.getElementById("ctask_description").value
-    var taskFName = document.getElementById("ctask_name").value
+    var taskFId = taId;
+    var taskFDesc = document.getElementById("ctask_description").value;
+    var taskFName = document.getElementById("ctask_name").value;
     //var taskFProj = document.getElementById("ctask_project").value
     var token = $("meta[name='_csrf']").attr("content");
 
@@ -127,9 +127,11 @@ $("#changeTaskForm").submit(function(ele) {
         cache: false
     })
         .done(function( html ) {
-            alert('change task funzt');
+            //alert('change task funzt');
             window.location.reload();
         });
+
+});
 
 });
 

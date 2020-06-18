@@ -57,7 +57,7 @@
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 1}"> <!---- NICHT IDEAL!!! ---->
-                                <li class="task" data-task-id="${task.taskId}" value="${task.taskId}">
+                                <li class="task" data-task-id="${task.taskId}">
                                     <div class="card-body">
                                         <input type="hidden" name="taskSegment" value="${task.segment}"/>
                                         <div class="card">
@@ -67,7 +67,7 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" data-t-Id="${task.taskId}" class="open-changeTask">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +97,7 @@
                         &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
                         <c:forEach items="${tasks}" var="task">
                             <c:if test="${task.segment == 2}">
-                                <li class="task" data-task-id="${task.taskId}" value="${task.taskId}">
+                                <li class="task" data-task-id="${task.taskId}">
                                     <div class="card-body">
                                         <div class="card">
                                             <div class="card-body">
@@ -106,7 +106,7 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" data-t-Id="${task.taskId}" class="open-changeTask">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
