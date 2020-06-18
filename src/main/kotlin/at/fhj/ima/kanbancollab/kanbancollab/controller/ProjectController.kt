@@ -22,13 +22,16 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 import javax.validation.Valid
+import org.springframework.mail.MailSender
+import org.springframework.mail.SimpleMailMessage
 
 
 @Controller
 class ProjectController (val projectRepository: ProjectRepository,
                          val userRepository: UserRepository,
                          val taskRepository: TaskRepository,
-                         val userService: UserService) {
+                         val userService: UserService,
+                         val mailSender: MailSender) {
 
 // ---------------------------------------------------- Functions ----------------------------------------------
 fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
@@ -90,12 +93,17 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     }
 
     @RequestMapping("/deleteProject", method = [RequestMethod.POST])
-    //@Secured("ROLE_ADMIN")
-    fun deleteProject(model: Model, @RequestParam projectId: Int, @RequestParam name: String): String {
-        projectRepository.delete(projectRepository.findByProjectId(projectId))
-        model.set("message", "'$name' was deleted")
-        return listProjects(model) //; "redirect:listProjects"
-        // Wunsch wäre es von der editView aus deleten zu können. Leider habe ich das nicht geschafft
+    fun deleteProject(model: Model, @RequestParam projectId: Int): String {
+        val project = projectRepository.findByProjectId(projectId)
+        if (getCurrentUser() == project.owner || getCurrentUser().username == "admin") {
+            projectRepository.delete(projectRepository.findByProjectId(projectId))
+            model.set("message", "Project was deleted")
+            return listProjects(model)
+        }
+        else {
+            model.set("message", "Unable to delete this Project as you are not the owner")
+            return listProjects(model)
+        }//; "redirect:listProjects"
     }
 
 
@@ -179,4 +187,15 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
             return "notanonymous"
         }
 
+
+
+        @RequestMapping("/inviteUser", method = [RequestMethod.GET])
+        fun inviteUser(model: Model, email: String): ResponseEntity<Void>{
+            val message = SimpleMailMessage()
+            message.setTo(email)
+            message.setSubject("Kanban Invitation")
+            message.setText("You have been invited to join this Project!")
+            mailSender.send(message)
+            return ResponseEntity.ok().build()
+        }
 }

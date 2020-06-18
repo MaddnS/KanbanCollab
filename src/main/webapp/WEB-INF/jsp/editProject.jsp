@@ -38,7 +38,7 @@
                                             required="required"/>
                                 <form:errors path="name" cssClass="invalid-feedback d-block"/>
                                 <div class="invalid-feedback">
-                                    Projectname may not be larger than 50 characters
+                                    Projectname may not be longer than 50 characters
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,10 @@
                         </div>
 
                     </fieldset>
+                    <form:hidden path="version"/>
                 </form:form>
+
+
             </div>
         </div>
     </c:if>

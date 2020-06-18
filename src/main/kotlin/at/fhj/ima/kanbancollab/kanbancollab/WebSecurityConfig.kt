@@ -22,6 +22,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .antMatchers("/addUser").permitAll()
                 .antMatchers("/registerUser").permitAll()
                 .antMatchers("/anonymous").permitAll()
+                .antMatchers("/viewProject/**").permitAll()
                 .antMatchers("/anonymousAndNotAnonymous").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -37,4 +38,5 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
     }
+
 }

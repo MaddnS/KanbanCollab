@@ -70,9 +70,11 @@
                 </li> --%>
                 </ul>
                 <ul class="navbar-nav ml-auto" style="white-space: normal ">
+                        <c:if test="${currentUser.username != null}">
                         <div style="align-self: center">
                         Logged in as ${currentUser.username} |
                         </div>
+                        </c:if>
                         <form:form method="post" action="/logout">
                                 <button class="btn btn-link" style="align-items: center" type="submit">Log Out</button>
                         </form:form>

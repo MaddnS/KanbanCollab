@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 @Entity
-@Table(uniqueConstraints = [UniqueConstraint(name = "projectname_UK", columnNames = ["name"])])
+@Table(/*uniqueConstraints = [UniqueConstraint(name = "projectname_UK", columnNames = ["name"])]*/)
 class Project(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,9 @@ class Project(
         @field:Size(min = 1, max = 50)
         var name: String? = null,
         @field:Size(min = 0, max = 240)
-        var description: String? = null
+        var description: String? = null,
+        @Version
+        var version: Int? = null
 ): Comparable<Project> {
     override fun compareTo(other: Project): Int {
         return compareValues(projectId, other.projectId)
