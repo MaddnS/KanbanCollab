@@ -21,13 +21,13 @@
                 <link rel="stylesheet" href="<c:url value="/css/kanban.css"/>">
         </c:if>
 
-        <c:if test="${activePage == 'login'}">
+        <%--<c:if test="${activePage == 'login'}">
                 <link rel="stylesheet" href="<c:url value="/css/login.css"/>">
         </c:if>
 
         <c:if test="${activePage == 'registerUser'}">
                 <link rel="stylesheet" href="<c:url value="/css/register.css"/>">
-        </c:if>
+        </c:if>--%>
 
 </head>
 <body>
