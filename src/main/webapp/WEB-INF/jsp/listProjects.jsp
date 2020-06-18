@@ -10,7 +10,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
 
-<layout:page-container title="KanbanCollab" activePage="editProject">
+<layout:page-container title="KanbanCollab" activePage="listProjects">
     <!-- simple button ----------------------------------------------------------- -->
     <div class="row">
         <div class="col-md-4 col-md-offset-4">

@@ -1,32 +1,13 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
+<%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">--%>
 
-<html>
-<head>
-    <title>Sign up</title>
-    <style>
-        .registerForm {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .registerText {
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .registerInput {
-            width: 100%;
-            max-width: 100%;
-            margin-right: 5px;
-            font-size: 16px;
-        }
 
-    </style>
-</head>
-<body>
+<layout:page-container title="Create an account" activePage="registerUser">
 <div class="registerForm">
     <%--@elvariable id="UserDto" type="at.fhj.ima.kanbancollab.kanbancollab.dto.UserDto"--%>
     <form:form modelAttribute="UserDto" class="needs-validation form-horizontal" method="post"
@@ -102,8 +83,11 @@
             <div style="padding-top: 15px">
                     <button type="submit" style="width: 100%; padding:10px" class="btn btn-primary">Create account</button>
             </div>
+            <! ---------------- buttons ---------------- -->
+            <div style="text-align: center">
+            <a href="login" style="color: gray; font-size: 14px" class="btn btn-default">Cancel</a>
+            </div>
         </div>
     </form:form>
 </div>
-</body>
-</html>
+</layout:page-container>
