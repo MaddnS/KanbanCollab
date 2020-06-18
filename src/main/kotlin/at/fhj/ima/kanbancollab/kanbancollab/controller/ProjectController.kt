@@ -22,16 +22,17 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 import javax.validation.Valid
-import org.springframework.mail.MailSender
-import org.springframework.mail.SimpleMailMessage
+//import org.springframework.mail.MailSender
+//import org.springframework.mail.SimpleMailMessage
 
 
 @Controller
 class ProjectController (val projectRepository: ProjectRepository,
                          val userRepository: UserRepository,
                          val taskRepository: TaskRepository,
-                         val userService: UserService,
-                         val mailSender: MailSender) {
+                         val userService: UserService)
+                         //val mailSender: MailSender)
+        {
 
 // ---------------------------------------------------- Functions ----------------------------------------------
 fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
@@ -189,7 +190,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
 
 
 
-        @RequestMapping("/inviteUser", method = [RequestMethod.GET])
+       /* @RequestMapping("/inviteUser", method = [RequestMethod.GET])
         fun inviteUser(model: Model, email: String): ResponseEntity<Void>{
             val message = SimpleMailMessage()
             message.setTo(email)
@@ -197,5 +198,5 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
             message.setText("You have been invited to join this Project!")
             mailSender.send(message)
             return ResponseEntity.ok().build()
-        }
+        }*/
 }

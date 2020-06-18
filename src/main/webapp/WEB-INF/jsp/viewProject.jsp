@@ -67,7 +67,7 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" data-t-Id="${task.taskId}" class="open-changeTask">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" class="open-changeTask">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" data-t-Id="${task.taskId}" class="open-changeTask">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" class="open-changeTask">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +146,7 @@
                                                         <h5 class="card-title"> ${task.name}</h5>
                                                     </div>
                                                     <div class="col-lg-2.5">
-                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" data-t-Id="${task.taskId}" class="open-changeTask">
+                                                        <a href="#" data-toggle="modal" data-target="#changeTaskModal" class="open-changeTask">
                                                         <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
                                                              viewBox="0 0 16 16" fill="currentColor"
                                                              xmlns="http://www.w3.org/2000/svg">
