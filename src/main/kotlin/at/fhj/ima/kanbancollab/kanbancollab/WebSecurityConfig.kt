@@ -19,25 +19,22 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http
             .authorizeRequests()
-            // you anonymous urls here
                 .antMatchers("/addUser").permitAll()
                 .antMatchers("/registerUser").permitAll()
                 .antMatchers("/anonymous").permitAll()
                 .antMatchers("/anonymousAndNotAnonymous").permitAll()
-                //.antMatchers("/anonymous1").permitAll()
-                //.antMatchers("/anonymous2").permitAll()
-                //.antMatchers("/anonymous3").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+            .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()
-                .rememberMe().key("uniqueAndSecret").userDetailsService(myUserDetailsService)
-                //.logout()
-                //.logoutRequestMatcher(AntPathRequestMatcher("/logout"))
-
-
+            .rememberMe().key("uniqueAndSecret").userDetailsService(myUserDetailsService)
+                .and()
+            .logout()
+                .logoutRequestMatcher(AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
     }
-
 }
