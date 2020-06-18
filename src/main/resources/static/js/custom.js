@@ -135,3 +135,21 @@ $("#changeTaskForm").submit(function(ele) {
 
 });
 
+$(document).on("click","#invite_email_address", function () {
+
+    var email = document.getElementById("invite_email_address").value
+    console.log(email);
+    $.ajax({
+        method: "GET",
+        url: "/inviteUser?email"+email,
+        /*data:{
+            email:email
+        },*/
+        cache:false
+    })
+
+        .done(function () {
+            alert('email is nice')
+        })
+})
+

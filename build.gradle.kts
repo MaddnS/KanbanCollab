@@ -31,7 +31,8 @@ dependencies {
 	implementation("javax.servlet:jstl")
 	// spring-security-taglibs
 	implementation("org.springframework.security:spring-security-taglibs")
-
+	// mail
+	implementation("org.springframework.boot:spring-boot-starter-mail")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
