@@ -136,7 +136,7 @@ class ProjectController (val projectRepository: ProjectRepository,
         @RequestMapping("/addUser", method = [RequestMethod.POST])
         fun addUser(@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult, model: Model): String {
             userService.save(user)
-            return "listProjects"
+            return "login"
         }
 
         @RequestMapping("/anonymousAndNotAnonymous", method = [RequestMethod.GET])

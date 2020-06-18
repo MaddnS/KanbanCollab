@@ -20,6 +20,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
         http
             .authorizeRequests()
             // you anonymous urls here
+                .antMatchers("/addUser").permitAll()
                 .antMatchers("/registerUser").permitAll()
                 .antMatchers("/anonymous").permitAll()
                 .antMatchers("/anonymousAndNotAnonymous").permitAll()
