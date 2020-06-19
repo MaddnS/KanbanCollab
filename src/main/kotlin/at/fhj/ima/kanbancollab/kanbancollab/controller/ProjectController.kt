@@ -151,12 +151,12 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
 
 
 
-@RequestMapping("/deleteTask", method = [RequestMethod.POST])
-    fun deleteTask(@RequestParam (required = true) taskId: Int):ResponseEntity<Void> {
-    val task = taskRepository.findTaskById(taskId)
-    taskRepository.delete(task)
-    return ResponseEntity.ok().build()
-}
+    @RequestMapping("/deleteTask", method = [RequestMethod.POST])
+        fun deleteTask(@RequestParam (required = true) taskId: Int):ResponseEntity<Void> {
+        val task = taskRepository.findTaskById(taskId)
+        taskRepository.delete(task)
+        return ResponseEntity.ok().build()
+    }
 
 
 /** --------------------------------------------  TASK AREA --------------------------------------------------- */
@@ -193,16 +193,4 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
             model.set("showAnonymouspage", false);
             return "notanonymous"
         }
-
-
-
-       /* @RequestMapping("/inviteUser", method = [RequestMethod.GET])
-        fun inviteUser(model: Model, email: String): ResponseEntity<Void>{
-            val message = SimpleMailMessage()
-            message.setTo(email)
-            message.setSubject("Kanban Invitation")
-            message.setText("You have been invited to join this Project!")
-            mailSender.send(message)
-            return ResponseEntity.ok().build()
-        }*/
 }

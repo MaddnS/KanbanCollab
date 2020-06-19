@@ -301,16 +301,6 @@
                                 </div>
 
                             </li>
-
-
-                            <li class="mao-list-entry">
-                                <%--<form:form action="/inviteUser">--%>
-                                <form:form method="get">
-                                    <label for="invite_email_address">Share with E-Mail: </label>
-                                    <input type="email" id="invite_email_address" value="example@example.com"/>
-                                    <button type="submit" id="project_Invite" class="btn btn-secondary">Invite</button>
-                                </form:form>
-                            </li>
                         </ul>
                     </div>
 
