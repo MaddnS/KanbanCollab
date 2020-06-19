@@ -53,7 +53,7 @@ dragula([
             //cache: false
         })
             .done(function( html ) {
-                alert('Task ' + taskId + ' in Segment '+ segmId + ' verschoben');
+               // alert('Task ' + taskId + ' in Segment '+ segmId + ' verschoben');
             });
 
         el.className += "ex-moved";

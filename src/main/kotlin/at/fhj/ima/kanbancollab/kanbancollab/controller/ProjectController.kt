@@ -153,13 +153,6 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     }
 
 
-   /* @RequestMapping("/deleteTask", method = [RequestMethod.POST])
-    fun deleteTask(model: Model, @RequestParam (required = true) taskId: Int, projectId: Int):String {
-        val task = taskRepository.findTaskById(taskId)
-        taskRepository.delete(task)
-        model.set("message", "Task was deleted")
-        return viewProject(model,projectId)
-    }*/
 
 @RequestMapping("/deleteTask", method = [RequestMethod.POST])
     fun deleteTask(@RequestParam (required = true) taskId: Int):ResponseEntity<Void> {
