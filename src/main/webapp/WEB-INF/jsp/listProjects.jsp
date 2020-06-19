@@ -44,28 +44,14 @@
                                         <div class="card-body">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col">
+                                                    <div class="row justify-content">
+                                                        <div class="col-8">
                                                             <a href="viewProject?projectId=${project.projectId}"
-                                                               class="card-link">
+                                                           class="card-link">
                                                                 <h5 class="card-title"> ${project.name}</h5>
                                                             </a>
                                                         </div>
-                                                        <div class="col-lg-1">
-                                                            <a href="editProject?projectId=${project.projectId}"
-                                                               class="card-link">
-                                                                <svg class="bi bi-three-dots-vertical" height="1.2em"
-                                                                     viewBox="0 0 16 16" fill="currentColor"
-                                                                     xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd"
-                                                                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                                                                </svg>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <h6 class="col-lg-9">Created by: ${project.owner.username}</h6>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-2-auto">
                                                             <form:form method="post"
                                                                        action="/deleteProject?projectId=${project.projectId}&name=${project.name}">
                                                                 <button type="submit" class="btn btn-xs btn-danger">
@@ -79,6 +65,21 @@
                                                                 </button>
                                                             </form:form>
                                                         </div>
+                                                        <div class="col-3-auto" style="padding-left: 1rem">
+                                                            <a href="editProject?projectId=${project.projectId}"
+                                                               class="card-link">
+                                                                <svg class="bi bi-three-dots-vertical" height="1.1em"
+                                                                     viewBox="0 0 16 16" fill="currentColor"
+                                                                     xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd"
+                                                                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <h6 class="col-auto">Created by: ${project.owner.username}</h6>
+
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
                                                 </div>
@@ -106,8 +107,8 @@
                                     <div class="card-body">
                                         <div class="card">
                                             <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col">
+                                                <div class="row justify-content">
+                                                    <div class="col-8">
                                                         <a href="viewProject?projectId=${project.projectId}"
                                                            class="card-link">
                                                             <h5 class="card-title"> ${project.name}</h5>
