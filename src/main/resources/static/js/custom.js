@@ -143,7 +143,7 @@ $("#changeTaskForm").submit(function(ele) {
 $(".delete-Task-Form").submit(function(e) {
 
     e.preventDefault(); //prevent default action
-    var taskID = document.getElementById("tId-delete").value
+    var taskID = $(this).closest('li').data('task-id');
     var ctok = $("meta[name='_csrf']").attr("content");
 
     $.ajax({
@@ -161,14 +161,6 @@ $(".delete-Task-Form").submit(function(e) {
         });
 
 });
-
-
-
-
-
-
-
-
 
 
 // ----------------------------------------- MAIL -------------------------------------------------

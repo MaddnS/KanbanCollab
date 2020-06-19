@@ -73,7 +73,6 @@
 
                                                     <div>
                                                         <form:form class="delete-Task-Form" method="POST">
-                                                            <input type="hidden" name="taskId" id="tId-delete" value="${task.taskId}">
                                                             <button type="submit" class="btn btn-xs btn-danger">
                                                                 <svg class="bi bi-trash" width="0.5em" height="0.5em"
                                                                      viewBox="0 0 16 16" fill="currentColor"
@@ -136,7 +135,6 @@
 
                                                     <div>
                                                     <form:form class="delete-Task-Form" method="POST">
-                                                        <input type="hidden" name="taskId" id="tId-delete" value="${task.taskId}">
                                                         <button type="submit" class="btn btn-xs btn-danger">
                                                             <svg class="bi bi-trash" width="0.5em" height="0.5em"
                                                                  viewBox="0 0 16 16" fill="currentColor"
@@ -198,7 +196,6 @@
 
                                                     <div>
                                                         <form:form class="delete-Task-Form" method="POST">
-                                                            <input type="hidden" name="taskId" id="tId-delete" value="${task.taskId}">
                                                             <button type="submit" class="btn btn-xs btn-danger">
                                                                 <svg class="bi bi-trash" width="0.5em" height="0.5em"
                                                                      viewBox="0 0 16 16" fill="currentColor"
