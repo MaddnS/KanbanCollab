@@ -1,20 +1,19 @@
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('admin', 'lastName', 'firstName', 'email', '$2a$10$lrHeviFZpOz10zEcM/zp2uSnN02t2lEL8deULaq9DU2YMeaShZGvG', 'ROLE_ADMIN');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user1', 'lastName', 'firstName', 'email', '$2a$10$LaGmrlrY/VpFsBxyKzNH2u7Vc6bWHdohHwK9NAZs9fBB5r95SiUG6', 'ROLE_USER');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user2', 'lastName', 'firstName', 'email', '$2a$10$/PO6Qq4M1P3/5XrcCkbk6uZtCZ28R9m5BujaaIEEo7xsXgeoGvFvW', 'ROLE_USER');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user3', 'lastName', 'firstName', 'email', '$2a$10$jkStzyoZ9HXWOmZYA3gXPevrpVsHQIDNFMNaFveslR18ExpgbyPdm', 'ROLE_USER');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user4', 'lastName', 'firstName', 'email', '$2a$10$TmIsygYxk7Ea2o7cBTi8quZ973Ow9pLPywcodpgM0zurfDHQCJMjq', 'ROLE_USER');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user5', 'lastName', 'firstName', 'email', '$2a$10$iWr18T2mmjjRtKLY01n.ueWSRJnw1deg498UAAdiG4.DuODuO54DO', 'ROLE_USER');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('MaddnS', 'lastName', 'firstName', 'email', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('PeteFG', 'lastName', 'firstName', 'email', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
-INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('TomTom', 'lastName', 'firstName', 'email', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
-
-
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('admin', 'lastName', 'firstName', 'email.admin@example.com', '$2a$10$lrHeviFZpOz10zEcM/zp2uSnN02t2lEL8deULaq9DU2YMeaShZGvG', 'ROLE_ADMIN');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user1', 'lastName', 'firstName', 'email.user1@example.com', '$2a$10$LaGmrlrY/VpFsBxyKzNH2u7Vc6bWHdohHwK9NAZs9fBB5r95SiUG6', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user2', 'lastName', 'firstName', 'email.user2@example.com', '$2a$10$/PO6Qq4M1P3/5XrcCkbk6uZtCZ28R9m5BujaaIEEo7xsXgeoGvFvW', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user3', 'lastName', 'firstName', 'email.user3@example.com', '$2a$10$jkStzyoZ9HXWOmZYA3gXPevrpVsHQIDNFMNaFveslR18ExpgbyPdm', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user4', 'lastName', 'firstName', 'email.user4@example.com', '$2a$10$TmIsygYxk7Ea2o7cBTi8quZ973Ow9pLPywcodpgM0zurfDHQCJMjq', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user5', 'lastName', 'firstName', 'email.user5@example.com', '$2a$10$iWr18T2mmjjRtKLY01n.ueWSRJnw1deg498UAAdiG4.DuODuO54DO', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('MaddnS', 'Schweighofer', 'Martin', 'maddns@kanbancollab.com', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('PeteFG', 'Feldgrill', 'Peter', 'petefg@kanbancollab.com', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('TomTom', 'Kristan', 'Thomas', 'tomtom@kanbancollab.com', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
 
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 1', 1, 'Description 1 bla bla bla LOOOOOOOOOOOOOOONG');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 2', 2, 'Description 2 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 3', 3, 'Description 3 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 4', 4, 'Description 4 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 5', 5, 'Description 5 bla bla bla');
+
 INSERT INTO task (name, project, description, segment) VALUES ('Task 1', 1, 'Task 1 , in ToDo Langer Text Langer Text Langer Text Langer Text Langer Text Langer Text Langer Text Langer Text Langer Text ', 1);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 2', 1, 'Task 2 , in ToDo', 1);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 3', 2, 'Task 3 , in ToDo', 1);
@@ -24,4 +23,3 @@ INSERT INTO task (name, project, description, segment) VALUES ('Task 6', 3, 'Tas
 INSERT INTO task (name, project, description, segment) VALUES ('Task 7', 3, 'Task 7 , in Done', 3);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 8', 2, 'Task 8 , in Done', 3);
 INSERT INTO task (name, project, description, segment) VALUES ('Task 9', 1, 'Task 9 , in Done', 3);
-INSERT INTO subtask (description,parent_task_id,state) VALUES ('subtaskNr01',1,true)

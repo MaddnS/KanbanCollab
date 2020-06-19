@@ -34,7 +34,7 @@
 </head>
 <body>
         <c:if test="${activePage == 'listProjects' or  activePage == 'editProject' or  activePage == 'viewProject'}">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2rem">
                 <div class="container">
                 <a class="navbar-brand" href="/">
                         <svg class="bi bi-kanban-fill" width="1.4em" height="1.4em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -16,17 +16,13 @@
         <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
 
 
-        <%--<div class="add-task-container">
-            <input type="text" maxlength="12" id="taskText" placeholder="New Task..." onkeydown="if (event.keyCode == 13)
-                        document.getElementById('add').click()">
-            <button id="add" class="button add-button" onclick="addTask()">Add New Task</button>
-        </div>--%>
+    <%--------------------------------------- ProjectOwner & Members AREA ---------------------------------------------%>
         <div class="main-container">
         <ul class="columns" id="columnsC">
         <ul class="containerMaO">
             <li class="projOwner">
                 <div class="po-header">
-                    <h5>Project-Owner: </h5>
+                    <h5 class="mao-header">Project-Owner: </h5>
                 </div>
             <li class="mao-list-entry">
                     ${project.owner.username}
@@ -37,7 +33,7 @@
             <li class="membersAndOptions">
 
                 <div class="mao-header">
-                    <h5>Project-Members:</h5>
+                    <h5 class="mao-header" >Project-Members:</h5>
 
                     <ul class="members-list">
                         <c:forEach items="${project.members}" var="member">
@@ -49,7 +45,7 @@
                 </div>
             </li>
         </ul>
-
+<%------------------------------------------------- Task AREA ---------------------------------------------------------%>
         <li class="column to-do-column">
             <div class="column-header" style="border-bottom: 1px solid #ccc;">
                 <h4>To Do</h4>
@@ -236,16 +232,16 @@
             </ul>
         </li>
     </form:form>
-    <%-- ---------------------------- OPTIONS: CREATE TASK, INVITE, ... ------------------------------- --%>
+    <%-- ---------------------------- OPTIONS: CREATE TASK, Edit Project, ... ------------------------------- --%>
     <li class="membersAndOptions">
 
         <div class="mao-header">
-            <h5>Options:</h5>
+            <h5 class="mao-header">Options:</h5>
 
             <ul class="options-list">
 
                 <li class="mao-list-entry">
-                    <a href="#" class="newTaskCreate" data-toggle="modal" data-target="#createNewTaskModal">
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createNewTaskModal">
                         Create New Task
                     </a>
 
@@ -300,8 +296,8 @@
                            <c:if test="${currentUser.username == 'admin' || currentUser.userId == project.owner.userId}">
                             <li class="mao-list-entry">
 
-                                <a href="/editProject?projectId=${project.projectId}" class="changeProj">
-                                    Change Project
+                                <a href="/editProject?projectId=${project.projectId}" class="btn btn-info">
+                                    Edit Project
                                 </a>
 
                             </li>

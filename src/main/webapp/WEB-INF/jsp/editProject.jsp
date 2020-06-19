@@ -79,6 +79,9 @@
                             <div class="col-md-10 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a href="listProjects" class="btn btn-default">Cancel</a>
+                                <c:if test="${project.projectId != null}">
+                                <a href="viewProject?projectId=${project.projectId}" maxLength="20" class="btn btn-info">View ${project.name}</a>
+                                </c:if>
                                     <%--<a href="deleteProject?projectId=${project.projectId}" method="post "class="btn btn-default">Delete Project</a>--%>
                                     <%--<form:form method="post" action="/deleteProject?projectId=${project.projectId}">
                                         <button type="submit" class="btn btn-xs btn-danger">Delete</button>

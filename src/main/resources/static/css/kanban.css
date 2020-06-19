@@ -17,7 +17,11 @@ h5.card-title {
 .mao-list-entry{
     margin-bottom: 0.5rem;
     text-align: center;
-    font-size: small
+    font-size: medium;
+}
+h5.mao-header{
+    font-size: large;
+    font-weight: bold;
 }
 
 .navbar-nav.navbar-center {
