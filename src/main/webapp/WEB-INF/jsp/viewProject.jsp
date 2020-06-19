@@ -295,6 +295,19 @@
                         </div>
                     </div>
 
+                            </li>
+<%----------------------------------------------------- Change Project link -----------------------------------------------------%>
+                           <c:if test="${currentUser.username == 'admin' || currentUser.userId == project.owner.userId}">
+                            <li class="mao-list-entry">
+
+                                <a href="/editProject?projectId=${project.projectId}" class="changeProj">
+                                    Change Project
+                                </a>
+
+                            </li>
+                           </c:if>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>
