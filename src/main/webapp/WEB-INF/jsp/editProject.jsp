@@ -89,7 +89,7 @@
                         </div>
 
                     </fieldset>
-                    <form:hidden path="version"/>
+                    <%--<form:hidden path="version"/>--%>
                 </form:form>
 
 
