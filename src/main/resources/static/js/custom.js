@@ -7,6 +7,7 @@ $(function () {
     });
 });
 
+// ----------------------------------------- csrf Token for all ajax actions------------------------------------------
 $(function () {
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
@@ -15,7 +16,7 @@ $(function () {
     });
 });
 
-
+// --------------------------------------- Drop Down Menu for Projects -----------------------------------------------
 $(document).ready(function () {
     $('.js-example-basic-multiple').select2();
 });
@@ -34,7 +35,7 @@ dragula([
     .on("drag", function(el) {
         el.className.replace("ex-moved", "");
     })
-
+// -------------------------------------------- Change segment on Drop ----------------------------------------------
     .on("drop", function(el) {
         var taskId = $(el).data('task-id');
         var segmId = $(el).closest("ul").data('seg-id');
@@ -68,7 +69,7 @@ dragula([
 
 
 
-// ---------------------------------------------- Tasks -----------------------------------------------------
+// ---------------------------------------------- Create Tasks -----------------------------------------------------
 
 $("#inputTaskForm").submit(function(e) {
 
@@ -103,6 +104,7 @@ $(document).on("click", ".open-changeTask", function () {
 
 
 
+// --------------------------------------------------------- Change Task -----------------------------------------------------
 
 $("#changeTaskForm").submit(function(ele) {
 
@@ -135,6 +137,42 @@ $("#changeTaskForm").submit(function(ele) {
 
 });
 
+
+// ------------------------------------------ Delete Task ---------------------------------------------
+
+$(".delete-Task-Form").submit(function(e) {
+
+    e.preventDefault(); //prevent default action
+    var taskID = document.getElementById("tId-delete").value
+    var ctok = $("meta[name='_csrf']").attr("content");
+
+    $.ajax({
+        type: "POST",
+        url: "/deleteTask",
+        data: {
+            taskId: taskID,
+            CSRF:ctok
+        },
+        cache: false
+    })
+        .done(function( html ) {
+            //alert('delete task funzt');
+            window.location.reload();
+        });
+
+});
+
+
+
+
+
+
+
+
+
+
+// ----------------------------------------- MAIL -------------------------------------------------
+
 $(document).on("click","#invite_email_address", function () {
 
     var email = document.getElementById("invite_email_address").value
@@ -151,5 +189,8 @@ $(document).on("click","#invite_email_address", function () {
         .done(function () {
             alert('email is nice')
         })
-})
+});
+
+
+
 
