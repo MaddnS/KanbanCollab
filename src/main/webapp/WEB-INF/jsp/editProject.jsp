@@ -32,7 +32,7 @@
 
                         <! ---------------- Project Name ---------------- -->
                         <div class="form-group">
-                            <label for="inputProjectName" class="col-md-2 control-label">Project Name*</label>
+                            <label for="inputProjectName" class="col control-label">Project Name*</label>
                             <div class="col-md-10">
                                 <form:input id="inputProjectName" path="name" type="text" class="form-control" maxLength="50"
                                             required="required"/>

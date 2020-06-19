@@ -47,6 +47,9 @@ h5.mao-header{
 .card-body {
     width:100%;
 }
+.card-body.task{
+   background: #f2f2f2;
+}
 
 .column-header {
     padding: 0.5rem;
@@ -56,14 +59,20 @@ h5.mao-header{
     text-align: center;
 }
 
+.card-title{
+    color: #4b4b4b;
+}
+
 .inprogress-column {
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
 
 }
-li.task {
 
+.bi.bi-three-dots-vertical{
+    color: #606060;
 }
+
 
 .task-list {
     min-height: 15rem;

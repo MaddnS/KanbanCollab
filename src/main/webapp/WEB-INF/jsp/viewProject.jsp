@@ -58,10 +58,13 @@
                             <div class="card-body">
                                 <input type="hidden" name="taskSegment" value="${task.segment}"/>
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body task">
                                         <div class="row">
                                             <div class="col-8">
+                                                <a href="#" data-toggle="modal" data-target="#changeTaskModal"
+                                                   class="open-changeTask">
                                                 <h5 class="card-title"> ${task.name}</h5>
+                                                </a>
                                             </div>
 
 
@@ -80,19 +83,6 @@
                                                     </button>
                                                 </form:form>
 
-                                            </div>
-
-
-                                            <div class="col-3-auto">
-                                                <a href="#" data-toggle="modal" data-target="#changeTaskModal"
-                                                   class="open-changeTask">
-                                                    <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
-                                                         viewBox="0 0 16 16" fill="currentColor"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                              d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                                                    </svg>
-                                                </a>
                                             </div>
                                         </div>
                                         <p class="card-text">${task.description}</p>
@@ -118,10 +108,13 @@
                         <li class="task" data-task-id="${task.taskId}">
                             <div class="card-body">
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body task">
                                         <div class="row">
                                             <div class="col-8">
+                                                <a href="#" data-toggle="modal" data-target="#changeTaskModal"
+                                                   class="open-changeTask">
                                                 <h5 class="card-title"> ${task.name}</h5>
+                                                </a>
                                             </div>
 
 
@@ -142,18 +135,6 @@
 
                                             </div>
 
-
-                                            <div class="col-3-auto">
-                                                <a href="#" data-toggle="modal" data-target="#changeTaskModal"
-                                                   class="open-changeTask">
-                                                    <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
-                                                         viewBox="0 0 16 16" fill="currentColor"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                              d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                                                    </svg>
-                                                </a>
-                                            </div>
                                         </div>
 
                                         <p class="card-text">${task.description}</p>
@@ -179,10 +160,13 @@
                         <li class="task" data-task-id="${task.taskId}">
                             <div class="card-body">
                                 <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body task">
                                         <div class="row">
                                             <div class="col-8">
+                                                <a href="#" data-toggle="modal" data-target="#changeTaskModal"
+                                                   class="open-changeTask">
                                                 <h5 class="card-title"> ${task.name}</h5>
+                                                </a>
                                             </div>
 
 
@@ -203,18 +187,6 @@
 
                                             </div>
 
-
-                                            <div class="col-3-auto">
-                                                <a href="#" data-toggle="modal" data-target="#changeTaskModal"
-                                                   class="open-changeTask">
-                                                    <svg class="bi bi-three-dots-vertical" width="1em" height="1em"
-                                                         viewBox="0 0 16 16" fill="currentColor"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                              d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                                                    </svg>
-                                                </a>
-                                            </div>
                                         </div>
 
                                         <p class="card-text">${task.description}</p>

@@ -42,11 +42,11 @@
                                     <div class="col-lg-4">
                                         <div class="card-body">
                                             <div class="card">
-                                                <div class="card-body">
+                                                <div class="card-body" style="background: #f2f2f2">
                                                     <div class="row justify-content">
                                                         <div class="col-8">
                                                             <a href="viewProject?projectId=${project.projectId}"
-                                                           class="card-link">
+                                                           class="card-link" style="color: #4b4b4b">
                                                                 <h5 class="card-title"> ${project.name}</h5>
                                                             </a>
                                                         </div>
@@ -66,7 +66,7 @@
                                                         </div>
                                                         <div class="col-3-auto" style="padding-left: 1rem">
                                                             <a href="editProject?projectId=${project.projectId}"
-                                                               class="card-link">
+                                                               class="card-link" style="color: #4b4b4b">
                                                                 <svg class="bi bi-three-dots-vertical" height="1.1em"
                                                                      viewBox="0 0 16 16" fill="currentColor"
                                                                      xmlns="http://www.w3.org/2000/svg">
@@ -109,11 +109,11 @@
                                 <div class="col-lg-4">
                                     <div class="card-body">
                                         <div class="card">
-                                            <div class="card-body">
+                                            <div class="card-body" style="background: #f2f2f2">
                                                 <div class="row justify-content">
                                                     <div class="col-8">
                                                         <a href="viewProject?projectId=${project.projectId}"
-                                                           class="card-link">
+                                                           class="card-link" style="color: #4b4b4b">
                                                             <h5 class="card-title"> ${project.name}</h5>
                                                         </a>
                                                     </div>
@@ -153,17 +153,17 @@
                                     <div class="col-lg-4">
                                         <div class="card-body">
                                             <div class="card">
-                                                <div class="card-body">
+                                                <div class="card-body" style="background: #f2f2f2">
                                                     <div class="row">
                                                         <div class="col">
                                                             <a href="viewProject?projectId=${project.projectId}"
-                                                               class="card-link">
+                                                               class="card-link" style="color: #4b4b4b">
                                                                 <h5 class="card-title"> ${project.name}</h5>
                                                             </a>
                                                         </div>
                                                         <div class="col-lg-2.5">
                                                             <a href="editProject?projectId=${project.projectId}"
-                                                               class="card-link">
+                                                               class="card-link" style="color: #4b4b4b">
                                                                 <svg class="bi bi-three-dots-vertical" width="1em"
                                                                      height="1em" viewBox="0 0 16 16"
                                                                      fill="currentColor"
