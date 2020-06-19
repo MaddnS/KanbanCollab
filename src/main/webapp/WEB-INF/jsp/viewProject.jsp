@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -14,27 +13,21 @@
     <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post" action="viewProject"
                novalidate="novalidate">
         <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
-
-
     <%--------------------------------------- ProjectOwner & Members AREA ---------------------------------------------%>
         <div class="main-container">
         <ul class="columns" id="columnsC">
         <ul class="containerMaO">
             <li class="projOwner">
                 <div class="po-header">
-                    <h5 class="mao-header">Project-Owner: </h5>
+                    <h5 class="mao-header">Project owner</h5>
                 </div>
             <li class="mao-list-entry">
                     ${project.owner.username}
             </li>
-
             </li>
-
             <li class="membersAndOptions">
-
                 <div class="mao-header">
-                    <h5 class="mao-header" >Project-Members:</h5>
-
+                    <h5 class="mao-header" >Project members</h5>
                     <ul class="members-list">
                         <c:forEach items="${project.members}" var="member">
                             <li class="mao-list-entry">
@@ -66,10 +59,7 @@
                                                 <h5 class="card-title"> ${task.name}</h5>
                                                 </a>
                                             </div>
-
-
                                             <form:form></form:form>
-
                                             <div class="col-2-auto">
                                                 <form:form class="delete-Task-Form" method="POST">
                                                     <button type="submit" class="btn btn-xs btn-danger">
@@ -82,21 +72,17 @@
                                                         </svg>
                                                     </button>
                                                 </form:form>
-
                                             </div>
                                         </div>
                                         <p class="card-text">${task.description}</p>
-
                                     </div>
                                 </div>
                             </div>
                         </li>
                     </c:if>
                 </c:forEach>
-
             </ul>
         </li>
-
         <li class="column inprogress-column">
             <div class="column-header" style="border-bottom: 1px solid #ccc;">
                 <h4>In Progress</h4>
@@ -116,10 +102,7 @@
                                                 <h5 class="card-title"> ${task.name}</h5>
                                                 </a>
                                             </div>
-
-
                                             <form:form></form:form>
-
                                             <div class="col-2-auto">
                                                 <form:form class="delete-Task-Form" method="POST">
                                                     <button type="submit" class="btn btn-xs btn-danger">
@@ -132,23 +115,17 @@
                                                         </svg>
                                                     </button>
                                                 </form:form>
-
                                             </div>
-
                                         </div>
-
                                         <p class="card-text">${task.description}</p>
-
                                     </div>
                                 </div>
                             </div>
                         </li>
                     </c:if>
                 </c:forEach>
-
             </ul>
         </li>
-
         <li class="column done-column">
             <div class="column-header" style="border-bottom: 1px solid #ccc;">
                 <h4>Done</h4>
@@ -168,10 +145,7 @@
                                                 <h5 class="card-title"> ${task.name}</h5>
                                                 </a>
                                             </div>
-
-
                                             <form:form></form:form>
-
                                             <div class="col-2-auto">
                                                 <form:form class="delete-Task-Form" method="POST">
                                                     <button type="submit" class="btn btn-xs btn-danger">
@@ -184,20 +158,13 @@
                                                         </svg>
                                                     </button>
                                                 </form:form>
-
                                             </div>
-
                                         </div>
-
                                         <p class="card-text">${task.description}</p>
-
                                     </div>
                                 </div>
                             </div>
-
                         </li>
-
-
                     </c:if>
                 </c:forEach>
 
@@ -206,22 +173,17 @@
     </form:form>
     <%-- ---------------------------- OPTIONS: CREATE TASK, Edit Project, ... ------------------------------- --%>
     <li class="membersAndOptions">
-
         <div class="mao-header">
             <h5 class="mao-header">Options:</h5>
-
             <ul class="options-list">
-
                 <li class="mao-list-entry">
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createNewTaskModal">
                         Create New Task
                     </a>
-
                     <div class="modal fade" id="createNewTaskModal" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
-
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="modalcreate">Create New Task</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -230,48 +192,39 @@
                                 </div>
                                 <div class="modal-body">
                                         <%--  MIT AJAX MACHEN ?  --%>
-                                    <! ---------------- Task Name & Description ---------------- -->
-
-                                    <form:form id="inputTaskForm" method="POST" action="/createTask">
-                                        <div class="field">
-                                            <label for="task_name">Task Name: </label>
-                                            <input type="text" id="task_name" maxlength="64" required="required">
-                                                <%-- <form:input type="text" value="" id="task_name_input"/> --%>
-                                        </div>
-                                        <div class="field">
-                                            <label for="task_description">Description: </label>
-                                            <textarea id="task_description" maxlength="240"></textarea>
-                                                <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
-                                        </div>
-                                        <input type="hidden" id="task_project" name="project"
-                                               value="${project.projectId}"/>
+                                    <! ---------------- Create New Task ---------------- -->
+                                <form:form id="inputTaskForm" method="POST" action="/createTask">
+                                    <div class="field" style="padding-bottom: 10px">
+                                        <label for="task_name" style="text-align: center; font-weight: 600">Task Name</label>
+                                        <input type="text" style="width: 100%" maxlength="64" id="task_name" required="required">
+                                         <%-- <form:input type="text" value="" id="task_name_input"/> --%>
+                                    </div>
+                                    <div class="field">
+                                        <label for="task_description" style="text-align: center;  font-weight: 600">
+                                            Description</label>
+                                        <textarea type="text" style="width: 100%; padding-bottom: 20px" maxlength="240"
+                                                  id="task_description"></textarea>
+                                        <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
+                                    </div>
+                                        <input type="hidden" id="task_project" name="project" value="${project.projectId}"/>
                                         <input type="hidden" id="task_id" name="project" value="${task.taskId}"/>
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
-                                        <button type="submit" id="task_submi" class="btn btn-secondary">Create</button>
+                                        <button style="margin-top: 20px; text-align: center" type="submit"
+                                                id="task_submit" class="btn btn-primary">Create</button>
                                     </form:form>
-
-
                                 </div>
                                 <div class="modal-footer">
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                             </li>
 <%----------------------------------------------------- Change Project link -----------------------------------------------------%>
                            <c:if test="${currentUser.username == 'admin' || currentUser.userId == project.owner.userId}">
                             <li class="mao-list-entry">
-
                                 <a href="/editProject?projectId=${project.projectId}" class="btn btn-info">
                                     Edit Project
                                 </a>
-
                             </li>
                            </c:if>
                         </ul>
@@ -279,15 +232,10 @@
                 </li>
             </ul>
         </div>
-
-
     </li>
     </ul>
-
-
     <%--------------------------------------------------------------Change Task - MODAL -----------------------------------------------------------------------%>
-
-    <div class="modal fade" id="changeTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade" id="changeTaskModal" tabindex="-1" role="dialog"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -302,45 +250,29 @@
                     <! ---------------- Task Name & Description ---------------- -->
                         <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
                     <form:form id="changeTaskForm" method="POST" action="/changeTask">
-                        <div class="container">
-                            <div class="row changeTask">
-                                <label for="ctask_name">Task Name: </label>
-                            </div>
-                            <div class="row changeTask">
-                                <input type="text" id="ctask_name" maxlength="64" value="${task.name}"
+                            <div class="field" style="padding-bottom: 10px">
+                                <label for="ctask_name" style="text-align: center; font-weight: 600">
+                                    Task Name</label>
+                                <input type="text" id="ctask_name" style="width: 100%" maxlength="64" value="${task.name}"
                                        required="required">
                                     <%-- <form:input type="text" value="" id="task_name_input"/> --%>
-
                             </div>
-                            <div class="row changeTask">
-                                <label for="ctask_description">Description: </label>
-                            </div>
-                            <div class="row changeTask">
-                                <textarea id="ctask_description" maxlength="240"></textarea>
+                            <div class="field">
+                                <label for="ctask_description"  style="text-align: center;  font-weight: 600">
+                                    Description</label>
+                                <textarea id="ctask_description" style="width: 100%; padding-bottom: 20px" maxlength="240"></textarea>
                                     <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
                             </div>
-                            <input type="hidden" id="ctask_id" name="tId" value="${task.taskId}"/>
-
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" id="task_submit" class="btn btn-secondary">Change</button>
-                        </div>
+                            <input type="hidden" id="ctask_id" name="tId" style="width: 100%" value="${task.taskId}"/>
+                            <button style="margin-top: 20px; text-align: center" type="submit"
+                                    id="task_submit" class="btn btn-primary">Change</button>
                     </form:form>
-
-
                 </div>
                 <div class="modal-footer">
-
-
                 </div>
-
             </div>
         </div>
     </div>
     <%-------------------------------------------------- End of Modal -----------------------------------------------------------------%>
-
-
-    </div>
-
-
+</div>
 </layout:page-container>
-

@@ -28,7 +28,6 @@ class ProjectController (val projectRepository: ProjectRepository,
                          val userRepository: UserRepository,
                          val taskRepository: TaskRepository,
                          val userService: UserService)
-                         //val mailSender: MailSender)
         {
 
 /** ---------------------------------------------------- Functions ---------------------------------------------- */
@@ -157,7 +156,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     }
 
 
-/** --------------------------------------------  TASK AREA --------------------------------------------------- */
+/** --------------------------------------------  REGISTER AREA --------------------------------------------------- */
 
         @RequestMapping("/registerUser", method = [RequestMethod.GET])
         fun registerUser(model: Model): String {
@@ -166,19 +165,20 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
         }
 
         @RequestMapping("/addUser", method = [RequestMethod.POST])
-        fun addUser(@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult, model: Model): String {
-            /*try {
+        fun addUser(@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult): String {
+            try {
                 userService.save(user)
             } catch (dive: DataIntegrityViolationException) {
                 if (dive.message.orEmpty().contains("constraint [username_UK]")) {
-                    bindingResult.rejectValue("username", "name.alreadyInUse", "Username already in use.");
+                    bindingResult.rejectValue("username", "username.alreadyInUse", "Username already in use.");
+                    return "registerUser"
                 } else {
-                    throw dive
+                    throw dive;
                 }
-            }*/
-            userService.save(user)
-            return "login"
+            }
+            return "listProjects"
         }
+
 
         @RequestMapping("/anonymousAndNotAnonymous", method = [RequestMethod.GET])
         fun anonymous(model: Model): String {

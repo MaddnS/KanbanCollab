@@ -7,9 +7,19 @@ h5.card-title {
     font-weight: bold;
 }
 
+.modal-content {
+    width: 340px;
+    margin: 0 auto;
+}
+
+.modal-body {
+    width: 100%
+}
+
 .membersAndOptions {
     width: 10rem;
 }
+
 .po-header{
     margin-bottom: 1.5rem;
 }
@@ -19,6 +29,7 @@ h5.card-title {
     text-align: center;
     font-size: medium;
 }
+
 h5.mao-header{
     font-size: large;
     font-weight: bold;
@@ -29,6 +40,7 @@ h5.mao-header{
     left: 50%;
     transform: translateX(-50%);
 }
+
 .main-container {
     display: flex;
 }
@@ -66,7 +78,6 @@ h5.mao-header{
 .inprogress-column {
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
-
 }
 
 .bi.bi-three-dots-vertical{

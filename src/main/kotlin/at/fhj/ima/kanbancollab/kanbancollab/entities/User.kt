@@ -11,11 +11,11 @@ enum class UserRole {
 }
 
 @Entity
+@Table(uniqueConstraints = [UniqueConstraint(name = "username_UK", columnNames = ["username"])])
 class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var userId: Int? = null,
-        @Column(unique = true)
         @field:NotNull()
         @field:Size(min = 1, max = 32)
         var username: String = "",

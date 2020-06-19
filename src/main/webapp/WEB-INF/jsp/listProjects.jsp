@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <p>
-                <a href="/editProject" class="btn btn-success">Create New Project</a>
+                <a href="/editProject" style="margin-left: 3rem" class="btn btn-success">Create New Project</a>
             </p>
         </div>
     </div>
@@ -23,7 +23,7 @@
 
 
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col" style="display: inline-block; margin-left: 3rem; margin-right: 3rem">
             <div id="accordion">
     <!-- accordion 1 ------------------------------------------------------------- -->
                 <div class="card">
@@ -174,7 +174,6 @@
                                                             </a>
                                                         </div>
                                                     </div>
-
                                                     <div class="row">
                                                         <h6 class="col-lg-9">Created by: ${project.owner.username}</h6>
                                                             <%--<a href="deleteProject?projectId=${project.projectId}" class="card-link">--%>
@@ -196,7 +195,6 @@
                                                         </div>
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -206,13 +204,9 @@
                         </div>
                     </div>
                 </sec:authorize>
-
                 <!-- accordion 3 ------------------------------------------------------------- -->
-
             </div>
         </div>
     </div>
-
-
     </div> <!-- End of container -->
 </layout:page-container>
