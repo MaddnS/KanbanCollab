@@ -1,6 +1,5 @@
 package at.fhj.ima.kanbancollab.kanbancollab.controller
 
-
 import at.fhj.ima.kanbancollab.kanbancollab.dto.UserDto
 import at.fhj.ima.kanbancollab.kanbancollab.service.UserService
 import at.fhj.ima.kanbancollab.kanbancollab.entities.Project
@@ -34,7 +33,7 @@ class ProjectController (val projectRepository: ProjectRepository,
                          //val mailSender: MailSender)
         {
 
-// ---------------------------------------------------- Functions ----------------------------------------------
+/** ---------------------------------------------------- Functions ---------------------------------------------- */
 fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     val uId = user.userId
     return allProj.filter { it.members.any { it.userId == uId } }
@@ -43,8 +42,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     fun getCurrentUser(): User {
         return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
     }
-
-// ---------------------------------------------------- Project ------------------------------------------------
+/** ---------------------------------------------------- Project ------------------------------------------------ */
     fun showEditProjectView(model: Model): String {
         val filteredUsers = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
         model.set("users", userRepository.findAll())
@@ -74,7 +72,6 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     }
 
     @RequestMapping("/changeProject", method = [RequestMethod.POST])
-    // @Secured("ROLE_ADMIN")
     fun changeProject(@ModelAttribute("project") @Valid project: Project, bindingResult: BindingResult, model: Model): String {
         if (bindingResult.hasErrors()) {
             return showEditProjectView(model)
@@ -83,12 +80,12 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
         try {
             projectRepository.save(project)
         } catch (dive: DataIntegrityViolationException) {
-            if (dive.message.orEmpty().contains("constraint [projectname_UK]")) {
-                bindingResult.rejectValue("name", "name.alreadyInUse", "Project Name already in use.");
-                return showEditProjectView(model)
-            } else {
+            //if (dive.message.orEmpty().contains("constraint [projectname_UK]")) {
+            //    bindingResult.rejectValue("name", "name.alreadyInUse", "Project Name already in use.");
+            //    return showEditProjectView(model)
+            //} else {
                 throw dive
-            }
+            //}
         }
         return "redirect:/editProject?projectId=" + project.projectId
     }
@@ -104,7 +101,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
         else {
             model.set("message", "Unable to delete this Project as you are not the owner")
             return listProjects(model)
-        }//; "redirect:listProjects"
+        }
     }
 
 
@@ -118,7 +115,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
         return "viewProject"
     }
 
-  // --------------------------------------------  TASK AREA ---------------------------------------------------
+/** --------------------------------------------  TASK AREA --------------------------------------------------- */
 
     @RequestMapping("/createTask", method = [RequestMethod.POST])
     fun createTask(tname: String?, tdesc: String?,tproj: Int): ResponseEntity<Void> {
@@ -162,7 +159,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
 }
 
 
-// -------------------------------------------- USER ---------------------------------------------------------------------
+/** --------------------------------------------  TASK AREA --------------------------------------------------- */
 
         @RequestMapping("/registerUser", method = [RequestMethod.GET])
         fun registerUser(model: Model): String {

@@ -7,6 +7,7 @@
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
 
 <layout:page-container title="KanbanCollab - ${project.name}" activePage="viewProject">
     <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
@@ -334,20 +335,27 @@
                     <! ---------------- Task Name & Description ---------------- -->
                         <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
                     <form:form id="changeTaskForm" method="POST" action="/changeTask">
-                        <div class="field">
+                        <div class="container">
+                        <div class="row changeTask">
                             <label for="ctask_name">Task Name: </label>
-                            <input type="text" id="ctask_name" value="${task.name}" required>
+                        </div>
+                            <div class="row changeTask">
+                            <input type="text" id="ctask_name" value="${task.name}" required="required">
                                 <%-- <form:input type="text" value="" id="task_name_input"/> --%>
-                        </div>
-                        <div class="field">
+
+                            </div>
+                            <div class="row changeTask">
                             <label for="ctask_description">Description: </label>
-                            <input type="text" id="ctask_description">
-                                <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
                         </div>
+                            <div class="row changeTask">
+                            <textarea id="ctask_description"></textarea>
+                                <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
+                            </div>
                         <input type="hidden" id="ctask_id" name="tId" value="${task.taskId}"/>
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" id="task_submit" class="btn btn-secondary">Change</button>
+                        </div>
                     </form:form>
 
 

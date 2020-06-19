@@ -25,6 +25,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div id="accordion">
+    <!-- accordion 1 ------------------------------------------------------------- -->
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
@@ -36,10 +37,8 @@
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="row">
-                                <%--<c:if test="${projects.owner.userId == currentUser.userId}">--%>
                             <c:forEach items="${projects}" var="project">
                                 <c:if test="${project.owner.userId == currentUser.userId}">
-                                    <!---- sicher nicht der perfomanteste Weg!!! ---->
                                     <div class="col-lg-4">
                                         <div class="card-body">
                                             <div class="card">
@@ -53,7 +52,7 @@
                                                         </div>
                                                         <div class="col-2-auto">
                                                             <form:form method="post"
-                                                                       action="/deleteProject?projectId=${project.projectId}&name=${project.name}">
+                                                                       action="/deleteProject?projectId=${project.projectId}">
                                                                 <button type="submit" class="btn btn-xs btn-danger">
                                                                     <svg class="bi bi-trash" width="0.8em" height="1em"
                                                                          viewBox="0 0 16 16" fill="currentColor"
@@ -79,7 +78,6 @@
                                                     </div>
                                                     <div class="row">
                                                         <h6 class="col-auto">Created by: ${project.owner.username}</h6>
-
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
                                                 </div>
@@ -91,6 +89,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- accordion 1 ------------------------------------------------------------- -->
+
+
+
+                <!-- accordion 2 ------------------------------------------------------------- -->
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
@@ -127,6 +130,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- accordion 2 ------------------------------------------------------------- -->
+
+
+
+                <!-- accordion 3 ------------------------------------------------------------- -->
                 <sec:authorize access="hasAuthority('ROLE_ADMIN')">
                     <div class="card">
                         <div class="card-header" id="adminHeading">
@@ -198,6 +206,9 @@
                         </div>
                     </div>
                 </sec:authorize>
+
+                <!-- accordion 3 ------------------------------------------------------------- -->
+
             </div>
         </div>
     </div>

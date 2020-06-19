@@ -98,3 +98,8 @@ li {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
     filter: alpha(opacity=20);
 }
+
+.row.changeTask {
+    width: 340px;
+    margin: 0 auto;
+}
