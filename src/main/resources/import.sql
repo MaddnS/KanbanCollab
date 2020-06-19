@@ -4,6 +4,12 @@ INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES (
 INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user3', 'lastName', 'firstName', 'email', '$2a$10$jkStzyoZ9HXWOmZYA3gXPevrpVsHQIDNFMNaFveslR18ExpgbyPdm', 'ROLE_USER');
 INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user4', 'lastName', 'firstName', 'email', '$2a$10$TmIsygYxk7Ea2o7cBTi8quZ973Ow9pLPywcodpgM0zurfDHQCJMjq', 'ROLE_USER');
 INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('user5', 'lastName', 'firstName', 'email', '$2a$10$iWr18T2mmjjRtKLY01n.ueWSRJnw1deg498UAAdiG4.DuODuO54DO', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('MaddnS', 'lastName', 'firstName', 'email', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('PeteFG', 'lastName', 'firstName', 'email', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
+INSERT INTO user (username, last_name, first_name, email, pwhash, role) VALUES ('TomTom', 'lastName', 'firstName', 'email', '$2a$10$ky3O1JZa5WYT0g67G89vIuImaEecqwkPGKIoxrWApOdfS1Sk84f3a', 'ROLE_USER');
+
+
+
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 1', 1, 'Description 1 bla bla bla LOOOOOOOOOOOOOOONG');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 2', 2, 'Description 2 bla bla bla');
 INSERT INTO project (name, owner_user_id, description) VALUES ('Project 3', 3, 'Description 3 bla bla bla');

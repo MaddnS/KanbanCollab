@@ -9,4 +9,5 @@ fun main() {
     //print(BCryptPasswordEncoder().encode("user3"));
     //print(BCryptPasswordEncoder().encode("user4"));
     //print(BCryptPasswordEncoder().encode("user5"));
+    //print(BCryptPasswordEncoder().encode("user"));
 }

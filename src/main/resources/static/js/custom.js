@@ -41,7 +41,7 @@ dragula([
         var segmId = $(el).closest("ul").data('seg-id');
         var token = $("meta[name='_csrf']").attr("content");
 
-        console.log(token)
+
         $.ajax({
             type: "POST",
             url: "/changeSegment",
