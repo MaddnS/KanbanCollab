@@ -10,7 +10,7 @@ class Task(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var taskId: Int? = null,
         @field:NotNull()
-        @field:Size(min = 1, max = 50)
+        @field:Size(min = 1, max = 64)
         var name: String? = null,
         var project: Int? = null,
         @field:Size(min = 0, max = 240)
