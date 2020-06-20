@@ -9,27 +9,27 @@
 
 <layout:page-container title="KanbanCollab" activePage="editProject">
 
-    <! ---------------- If a user tries to edit a project he's not the owner of
-    he gets an empty site and gets redirected immediately after to the error page ---------------- -->
+        <! ---------------- If a user tries to edit a project he's not the owner of
+                            he gets an empty site and gets redirected immediately after to the error page ---------------- -->
 
     <c:if test="${currentUser.username != 'admin' && currentUser.userId != project.owner.userId
     && project.projectId != null}"><meta http-equiv = "refresh" content = "0; url = /error" /></c:if>
     <!---- temporärer Fix---->
     <c:if test="${currentUser.userId == project.owner.userId || currentUser.username == 'admin' || project.projectId == null}">
         <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-        <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
-        <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post"
-                   action="changeProject" novalidate="novalidate">
-            <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
+            <div class="col-md-8 col-md-offset-2">
+                    <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
+                <form:form modelAttribute="project" class="needs-validation form-horizontal" method="post"
+                           action="changeProject" novalidate="novalidate">
+                    <input type="hidden" name="projectId" value="<c:out value="${project.projectId}"/>">
 
-            <fieldset>
-            <c:if test="${project.projectId != null}">
-                <legend><spring:message code="editProject.change"/> "${project.name}"</legend>
-            </c:if>
-            <c:if test="${project.projectId == null}">
-                <legend><spring:message code="editProject.createnew"/></legend>
-            </c:if>
+                    <fieldset>
+                        <c:if test="${project.projectId != null}">
+                            <legend>Change "${project.name}"</legend>
+                        </c:if>
+                        <c:if test="${project.projectId == null}">
+                            <legend>Create New Project</legend>
+                        </c:if>
 
             <! ---------------- Project Name ---------------- -->
 
@@ -78,25 +78,25 @@
 
                 <! ---------------- buttons ---------------- -->
 
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <button type="submit" class="btn btn-primary"><spring:message code="editProject.submit"/></button>
-                        <c:if test="${project.projectId != null}">
-                            <a href="viewProject?projectId=${project.projectId}" maxLength="20" class="btn btn-info"><spring:message code="editProject.view"/> ${project.name}</a>
-                        </c:if>
-                        <a href="listProjects" class="btn btn-default"><spring:message code="editProject.cancel"/></a>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="submit" class="btn btn-primary"><spring:message code="editProject.submit"/></button>
+                                <c:if test="${project.projectId != null}">
+                                    <a href="viewProject?projectId=${project.projectId}" maxLength="20" class="btn btn-info">View ${project.name}</a>
+                                </c:if>
+                                <a href="listProjects" class="btn btn-default"><spring:message code="editProject.cancel"/></a>
 
-                            <%--<a href="deleteProject?projectId=${project.projectId}" method="post "class="btn btn-default">Delete Project</a>--%>
-                            <%--<form:form method="post" action="/deleteProject?projectId=${project.projectId}">
-                                <button type="submit" class="btn btn-xs btn-danger">Delete</button>
-                            </form:form>--%>
-                            <%--<button type="submit" class="btn btn-xs btn-danger"><spring:message code="employees.delete"/></button>--%>
-                    </div>
-                </div>
-            </fieldset>
-            <%--<form:hidden path="version"/>--%>
-        </form:form>
-        </div>
+                                    <%--<a href="deleteProject?projectId=${project.projectId}" method="post "class="btn btn-default">Delete Project</a>--%>
+                                    <%--<form:form method="post" action="/deleteProject?projectId=${project.projectId}">
+                                        <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+                                    </form:form>--%>
+                                    <%--<button type="submit" class="btn btn-xs btn-danger"><spring:message code="employees.delete"/></button>--%>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <%--<form:hidden path="version"/>--%>
+                </form:form>
+            </div>
         </div>
     </c:if>
 </layout:page-container>

@@ -191,16 +191,17 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body" style="text-align: center">
+                                        <%--  MIT AJAX MACHEN ?  --%>
                                     <! ---------------- Create New Task ---------------- -->
                                 <form:form id="inputTaskForm" method="POST" action="/createTask">
-                                    <div class="field" style="padding-bottom: 10px">
+                                    <div class="field" style="padding-bottom: 1rem">
                                         <label for="task_name" style="text-align: center; font-weight: 600"><spring:message code="viewProject.taskname"/></label>
                                         <input type="text" style="width: 100%" maxlength="64" id="task_name" required="required">
                                          <%-- <form:input type="text" value="" id="task_name_input"/> --%>
                                     </div>
                                     <div class="field">
-                                        <label for="task_description" style="text-align: center;  font-weight: 600">
+                                        <label for="task_description" style="font-weight: 600">
                                             <spring:message code="viewProject.description"/></label>
                                         <textarea type="text" style="width: 100%; padding-bottom: 20px" maxlength="240"
                                                   id="task_description"></textarea>
@@ -236,7 +237,7 @@
     </ul>
     <%--------------------------------------------------------------Change Task - MODAL -----------------------------------------------------------------------%>
     <div class="modal fade" id="changeTaskModal" tabindex="-1" role="dialog"
-         aria-hidden="true">
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -245,18 +246,17 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="text-align: center">
                     <! ---------------- Task Name & Description ---------------- -->
-                        <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
+                    <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
                     <form:form id="changeTaskForm" method="POST" action="/changeTask">
-                            <div class="field" style="padding-bottom: 10px">
-                                <label for="ctask_name" style="text-align: center; font-weight: 600">
-                                    <spring:message code="viewProject.taskname"/></label>
-                                <input type="text" id="ctask_name" style="width: 100%" maxlength="64" value="${task.name}"
-                                       required="required">
+                            <div class="field" style="padding-bottom: 1rem">
+                                <label for="ctask_name" style="text-align: center; font-weight: 600"><spring:message code="viewProject.taskname"/></label>
+                                <input type="text" id="ctask_name" style="width: 100%" maxlength="64" value="${task.name}" required="required">
+                                    <%-- <form:input type="text" value="" id="task_name_input"/> --%>
                             </div>
                             <div class="field">
-                                <label for="ctask_description"  style="text-align: center;  font-weight: 600">
+                                <label for="ctask_description"  style="font-weight: 600">
                                     <spring:message code="viewProject.description"/></label>
                                 <textarea id="ctask_description" style="width: 100%; padding-bottom: 20px" maxlength="240"></textarea>
                             </div>
