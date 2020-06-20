@@ -51,7 +51,7 @@
                         </div>
                         </c:if>
                         <form:form method="post" action="/logout">
-                                <button class="btn btn-link" style="align-items: center" type="submit"><spring:message code="navbar.loggout"/></button>
+                                <button class="btn btn-link" style="align-items: center" type="submit"><spring:message code="navbar.logout"/></button>
                         </form:form>
                 </ul>
                 </div>

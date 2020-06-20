@@ -1,9 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
-
-
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
 <%--<layout:page-container title="Sign in to KanbanCollab" activePage="login">--%>
@@ -25,7 +23,7 @@
                      <path fill-rule="evenodd" d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-1z"/>
                  </svg>
              </a><br>
-             Sign in to KanbanCollab
+                 <spring:message code="login.signin"/>
              </div>
              <!-- use param.error assuming FormLoginConfigurer#failureUrl contains the query parameter error -->
              <c:if test="${param.error != null}">
@@ -44,26 +42,26 @@
              </c:if>
              <div class="authInput">
                  <p>
-                 <label class="inputFieldText" for="username">Username</label><br>
+                 <label class="inputFieldText" for="username"><spring:message code="login.username"/></label><br>
                  <input type="text" class="inputField" id="username" name="username"/>
                  </p>
                  <p>
-                 <label class="inputFieldText" for="password">Password</label><br>
+                 <label class="inputFieldText" for="password"><spring:message code="login.password"/></label><br>
                  <input type="password" class="inputField" id="password" name="password"/>
                  </p>
                  <!-- if using RememberMeConfigurer make sure remember-me matches RememberMeConfigurer#rememberMeParameter -->
                  <p>
-                 <label for="remember-me">Remember me?</label>
+                 <label for="remember-me"><spring:message code="login.rememberme"/></label>
                  <input type="checkbox" id="remember-me" name="remember-me"/>
                  </p>
                  <div>
-                     <button type="submit" style="width: 100%" class="btn btn-success">Log in</button>
+                     <button type="submit" style="width: 100%" class="btn btn-success"><spring:message code="login.login"/></button>
                  </div>
              </div>
          </div>
         <div class="registerForm">
-            New to KanbanCollab?<br>
-            <a href="registerUser" style="color: #0366d6; font-size: 14px" class="btn btn-default">Create an account</a>
+            <spring:message code="login.new"/><br>
+            <a href="registerUser" style="color: #0366d6; font-size: 14px" class="btn btn-default"><spring:message code="login.create"/></a>
         </div>
     </form:form>
  </body>
