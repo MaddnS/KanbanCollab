@@ -23,7 +23,6 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .antMatchers("/addUser").permitAll()
                 .antMatchers("/registerUser").permitAll()
                 .antMatchers("/anonymousAndNotAnonymous").permitAll()
-
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -43,5 +42,4 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**")
     }
-
 }

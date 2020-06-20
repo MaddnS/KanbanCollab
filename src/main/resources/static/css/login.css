@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding-bottom: 1.25rem;
 }
+
 .authFormHeader {
     margin-bottom: 0.938rem;
     text-align: center;
@@ -13,14 +14,16 @@
     padding-top: 1.875rem;
     padding-bottom: 0.938rem;
 }
-.authInput{
+
+.authInput {
     padding: 1.25rem;
     font-size: 0.875rem;
     background-color: #fff;
     border: 0.063rem solid #d8dee2;
     border-radius: 0.313rem;
 }
-.inputField{
+
+.inputField {
     margin-bottom: 0.938rem;
     width: 100%;
     display: block;
@@ -36,9 +39,10 @@
     border: 0.063rem solid #d1d5da;
     border-radius: 0.188rem;
     outline: none;
-    box-shadow: inset 0 0.063rem 0.125rem rgba(27,31,35,.075);
+    box-shadow: inset 0 0.063rem 0.125rem rgba(27, 31, 35, .075);
 }
-.inputFieldText{
+
+.inputFieldText {
     font-weight: 600;
 }
 

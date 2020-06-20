@@ -52,7 +52,6 @@
                         readonly="${not empty project.owner.userId || not empty currentUser.userId}"
                         cssClass="form-control"/>
 
-            <%-- <form:errors path="owner.userId" cssClass="invalid-feedback d-block" /> --%>
 
             <! ---------------- Description ---------------- -->
 
@@ -85,16 +84,9 @@
                                     <a href="viewProject?projectId=${project.projectId}" maxLength="20" class="btn btn-info">View ${project.name}</a>
                                 </c:if>
                                 <a href="listProjects" class="btn btn-default"><spring:message code="editProject.cancel"/></a>
-
-                                    <%--<a href="deleteProject?projectId=${project.projectId}" method="post "class="btn btn-default">Delete Project</a>--%>
-                                    <%--<form:form method="post" action="/deleteProject?projectId=${project.projectId}">
-                                        <button type="submit" class="btn btn-xs btn-danger">Delete</button>
-                                    </form:form>--%>
-                                    <%--<button type="submit" class="btn btn-xs btn-danger"><spring:message code="employees.delete"/></button>--%>
                             </div>
                         </div>
                     </fieldset>
-                    <%--<form:hidden path="version"/>--%>
                 </form:form>
             </div>
         </div>

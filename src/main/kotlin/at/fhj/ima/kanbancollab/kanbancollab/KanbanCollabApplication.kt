@@ -15,29 +15,28 @@ import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter
 @EnableGlobalMethodSecurity(securedEnabled = true)
 class KanbanCollabApplication : SpringBootServletInitializer() {
 
-	override fun configure(application: SpringApplicationBuilder): SpringApplicationBuilder {
-		return application.sources(KanbanCollabApplication::class.java)
-	}
-	@Bean
-	fun resourceUrlEncodingFilterRegistration(): FilterRegistrationBean<ResourceUrlEncodingFilter> {
-		val registration = FilterRegistrationBean<ResourceUrlEncodingFilter>()
-		registration.setFilter(ResourceUrlEncodingFilter())
-		registration.addUrlPatterns("/*")
-		registration.setName("resourceUrlEncodingFilter")
-		return registration
-	}
-	@Bean
-	fun passwordEncoder(): PasswordEncoder {
-		return BCryptPasswordEncoder();
-	}
+    override fun configure(application: SpringApplicationBuilder): SpringApplicationBuilder {
+        return application.sources(KanbanCollabApplication::class.java)
+    }
+
+    @Bean
+    fun resourceUrlEncodingFilterRegistration(): FilterRegistrationBean<ResourceUrlEncodingFilter> {
+        val registration = FilterRegistrationBean<ResourceUrlEncodingFilter>()
+        registration.setFilter(ResourceUrlEncodingFilter())
+        registration.addUrlPatterns("/*")
+        registration.setName("resourceUrlEncodingFilter")
+        return registration
+    }
+
+    @Bean
+    fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder();
+    }
 }
 
 
-
-
-
 fun main(args: Array<String>) {
-	runApplication<KanbanCollabApplication>(*args)
+    runApplication<KanbanCollabApplication>(*args)
 }
 
 

@@ -53,6 +53,9 @@
                         <form:input id="inputUsername" path="username" type="text" class="form-control" maxlength="32"
                                     required="required"/>
                         <form:errors path="username" cssClass="invalid-feedback d-block"/>
+                        <div class="invalid-feedback">
+                            usernamsdasiudsaijdasdsa
+                        </div>
                     </div>
                 </div>
 

@@ -1,16 +1,22 @@
-// ----------------------------------------- csrf Token for all ajax actions------------------------------------------
+/** ----------------------------------------- csrf Token for all ajax actions------------------------------------------*/
+
 $(function () {
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
-    $(document).ajaxSend(function(e, xhr, options) {
+    $(document).ajaxSend(function (e, xhr, options) {
         xhr.setRequestHeader(header, token);
     });
 });
 
-// --------------------------------------- Drop Down Menu for Projects -----------------------------------------------
+/** --------------------------------------- Drop Down Menu for Projects -----------------------------------------------*/
+
 $(document).ready(function () {
     $('.js-example-basic-multiple').select2();
 });
+
+
+/** --------------------------------------- Warning message when
+ viewing viewProject with mobile device --------------------------------------------------*/
 
 $(function () {
     if ($(window).width() < 500 && window.location.pathname == '/viewProject') {
@@ -18,21 +24,22 @@ $(function () {
     }
 });
 
-// ---------------------------------------------- DragAndDrop -----------------------------------------------------
-/* Custom Dragula JS */
+/** ---------------------------------------------- DragAndDrop -----------------------------------------------------*/
+/** Custom Dragula JS */
+
 dragula([
     document.getElementById("to-do"),
     document.getElementById("in-progress"),
     document.getElementById("done")
 ], {
     removeOnSpill: false,
-    //revertOnSpill:true
 })
-    .on("drag", function(el) {
+    .on("drag", function (el) {
         el.className.replace("ex-moved", "");
     })
-// -------------------------------------------- Change segment on Drop ----------------------------------------------
-    .on("drop", function(el) {
+    /** -------------------------------------------- Change segment on Drop ----------------------------------------------*/
+
+    .on("drop", function (el) {
         var taskId = $(el).data('task-id');
         var segmId = $(el).closest("ul").data('seg-id');
         var token = $("meta[name='_csrf']").attr("content");
@@ -47,25 +54,21 @@ dragula([
                 CSRF: token
             }
         })
-            .done(function( html ) {
+            .done(function (html) {
             });
 
         el.className += "ex-moved";
-
     })
-
-    .on("over", function(el, container) {
+    .on("over", function (el, container) {
         container.className += "ex-over";
     })
-    .on("out", function(el, container) {
+    .on("out", function (el, container) {
         container.className.replace("ex-over", "");
     });
 
+/** ---------------------------------------------- Create Tasks ----------------------------------------------------- */
 
-
-// ---------------------------------------------- Create Tasks -----------------------------------------------------
-
-$("#inputTaskForm").submit(function(e) {
+$("#inputTaskForm").submit(function (e) {
 
     e.preventDefault(); //prevent default action
     var taskFDesc = document.getElementById("task_description").value
@@ -80,57 +83,56 @@ $("#inputTaskForm").submit(function(e) {
             tname: taskFName,
             tdesc: taskFDesc,
             tproj: taskFProj,
-            CSRF:ctok
+            CSRF: ctok
         },
         cache: false
     })
-        .done(function( html ) {
+        .done(function (html) {
             window.location.reload();
         });
 
 });
-
 
 $(document).on("click", ".open-changeTask", function () {
     var taId = $(this).closest('li').data('task-id');
 
 
+    /** ----------------------------------------------- Change Task ----------------------------------------------------- */
 
-// --------------------------------------------------------- Change Task -----------------------------------------------------
+    $("#changeTaskForm").submit(function (ele) {
 
-$("#changeTaskForm").submit(function(ele) {
-
-    ele.preventDefault(); //prevent default action
+        ele.preventDefault(); //prevent default action
 
 
-    var taskFId = taId;
-    var taskFDesc = document.getElementById("ctask_description").value;
-    var taskFName = document.getElementById("ctask_name").value;
-    var token = $("meta[name='_csrf']").attr("content");
+        var taskFId = taId;
+        var taskFDesc = document.getElementById("ctask_description").value;
+        var taskFName = document.getElementById("ctask_name").value;
+        var token = $("meta[name='_csrf']").attr("content");
 
-    $.ajax({
-        type: "POST",
-        url: "/changeTask",
-        data: {
-            tId: taskFId,
-            tname: taskFName,
-            tdesc: taskFDesc,
-            CSRF: token
-        },
-        cache: false
-    })
-        .done(function( html ) {
-            window.location.reload();
-        });
+
+        $.ajax({
+            type: "POST",
+            url: "/changeTask",
+            data: {
+                tId: taskFId,
+                tname: taskFName,
+                tdesc: taskFDesc,
+                CSRF: token
+            },
+            cache: false
+        })
+            .done(function (html) {
+                window.location.reload();
+            });
+
+    });
 
 });
 
-});
 
+/** ------------------------------------------ Delete Task --------------------------------------------- */
 
-// ------------------------------------------ Delete Task ---------------------------------------------
-
-$(".delete-Task-Form").submit(function(e) {
+$(".delete-Task-Form").submit(function (e) {
 
     e.preventDefault(); //prevent default action
     var taskID = $(this).closest('li').data('task-id');
@@ -141,27 +143,27 @@ $(".delete-Task-Form").submit(function(e) {
         url: "/deleteTask",
         data: {
             taskId: taskID,
-            CSRF:ctok
+            CSRF: ctok
         },
         cache: false
     })
-        .done(function( html ) {
+        .done(function (html) {
             window.location.reload();
         });
 
 });
 
 
-// ----------------------------------------- MAIL -------------------------------------------------
+/** ----------------------------------------- MAIL ------------------------------------------------- */
 
-$(document).on("click","#invite_email_address", function () {
+$(document).on("click", "#invite_email_address", function () {
 
     var email = document.getElementById("invite_email_address").value
     console.log(email);
     $.ajax({
         method: "GET",
-        url: "/inviteUser?email"+email,
-        cache:false
+        url: "/inviteUser?email" + email,
+        cache: false
     })
 
         .done(function () {

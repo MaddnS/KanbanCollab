@@ -14,9 +14,6 @@
         <title>${title}</title>
         <bootstrap:bootstrap-css/>
 
-        <c:if test="${activePage == 'listProjects' or activePage == 'editProjects'}">
-                <link rel="stylesheet" href="<c:url value="/css/custom.css"/>">
-        </c:if>
 
         <c:if test="${activePage == 'viewProject'}">
                 <meta name="_csrf" content="${_csrf.token}">

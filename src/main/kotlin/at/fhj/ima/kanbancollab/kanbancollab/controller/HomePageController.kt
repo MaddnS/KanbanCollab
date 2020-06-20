@@ -6,15 +6,14 @@ import org.springframework.web.bind.annotation.RequestMethod
 
 @Controller
 class HomePageController {
-
     @RequestMapping("", method = [RequestMethod.GET])
     fun homePage(): String {
         return "redirect:listProjects"
     }
 
-    @RequestMapping("/login", method= [RequestMethod.GET])
+
+    @RequestMapping("/login", method = [RequestMethod.GET])
     fun login(): String {
         return "login"
     }
-
 }

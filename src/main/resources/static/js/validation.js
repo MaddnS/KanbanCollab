@@ -1,4 +1,4 @@
-// ----------------------------------------- validate input forms------------------------------------------
+/** ----------------------------------------- validate input forms------------------------------------------ */
 $(function () {
     var forms = $('.needs-validation');
     forms.find('[name]').on('focusout', function () {

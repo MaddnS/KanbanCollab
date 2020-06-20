@@ -11,7 +11,8 @@ enum class UserRole {
 }
 
 @Entity
-@Table(uniqueConstraints = [UniqueConstraint(name = "username_UK", columnNames = ["username"])])
+@Table(uniqueConstraints = [UniqueConstraint(name = "username_UK", columnNames = ["username"]),
+    UniqueConstraint(name = "email_UK", columnNames = ["email"])])
 class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +33,11 @@ class User(
         var email: String = "",
         @Enumerated(EnumType.STRING)
         var role: UserRole? = UserRole.ROLE_USER
-): Comparable<User>, Serializable {
+) : Comparable<User>, Serializable {
     override fun compareTo(other: User): Int {
         return compareValues(userId, other.userId)
     }
+
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -44,6 +46,7 @@ class User(
         if (userId != other.userId) return false
         return true
     }
+
 
     override fun hashCode(): Int {
         return userId.hashCode()

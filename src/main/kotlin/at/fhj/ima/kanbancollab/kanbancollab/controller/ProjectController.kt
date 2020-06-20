@@ -20,45 +20,51 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
-import javax.validation.ConstraintViolationException
 import javax.validation.Valid
 
 
 @Controller
-class ProjectController (val projectRepository: ProjectRepository,
-                         val userRepository: UserRepository,
-                         val taskRepository: TaskRepository,
-                         val userService: UserService)
-        {
+class ProjectController(val projectRepository: ProjectRepository,
+                        val userRepository: UserRepository,
+                        val taskRepository: TaskRepository,
+                        val userService: UserService) {
 
-/** ---------------------------------------------------- Functions ---------------------------------------------- */
-fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
-    val uId = user.userId
-    return allProj.filter { it.members.any { it.userId == uId } }
-}
+
+    /** ---------------------------------------------------- Functions ---------------------------------------------- */
+
+    fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
+        val uId = user.userId
+        return allProj.filter { it.members.any { it.userId == uId } }
+    }
+
 
     fun getCurrentUser(): User {
         return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
     }
-/** ---------------------------------------------------- Project ------------------------------------------------ */
+
+
+    /** ---------------------------------------------------- Project ------------------------------------------------ */
+
     fun showEditProjectView(model: Model): String {
-        val usersWithoutOwner = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
+        val usersWithoutOwner = userRepository.findAll().filter { it.userId != getCurrentUser().userId }
         model.set("users", userRepository.findAll())
         model.set("usersWithoutOwner", usersWithoutOwner)
         return "editProject"
     }
 
+
     @RequestMapping("/listProjects", method = [RequestMethod.GET])
-    fun listProjects (model: Model/*, @RequestParam(required = false) userId: Int?*/): String {
+    fun listProjects(model: Model/*, @RequestParam(required = false) userId: Int?*/): String {
         val allProjects = projectRepository.findAll()
-        val sharedProjects = findSharedProjects(getCurrentUser(),  allProjects)
+        val sharedProjects = findSharedProjects(getCurrentUser(), allProjects)
         model.set("projects", allProjects)
-        model.set("sharedProjects",sharedProjects)
+        model.set("sharedProjects", sharedProjects)
         return "listProjects"
     }
 
+
     @RequestMapping("/editProject", method = [RequestMethod.GET])
-    fun editProject(model: Model, @RequestParam(required = false) projectId: Int?): String{
+    fun editProject(model: Model, @RequestParam(required = false) projectId: Int?): String {
         if (projectId != null) {
             val project = projectRepository.findByProjectId(projectId)
             model.set("project", project)
@@ -69,24 +75,20 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
         return showEditProjectView(model)
     }
 
+
     @RequestMapping("/changeProject", method = [RequestMethod.POST])
     fun changeProject(@ModelAttribute("project") @Valid project: Project, bindingResult: BindingResult, model: Model): String {
         if (bindingResult.hasErrors()) {
             return showEditProjectView(model)
         }
-
         try {
             projectRepository.save(project)
         } catch (dive: DataIntegrityViolationException) {
-            //if (dive.message.orEmpty().contains("constraint [projectname_UK]")) {
-            //    bindingResult.rejectValue("name", "name.alreadyInUse", "Project Name already in use.");
-            //    return showEditProjectView(model)
-            //} else {
-                throw dive
-            //}
+            throw dive
         }
         return "redirect:/editProject?projectId=" + project.projectId
     }
+
 
     @RequestMapping("/deleteProject", method = [RequestMethod.POST])
     fun deleteProject(model: Model, @RequestParam projectId: Int): String {
@@ -95,8 +97,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
             projectRepository.delete(projectRepository.findByProjectId(projectId))
             model.set("message", "Project was deleted")
             return listProjects(model)
-        }
-        else {
+        } else {
             model.set("message", "Unable to delete this Project as you are not the owner")
             return listProjects(model)
         }
@@ -104,40 +105,38 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
 
 
     @RequestMapping("/viewProject", method = [RequestMethod.GET])
-    fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String{
+    fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String {
         val project = projectRepository.findByProjectId(projectId)
         val projectTasks = taskRepository.findTaskByProject(projectId)
         model.set("tasks", projectTasks)
         model.set("project", project)
-
         return "viewProject"
     }
 
-/** --------------------------------------------  TASK AREA --------------------------------------------------- */
+
+    /** --------------------------------------------  TASK AREA --------------------------------------------------- */
 
     @RequestMapping("/createTask", method = [RequestMethod.POST])
-    fun createTask(tname: String?, tdesc: String?,tproj: Int): ResponseEntity<Void> {
-            val newTask = Task()
-            newTask.description = tdesc
-            newTask.name = tname
-            newTask.project = tproj
-            newTask.segment = 1
-            taskRepository.save(newTask)
-             return ResponseEntity.ok().build()
-
-        }
+    fun createTask(tname: String?, tdesc: String?, tproj: Int): ResponseEntity<Void> {
+        val newTask = Task()
+        newTask.description = tdesc
+        newTask.name = tname
+        newTask.project = tproj
+        newTask.segment = 1
+        taskRepository.save(newTask)
+        return ResponseEntity.ok().build()
+    }
 
 
     @RequestMapping("/changeTask", method = [RequestMethod.POST])
     fun changeTask(@RequestParam(required = true) tId: Int, tname: String?, tdesc: String?): ResponseEntity<Void> {
-            val task = taskRepository.findTaskById(tId)
-            task.description = tdesc
-            task.name = tname
-            taskRepository.save(task)
-            return ResponseEntity.ok().build()
-
-
+        val task = taskRepository.findTaskById(tId)
+        task.description = tdesc
+        task.name = tname
+        taskRepository.save(task)
+        return ResponseEntity.ok().build()
     }
+
 
     @RequestMapping("/changeSegment", method = [RequestMethod.POST])
     fun changeSegment(@RequestParam(required = true) taskId: Int, @RequestParam(required = true) segmentId: Int): ResponseEntity<Void> {
@@ -148,50 +147,62 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     }
 
 
-
     @RequestMapping("/deleteTask", method = [RequestMethod.POST])
-        fun deleteTask(@RequestParam (required = true) taskId: Int):ResponseEntity<Void> {
+    fun deleteTask(@RequestParam(required = true) taskId: Int): ResponseEntity<Void> {
         val task = taskRepository.findTaskById(taskId)
         taskRepository.delete(task)
         return ResponseEntity.ok().build()
     }
 
 
-/** --------------------------------------------  REGISTER AREA --------------------------------------------------- */
+    /** --------------------------------------------  REGISTER AREA --------------------------------------------------- */
 
-        @RequestMapping("/registerUser", method = [RequestMethod.GET])
-        fun registerUser(model: Model): String {
-            model.set("UserDto", userService.createNewUser())
+    @RequestMapping("/registerUser", method = [RequestMethod.GET])
+    fun registerUser(model: Model): String {
+        model.set("UserDto", userService.createNewUser())
+        return "registerUser"
+    }
+
+
+    @RequestMapping("/addUser", method = [RequestMethod.POST])
+    fun addUser(@ModelAttribute("UserDto") @Valid user: UserDto, bindingResult: BindingResult): String {
+        if (bindingResult.hasErrors()) {
             return "registerUser"
         }
-
-        @RequestMapping("/addUser", method = [RequestMethod.POST])
-        fun addUser(@ModelAttribute("user") @Valid user: UserDto, bindingResult: BindingResult): String {
-            try {
+        try {
+            if (user.doPasswordsMatch()) {
                 userService.save(user)
-            } catch (dive: DataIntegrityViolationException) {
-                if (dive.message.orEmpty().contains("constraint [username_UK]")) {
-                    bindingResult.rejectValue("username", "username.alreadyInUse", "Username already in use.");
-                    return "registerUser"
-                } else {
-                    throw dive;
-                }
-            } /*catch (dive: ConstraintViolationException) {
-                if (dive.message.orEmpty)
-            } catch (dive: IllegalStateException)*/
-            return "login"
-        }
-
-
-        @RequestMapping("/anonymousAndNotAnonymous", method = [RequestMethod.GET])
-        fun anonymous(model: Model): String {
-
-            val auth = SecurityContextHolder.getContext().authentication
-            if (auth is AnonymousAuthenticationToken) {
-                model.set("showAnonymouspage", true);
-                return "anonymous";
+            } else {
+                bindingResult.rejectValue("password", "", "Passwords do not match.")
+                return "registerUser"
             }
-            model.set("showAnonymouspage", false);
-            return "notanonymous"
+        } catch (dive: DataIntegrityViolationException) {
+            when {
+                dive.message.orEmpty().contains("username_UK") -> {
+                    bindingResult.rejectValue("username", "username.alreadyInUse", "Username already in use.")
+                    return "registerUser"
+                }
+                dive.message.orEmpty().contains("email_UK") -> {
+                    bindingResult.rejectValue("email", "email.alreadyInUse", "e-mail already in use.")
+                    return "registerUser"
+                }
+                else -> {
+                    throw dive
+                }
+            }
         }
+        return "login"
+    }
+
+
+    @RequestMapping("/anonymousAndNotAnonymous", method = [RequestMethod.GET])
+    fun anonymous(model: Model): String {
+        val auth = SecurityContextHolder.getContext().authentication
+        if (auth is AnonymousAuthenticationToken) {
+            model.set("showAnonymouspage", true);
+            return "anonymous";
+        }
+        model.set("showAnonymouspage", false);
+        return "notanonymous"
+    }
 }
