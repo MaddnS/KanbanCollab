@@ -50,7 +50,7 @@ class UserService(val userRepository: UserRepository,
         message.setSubject("Account ${user.username} was created!")
         message.setText("Hello ${user.firstName}! " +
                 "\nWelcome to our Kanban Collaboration Tool! Your account ${user.username} was created! " +
-                "\nGo to 'localhost/8080' to log in with your account!")
+                "\nGo to localhost/8080 to log in with your account!")
         mailSender.send(message)
     }
 }

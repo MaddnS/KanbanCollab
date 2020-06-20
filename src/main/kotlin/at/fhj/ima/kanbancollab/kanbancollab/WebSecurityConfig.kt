@@ -4,6 +4,7 @@ import at.fhj.ima.kanbancollab.kanbancollab.security.MyUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
@@ -21,8 +22,8 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
             .authorizeRequests()
                 .antMatchers("/addUser").permitAll()
                 .antMatchers("/registerUser").permitAll()
-                .antMatchers("/anonymous").permitAll()
                 .antMatchers("/anonymousAndNotAnonymous").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -36,6 +37,11 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
+    }
+    override fun configure(web: WebSecurity) {
+        web
+                .ignoring()
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**")
     }
 
 }

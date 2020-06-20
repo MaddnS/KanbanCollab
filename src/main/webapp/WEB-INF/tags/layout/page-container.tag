@@ -108,6 +108,9 @@
 
         </div>
         <bootstrap:bootstrap-js/>
+        <c:if test="${activePage == 'editProject'}">
+                <script type="text/javascript" src="<c:url value="/js/validation.js"/>"></script>
+        </c:if>
         <script type="text/javascript" src="<c:url value="/js/custom.js"/>"></script>
 </body>
 </html>

@@ -9,23 +9,8 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <head>
+    <link rel="stylesheet" href="<c:url value="css/register.css"/>">
     <title>Create an account</title>
-    <style>
-        .registerForm {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .registerText {
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .registerInput {
-            width: 100%;
-            max-width: 100%;
-            margin-right: 5px;
-            font-size: 16px;
-        }
-    </style>
 </head>
 <%--<layout:page-container title="Create an account" activePage="registerUser">--%>
 <body>
@@ -112,15 +97,6 @@
         </form:form>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-    <script>
-        $(function () {
-            var forms = $('.needs-validation');
-            forms.find('[name]').on('focusout', function () {
-                var input = $(this);
-                input.removeClass('is-valid is-invalid').addClass(this.checkValidity() ? 'is-valid' : 'is-invalid');
-                input.parent().find('.invalid-feedback').remove();
-            });
-        });
-    </script>
+    <script type="text/javascript" src="<c:url value="/js/validation.js"/>"></script>
 </body>
 <%--</layout:page-container>--%>
