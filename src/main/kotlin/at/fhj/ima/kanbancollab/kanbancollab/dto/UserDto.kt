@@ -3,29 +3,22 @@ package at.fhj.ima.kanbancollab.kanbancollab.dto
 import at.fhj.ima.kanbancollab.kanbancollab.entities.User
 import at.fhj.ima.kanbancollab.kanbancollab.entities.UserRole
 import java.io.Serializable
+import javax.validation.constraints.Size
 
 class UserDto (
     var userId: Int?,
-    //@NotNull
-    //@NotEmpty
+    @field:Size(min = 1, max = 32)
     var username: String,
-    //@NotNull
-    //@NotEmpty
+    @field:Size(min = 1, max = 64)
     var firstName: String?,
-    //@NotNull
-    //@NotEmpty
+    @field:Size(min = 1, max = 64)
     var lastName: String?,
-    //@NotNull
-    //@NotEmpty
+    @field:Size(min = 1, max = 320)
     var email: String,
-    //@NotNull
-    //@NotEmpty
+    @field:Size(min = 1, max = 128)
     var password: String?,
-    //@NotNull
-    //@NotEmpty
+    @field:Size(min = 1, max = 128)
     var confirmPassword: String?,
-    //@NotNull
-    // @NotEmpty
     var role: UserRole?
 ) : Comparable<User>, Serializable {
     override fun compareTo(other: User): Int {

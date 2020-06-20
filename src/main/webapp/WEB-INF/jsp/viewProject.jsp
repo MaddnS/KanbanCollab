@@ -174,7 +174,7 @@
     <%-- ---------------------------- OPTIONS: CREATE TASK, Edit Project, ... ------------------------------- --%>
     <li class="membersAndOptions">
         <div class="mao-header">
-            <h5 class="mao-header">Options:</h5>
+            <h5 class="mao-header">Options</h5>
             <ul class="options-list">
                 <li class="mao-list-entry">
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createNewTaskModal">

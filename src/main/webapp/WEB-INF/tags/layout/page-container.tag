@@ -32,10 +32,9 @@
         </c:if>--%>
 
 </head>
-<body>
-        <c:if test="${activePage == 'listProjects' or  activePage == 'editProject' or  activePage == 'viewProject'}">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2rem">
-                <div class="container">
+<body style="background-color: #f9f9f9">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2rem">
+                <div class="container" style="padding-bottom: 5px ;border-bottom: 1px solid #606060">
                 <a class="navbar-brand" href="/">
                         <svg class="bi bi-kanban-fill" width="1.4em" height="1.4em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-1z"/>
@@ -81,8 +80,7 @@
                 </ul>
                 </div>
                 </div>
-                </nav>
-        </c:if>
+        </nav>
         <div class="container" role="main">
         <div class="page-header" style="margin-bottom:25px"/>
         <!-- Messages ----------------------------------------------------------- -->

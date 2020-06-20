@@ -15,9 +15,7 @@ class Task(
         var project: Int? = null,
         @field:Size(min = 0, max = 240)
         var description: String? = null,
-        var segment: Int? = null,
-        @ManyToMany
-        var subtasks: List<Subtask>? = null
+        var segment: Int? = null
 ): Comparable<Task> {
     override fun compareTo(other: Task): Int {
         return compareValues(taskId, other.taskId)

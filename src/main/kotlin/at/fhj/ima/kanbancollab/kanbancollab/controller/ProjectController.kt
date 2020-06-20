@@ -41,9 +41,9 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
     }
 /** ---------------------------------------------------- Project ------------------------------------------------ */
     fun showEditProjectView(model: Model): String {
-        val filteredUsers = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
+        val usersWithoutOwner = userRepository.findAll().filter{it.userId != getCurrentUser().userId}
         model.set("users", userRepository.findAll())
-        model.set("usersWithoutOwner", filteredUsers)
+        model.set("usersWithoutOwner", usersWithoutOwner)
         return "editProject"
     }
 
@@ -176,7 +176,7 @@ fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
                     throw dive;
                 }
             }
-            return "listProjects"
+            return "login"
         }
 
 
