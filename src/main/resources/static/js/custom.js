@@ -12,6 +12,11 @@ $(document).ready(function () {
     $('.js-example-basic-multiple').select2();
 });
 
+$(function () {
+    if ($(window).width() < 500 && window.location.pathname == '/viewProject') {
+        alert('This site is not optimized for mobile devices! Please switch to desktop if possible.');
+    }
+});
 
 // ---------------------------------------------- DragAndDrop -----------------------------------------------------
 /* Custom Dragula JS */
@@ -41,10 +46,8 @@ dragula([
                 segmentId: segmId,
                 CSRF: token
             }
-            //cache: false
         })
             .done(function( html ) {
-               // alert('Task ' + taskId + ' in Segment '+ segmId + ' verschoben');
             });
 
         el.className += "ex-moved";
@@ -82,7 +85,6 @@ $("#inputTaskForm").submit(function(e) {
         cache: false
     })
         .done(function( html ) {
-            //alert('neuer task funzt');
             window.location.reload();
         });
 
@@ -91,7 +93,6 @@ $("#inputTaskForm").submit(function(e) {
 
 $(document).on("click", ".open-changeTask", function () {
     var taId = $(this).closest('li').data('task-id');
-    //console.log(taId + ' sheesh')
 
 
 
@@ -105,7 +106,6 @@ $("#changeTaskForm").submit(function(ele) {
     var taskFId = taId;
     var taskFDesc = document.getElementById("ctask_description").value;
     var taskFName = document.getElementById("ctask_name").value;
-    //var taskFProj = document.getElementById("ctask_project").value
     var token = $("meta[name='_csrf']").attr("content");
 
     $.ajax({
@@ -120,7 +120,6 @@ $("#changeTaskForm").submit(function(ele) {
         cache: false
     })
         .done(function( html ) {
-            //alert('change task funzt');
             window.location.reload();
         });
 
@@ -147,7 +146,6 @@ $(".delete-Task-Form").submit(function(e) {
         cache: false
     })
         .done(function( html ) {
-            //alert('delete task funzt');
             window.location.reload();
         });
 
@@ -163,9 +161,6 @@ $(document).on("click","#invite_email_address", function () {
     $.ajax({
         method: "GET",
         url: "/inviteUser?email"+email,
-        /*data:{
-            email:email
-        },*/
         cache:false
     })
 

@@ -8,14 +8,13 @@
 
 <%--<layout:page-container title="Sign in to KanbanCollab" activePage="login">--%>
 
+    <!-- loginProcessingUrl should correspond to FormLoginConfigurer#loginProcessingUrl. Don't forget to perform a POST -->
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/login.css">
     <title>Sign in to KanbanCollab</title>
 
-
-</head>
 <body>
     <c:url value="/login" var="loginUrl"/>
       <form:form action="${loginUrl}" method="post">

@@ -9,13 +9,14 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <layout:page-container title="KanbanCollab" activePage="listProjects">
     <!-- simple button ----------------------------------------------------------- -->
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <p>
-                <a href="/editProject" style="margin-left: 3rem" class="btn btn-success">Create New Project</a>
+                <a href="/editProject" style="margin-left: 3rem" class="btn btn-success"><spring:message code="listProjects.create"/></a>
             </p>
         </div>
     </div>
@@ -31,7 +32,7 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
-                                My Projects
+                                <spring:message code="listProjects.myprojects"/>
                             </button>
                         </h5>
                     </div>
@@ -77,7 +78,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <h6 class="col-auto">Created by: ${project.owner.username}</h6>
+                                                        <h6 class="col-auto"><spring:message code="listProjects.createdby"/> ${project.owner.username}</h6>
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
                                                 </div>
@@ -99,7 +100,7 @@
                         <h5 class="mb-0">
                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo">
-                                Shared with me
+                                <spring:message code="listProjects.sharedwithme"/>
                             </button>
                         </h5>
                     </div>
@@ -111,7 +112,7 @@
                                         <div class="card">
                                             <div class="card-body" style="background: #f2f2f2">
                                                 <div class="row justify-content">
-                                                    <div class="col-8">
+                                                    <div class="col">
                                                         <a href="viewProject?projectId=${project.projectId}"
                                                            class="card-link" style="color: #4b4b4b">
                                                             <h5 class="card-title"> ${project.name}</h5>
@@ -119,7 +120,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <h6 class="col-lg-9">Created by: ${project.owner.username}</h6>
+                                                    <h6 class="col-lg-9"><spring:message code="listProjects.createdby"/> ${project.owner.username}</h6>
                                                 </div>
                                                 <p class="card-text">${project.description}</p>
                                             </div>
@@ -142,7 +143,7 @@
                                 <button class="btn btn-link collapsed" data-toggle="collapse"
                                         data-target="#adminCollapse" aria-expanded="false"
                                         aria-controls="adminCollapse">
-                                    All projects (admin view)
+                                    <spring:message code="listProjects.allprojects"/>
                                 </button>
                             </h5>
                         </div>
@@ -154,31 +155,14 @@
                                         <div class="card-body">
                                             <div class="card">
                                                 <div class="card-body" style="background: #f2f2f2">
-                                                    <div class="row">
-                                                        <div class="col">
+                                                    <div class="row justify-content">
+                                                        <div class="col-8">
                                                             <a href="viewProject?projectId=${project.projectId}"
                                                                class="card-link" style="color: #4b4b4b">
                                                                 <h5 class="card-title"> ${project.name}</h5>
                                                             </a>
                                                         </div>
-                                                        <div class="col-lg-2.5">
-                                                            <a href="editProject?projectId=${project.projectId}"
-                                                               class="card-link" style="color: #4b4b4b">
-                                                                <svg class="bi bi-three-dots-vertical" width="1em"
-                                                                     height="1em" viewBox="0 0 16 16"
-                                                                     fill="currentColor"
-                                                                     xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd"
-                                                                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                                                                </svg>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <h6 class="col-lg-9">Created by: ${project.owner.username}</h6>
-                                                            <%--<a href="deleteProject?projectId=${project.projectId}" class="card-link">--%>
-                                                            <%--<div class="row">--%>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-2-auto">
                                                             <form:form method="post"
                                                                        action="/deleteProject?projectId=${project.projectId}">
                                                                 <button type="submit" class="btn btn-xs btn-danger">
@@ -191,8 +175,21 @@
                                                                     </svg>
                                                                 </button>
                                                             </form:form>
-                                                                <%--</div>--%>
                                                         </div>
+                                                        <div class="col-3-auto" style="padding-left: 1rem">
+                                                            <a href="editProject?projectId=${project.projectId}"
+                                                               class="card-link" style="color: #4b4b4b">
+                                                                <svg class="bi bi-three-dots-vertical" height="1.1em"
+                                                                     viewBox="0 0 16 16" fill="currentColor"
+                                                                     xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd"
+                                                                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <h6 class="col-auto"><spring:message code="listProjects.createdby"/> ${project.owner.username}</h6>
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
                                                 </div>

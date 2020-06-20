@@ -5,8 +5,9 @@
 <%@taglib prefix="bootstrap" tagdir="/WEB-INF/tags/bootstrap" %>
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+        <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
         <bootstrap:bootstrap-metadata/>
@@ -23,14 +24,6 @@
                 <link rel="stylesheet" href="<c:url value="/css/kanban.css"/>">
         </c:if>
 
-        <%--<c:if test="${activePage == 'login'}">
-                <link rel="stylesheet" href="<c:url value="/css/login.css"/>">
-        </c:if>
-
-        <c:if test="${activePage == 'registerUser'}">
-                <link rel="stylesheet" href="<c:url value="/css/register.css"/>">
-        </c:if>--%>
-
 </head>
 <body style="background-color: #f9f9f9">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2rem">
@@ -46,36 +39,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav navbar-center" style="font-size: large; font-weight: bold">
 
-                <%-- <c:if test="${activePage == 'listProjects' or activePage == 'editProjects'}">
-                    <c:set var="projectsMenuActive">active</c:set>
-                </c:if> --%>
 
                         <c:if test="${activePage == 'viewProject'}">
                                 ${project.name}
                         </c:if>
-                <%-- <li class="nav-item ${projectsMenuActive} dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Projects
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/listProjects">List Projects</a>
-                <%--<sec:authorize access="hasAuthority('ROLE_ADMIN')">
-                        <a class="dropdown-item" href="/editEmployee">Create Employee</a>
-                </sec:authorize>--%>
-
-
-                    <%--    </div>
-                </li> --%>
                 </ul>
                 <ul class="navbar-nav ml-auto" style="white-space: normal ">
                         <c:if test="${currentUser.username != null}">
                         <div style="align-self: center">
-                        Logged in as ${currentUser.username} |
+                                <spring:message code="navbar.loggedin"/> ${currentUser.username} |
                         </div>
                         </c:if>
                         <form:form method="post" action="/logout">
-                                <button class="btn btn-link" style="align-items: center" type="submit">Log Out</button>
+                                <button class="btn btn-link" style="align-items: center" type="submit"><spring:message code="navbar.loggout"/></button>
                         </form:form>
                 </ul>
                 </div>

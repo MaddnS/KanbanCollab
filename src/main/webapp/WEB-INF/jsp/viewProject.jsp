@@ -7,6 +7,7 @@
 <%@taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <layout:page-container title="KanbanCollab - ${project.name}" activePage="viewProject">
     <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
@@ -19,7 +20,7 @@
         <ul class="containerMaO">
             <li class="projOwner">
                 <div class="po-header">
-                    <h5 class="mao-header">Project owner</h5>
+                    <h5 class="mao-header"><spring:message code="viewProject.owner"/></h5>
                 </div>
             <li class="mao-list-entry">
                     ${project.owner.username}
@@ -27,7 +28,7 @@
             </li>
             <li class="membersAndOptions">
                 <div class="mao-header">
-                    <h5 class="mao-header" >Project members</h5>
+                    <h5 class="mao-header" ><spring:message code="viewProject.members"/></h5>
                     <ul class="members-list">
                         <c:forEach items="${project.members}" var="member">
                             <li class="mao-list-entry">
@@ -41,7 +42,7 @@
 <%------------------------------------------------- Task AREA ---------------------------------------------------------%>
         <li class="column to-do-column">
             <div class="column-header" style="border-bottom: 1px solid #ccc;">
-                <h4>To Do</h4>
+                <h4><spring:message code="viewProject.todo"/></h4>
             </div>
             <ul class="task-list" id="to-do" data-seg-id="1">
                 &nbsp; <!-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert-->
@@ -85,7 +86,7 @@
         </li>
         <li class="column inprogress-column">
             <div class="column-header" style="border-bottom: 1px solid #ccc;">
-                <h4>In Progress</h4>
+                <h4><spring:message code="viewProject.inprogress"/></h4>
             </div>
             <ul class="task-list" id="in-progress" data-seg-id="2">
                 &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
@@ -128,7 +129,7 @@
         </li>
         <li class="column done-column">
             <div class="column-header" style="border-bottom: 1px solid #ccc;">
-                <h4>Done</h4>
+                <h4><spring:message code="viewProject.done"/></h4>
             </div>
             <ul class="task-list" id="done" data-seg-id="3">
                 &nbsp; <%-- Platzhalter, damit Liste nie leer wird und somit das Drag&Drop funktioniert--%>
@@ -174,34 +175,33 @@
     <%-- ---------------------------- OPTIONS: CREATE TASK, Edit Project, ... ------------------------------- --%>
     <li class="membersAndOptions">
         <div class="mao-header">
-            <h5 class="mao-header">Options</h5>
+            <h5 class="mao-header"><spring:message code="viewProject.options"/></h5>
             <ul class="options-list">
                 <li class="mao-list-entry">
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#createNewTaskModal">
-                        Create New Task
+                        <spring:message code="viewProject.createnew"/>
                     </a>
                     <div class="modal fade" id="createNewTaskModal" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modalcreate">Create New Task</h5>
+                                    <h5 class="modal-title" id="modalcreate"><spring:message code="viewProject.createnew"/></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                        <%--  MIT AJAX MACHEN ?  --%>
                                     <! ---------------- Create New Task ---------------- -->
                                 <form:form id="inputTaskForm" method="POST" action="/createTask">
                                     <div class="field" style="padding-bottom: 10px">
-                                        <label for="task_name" style="text-align: center; font-weight: 600">Task Name</label>
+                                        <label for="task_name" style="text-align: center; font-weight: 600"><spring:message code="viewProject.taskname"/></label>
                                         <input type="text" style="width: 100%" maxlength="64" id="task_name" required="required">
                                          <%-- <form:input type="text" value="" id="task_name_input"/> --%>
                                     </div>
                                     <div class="field">
                                         <label for="task_description" style="text-align: center;  font-weight: 600">
-                                            Description</label>
+                                            <spring:message code="viewProject.description"/></label>
                                         <textarea type="text" style="width: 100%; padding-bottom: 20px" maxlength="240"
                                                   id="task_description"></textarea>
                                         <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
@@ -210,7 +210,7 @@
                                         <input type="hidden" id="task_id" name="project" value="${task.taskId}"/>
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                         <button style="margin-top: 20px; text-align: center" type="submit"
-                                                id="task_submit" class="btn btn-primary">Create</button>
+                                                id="task_submit" class="btn btn-primary"><spring:message code="viewProject.create"/></button>
                                     </form:form>
                                 </div>
                                 <div class="modal-footer">
@@ -223,7 +223,7 @@
                            <c:if test="${currentUser.username == 'admin' || currentUser.userId == project.owner.userId}">
                             <li class="mao-list-entry">
                                 <a href="/editProject?projectId=${project.projectId}" class="btn btn-info">
-                                    Edit Project
+                                    <spring:message code="viewProject.edit"/>
                                 </a>
                             </li>
                            </c:if>
@@ -240,32 +240,29 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="changemodal">Change Task</h5>
+                    <h5 class="modal-title" id="changemodal"><spring:message code="viewProject.changetask"/></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                        <%--  MIT AJAX MACHEN ?  --%>
                     <! ---------------- Task Name & Description ---------------- -->
                         <%--@elvariable id="task" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Task"--%>
                     <form:form id="changeTaskForm" method="POST" action="/changeTask">
                             <div class="field" style="padding-bottom: 10px">
                                 <label for="ctask_name" style="text-align: center; font-weight: 600">
-                                    Task Name</label>
+                                    <spring:message code="viewProject.taskname"/></label>
                                 <input type="text" id="ctask_name" style="width: 100%" maxlength="64" value="${task.name}"
                                        required="required">
-                                    <%-- <form:input type="text" value="" id="task_name_input"/> --%>
                             </div>
                             <div class="field">
                                 <label for="ctask_description"  style="text-align: center;  font-weight: 600">
-                                    Description</label>
+                                    <spring:message code="viewProject.description"/></label>
                                 <textarea id="ctask_description" style="width: 100%; padding-bottom: 20px" maxlength="240"></textarea>
-                                    <%-- <form:input type="text" path="description" id="task_description_input"/> --%>
                             </div>
                             <input type="hidden" id="ctask_id" name="tId" style="width: 100%" value="${task.taskId}"/>
                             <button style="margin-top: 20px; text-align: center" type="submit"
-                                    id="task_submit" class="btn btn-primary">Change</button>
+                                    id="task_submit" class="btn btn-primary"><spring:message code="viewProject.save"/></button>
                     </form:form>
                 </div>
                 <div class="modal-footer">
