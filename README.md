@@ -13,10 +13,10 @@ Team Members:
 
 Workload distribution:
     
-    In general most tasks were done together, however, some tasks were split between team members.
-    -Peter Feldgrill: Basic project structure; listing, creating, editing and deleting projects; security.
-    -Martin Schweighofer: Kanban Board, JavaScript, Dragula, JQuery and Ajaxsubmit.
-    -Thomas Kristan: Styling of pages, register and login of new users.
+    In general most tasks were done together, however, some tasks were split between team members
+* Peter Feldgrill: Basic project structure; listing, creating, editing and deleting projects; security.
+* Martin Schweighofer: Kanban Board, JavaScript, Dragula, JQuery and Ajaxsubmit.
+* Thomas Kristan: Styling of pages, register and login of new users.
 
 Setup Guide
 
