@@ -68,7 +68,12 @@ class ProjectController(val projectRepository: ProjectRepository,
     fun editProject(model: Model, @RequestParam(required = false) projectId: Int?): String {
         if (projectId != null) {
             val project = projectRepository.findByProjectId(projectId)
-            model.set("project", project)
+            if (getCurrentUser().userId == project.owner?.userId || getCurrentUser().role.toString() == "ROLE_ADMIN") {
+                model.set("project", project)
+            } else {
+                model.set("exception","This page is only available for the project's owner.")
+                return "error"
+            }
         } else {
             val newProject = Project()
             model.set("project", newProject)
@@ -77,18 +82,20 @@ class ProjectController(val projectRepository: ProjectRepository,
     }
 
 
+
     @RequestMapping("/changeProject", method = [RequestMethod.POST])
     fun changeProject(@ModelAttribute("project") @Valid project: Project, bindingResult: BindingResult, model: Model): String {
-        if (bindingResult.hasErrors()) {
-            return showEditProjectView(model)
+
+            if (bindingResult.hasErrors()) {
+                return showEditProjectView(model)
+            }
+            try {
+                projectRepository.save(project)
+            } catch (dive: DataIntegrityViolationException) {
+                throw dive
+            }
+            return "redirect:/editProject?projectId=" + project.projectId
         }
-        try {
-            projectRepository.save(project)
-        } catch (dive: DataIntegrityViolationException) {
-            throw dive
-        }
-        return "redirect:/editProject?projectId=" + project.projectId
-    }
 
 
     @RequestMapping("/deleteProject", method = [RequestMethod.POST])
