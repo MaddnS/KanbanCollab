@@ -9,12 +9,9 @@
 
 <layout:page-container title="Error" activePage="error">
 
-    <h1>Error</h1>
+    <h1>Oops! This page does not exist or is unavailable.</h1>
 
-    <p>Something went wrong visiting ${url}</p>
+    <p>Following problem occurred: ${exception}</p>
 
-    <p>Following problem occurred ${exception}</p>
-
-    <p>Please contact our support team.</p>
 
 </layout:page-container>
