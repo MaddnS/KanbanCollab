@@ -15,7 +15,7 @@ class UserDto(
         var lastName: String?,
         @field:Size(min = 1, max = 320)
         var email: String,
-        @field:Size(min = 1, max = 128)
+        @field:Size(min = 8, max = 128)
         var password: String?,
         @field:Size(min = 1, max = 128)
         var confirmPassword: String?,

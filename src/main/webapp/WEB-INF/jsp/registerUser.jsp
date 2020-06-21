@@ -75,7 +75,7 @@
                     <label for="inputPassword" class="registerText"><spring:message code="register.password"/></label>
                     <div class="registerInput">
                         <form:input id="inputPassword" path="password" type="password" class="form-control"
-                                    maxlength="128" required="required"/>
+                                    minlength="8" maxlength="128" required="required"/>
                         <form:errors path="password" cssClass="invalid-feedback d-block"/>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         <spring:message code="register.confirm"/></label>
                     <div class="registerInput">
                         <form:input id="inputConfirmPassword" path="confirmPassword" type="password" class="form-control"
-                                    maxlength="128" required="required"/>
+                                    minlength="8" maxlength="128" required="required"/>
                         <form:errors path="confirmPassword" cssClass="invalid-feedback d-block"/>
                     </div>
                 </div>

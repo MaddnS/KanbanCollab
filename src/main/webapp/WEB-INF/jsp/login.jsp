@@ -38,11 +38,13 @@
             <div class="authInput">
                 <p>
                     <label class="inputFieldText" for="username"><spring:message code="login.username"/></label><br>
-                    <input type="text" class="inputField" id="username" name="username"/>
+                    <input required="required" type="text" class="inputField"
+                                id="username" name="username"/>
                 </p>
                 <p>
                     <label class="inputFieldText" for="password"><spring:message code="login.password"/></label><br>
-                    <input type="password" class="inputField" id="password" name="password"/>
+                    <input type="password" class="inputField" id="password"
+                                name="password" required="required"/>
                 </p>
                 <!-- if using RememberMeConfigurer make sure remember-me matches RememberMeConfigurer#rememberMeParameter -->
                 <p>

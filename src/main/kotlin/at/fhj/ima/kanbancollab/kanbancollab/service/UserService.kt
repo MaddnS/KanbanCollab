@@ -36,10 +36,6 @@ class UserService(val userRepository: UserRepository,
         return user
     }
 
-    fun delete(username: String) {
-        userRepository.delete(userRepository.findByUsername(username))
-    }
-
     @Transactional
     fun save(dto: UserDto) {
         val user = convertDtoToEntity(dto)
@@ -48,7 +44,7 @@ class UserService(val userRepository: UserRepository,
         message.setFrom("noreply@kanbancollab.com")
         message.setTo(user.email)
         message.setSubject("Account ${user.username} was created!")
-        message.setText("Hello ${user.firstName}! " +
+        message.setText("Hello ${user.firstName} ${user.lastName}! " +
                 "\nWelcome to our Kanban Collaboration Tool! Your account ${user.username} was created! " +
                 "\nGo to localhost/8080 to log in with your account!")
         mailSender.send(message)
