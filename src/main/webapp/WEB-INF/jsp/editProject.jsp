@@ -9,15 +9,8 @@
 
 <layout:page-container title="KanbanCollab" activePage="editProject">
 
-    <! ---------------- If a user tries to edit a project he's not the owner of
-    he gets an empty site and gets redirected immediately after to the error page ---------------- -->
 
-    <c:if test="${currentUser.username != 'admin' && currentUser.userId != project.owner.userId
-    && project.projectId != null}">
-        <meta http-equiv="refresh" content="0; url = /error"/>
-    </c:if>
 
-    <c:if test="${currentUser.userId == project.owner.userId || currentUser.username == 'admin' || project.projectId == null}">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                     <%--@elvariable id="project" type="at.fhj.ima.kanbancollab.kanbancollab.entities.Project"--%>
@@ -99,5 +92,4 @@
                 </form:form>
             </div>
         </div>
-    </c:if>
 </layout:page-container>
