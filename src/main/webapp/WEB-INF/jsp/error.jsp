@@ -13,7 +13,7 @@
 
     <p>Something went wrong visiting ${url}</p>
 
-    <p>Following problem occurred ${exception}</p>
+    <p>Following problem occurred: ${exception}</p>
 
     <p>Please contact our support team.</p>
 
