@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 import javax.validation.Valid
+import org.springframework.mail.MailSendException
 
 
 @Controller
@@ -54,7 +55,7 @@ class ProjectController(val projectRepository: ProjectRepository,
 
 
     @RequestMapping("/listProjects", method = [RequestMethod.GET])
-    fun listProjects(model: Model/*, @RequestParam(required = false) userId: Int?*/): String {
+    fun listProjects(model: Model): String {
         val allProjects = projectRepository.findAll()
         val sharedProjects = findSharedProjects(getCurrentUser(), allProjects)
         model.set("projects", allProjects)
@@ -106,11 +107,20 @@ class ProjectController(val projectRepository: ProjectRepository,
 
     @RequestMapping("/viewProject", method = [RequestMethod.GET])
     fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String {
+        val allProjects = projectRepository.findAll()
+        val sharedProjects = findSharedProjects(getCurrentUser(), allProjects)
         val project = projectRepository.findByProjectId(projectId)
         val projectTasks = taskRepository.findTaskByProject(projectId)
-        model.set("tasks", projectTasks)
-        model.set("project", project)
-        return "viewProject"
+        print(sharedProjects.toString())
+        if (project.owner?.userId == getCurrentUser().userId || sharedProjects.contains(project)
+                || getCurrentUser().role.toString() == "ROLE_ADMIN") {
+            model.set("tasks", projectTasks)
+            model.set("project", project)
+            return "viewProject"
+        } else {
+            model.set("exception","This project is only available for project members.")
+            return "error"
+        }
     }
 
 
@@ -189,6 +199,13 @@ class ProjectController(val projectRepository: ProjectRepository,
                 else -> {
                     throw dive
                 }
+            }
+        } catch (dive: MailSendException) {
+            if (dive.message.orEmpty().contains("Mail server")) {
+                bindingResult.rejectValue("email", "", "Please make sure your e-mail server is running ;-)")
+                return "registerUser"
+            } else {
+                throw dive
             }
         }
         return "login"

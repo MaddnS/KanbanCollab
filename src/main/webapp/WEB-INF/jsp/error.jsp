@@ -13,5 +13,8 @@
 
     <p>Following problem occurred: ${exception}</p>
 
+    <p>Following problem occurred ${exception}</p>
+
+    <p>Please contact our support team.</p>
 
 </layout:page-container>
