@@ -1,5 +1,5 @@
 # KanbanCollab
-KanbanCollab - IMA - Feldgrill/Kristan/Schweighofer
+## KanbanCollab - IMA - Feldgrill/Kristan/Schweighofer
 
 KanbanCollab is a web application for agile projectmanagement. It is used to manage a project efficiently and effectively with your team members.
 This project was developed in the course of the study Information Management (IMA18) at the University of Applied Sciences FH JOANNEUM.
@@ -7,9 +7,9 @@ The project was supervised by DI Stefan Krausler-Baumann and DI Dr. Peter Salhof
 
 ### Team Members:
 
-    Peter Feldgrill
-    Martin Schweighofer
-    Thomas Kristan
+* Peter Feldgrill
+* Martin Schweighofer
+* Thomas Kristan
 
 ### Workload distribution:
     
