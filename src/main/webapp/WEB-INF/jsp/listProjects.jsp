@@ -12,21 +12,26 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <layout:page-container title="KanbanCollab" activePage="listProjects">
+
     <!-- simple button ----------------------------------------------------------- -->
+
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <p>
-                <a href="/editProject" style="margin-left: 3rem" class="btn btn-success"><spring:message code="listProjects.create"/></a>
+                <a href="/editProject" style="margin-left: 3rem" class="btn btn-success">
+                    <spring:message code="listProjects.create"/></a>
             </p>
         </div>
     </div>
-    <!-- simple button ----------------------------------------------------------- -->
 
+    <!-- simple button ----------------------------------------------------------- -->
 
     <div class="row">
         <div class="col" style="display: inline-block; margin-left: 3rem; margin-right: 3rem">
             <div id="accordion">
-    <!-- accordion 1 ------------------------------------------------------------- -->
+
+                <!-- accordion 1 ------------------------------------------------------------- -->
+
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
@@ -47,7 +52,7 @@
                                                     <div class="row justify-content">
                                                         <div class="col-8">
                                                             <a href="viewProject?projectId=${project.projectId}"
-                                                           class="card-link" style="color: #4b4b4b">
+                                                               class="card-link" style="color: #4b4b4b">
                                                                 <h5 class="card-title"> ${project.name}</h5>
                                                             </a>
                                                         </div>
@@ -59,8 +64,7 @@
                                                                          viewBox="0 0 16 16" fill="currentColor"
                                                                          xmlns="http://www.w3.org/2000/svg">
                                                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                                        <path fill-rule="evenodd"
-                                                                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                                                     </svg>
                                                                 </button>
                                                             </form:form>
@@ -71,14 +75,15 @@
                                                                 <svg class="bi bi-three-dots-vertical" height="1.1em"
                                                                      viewBox="0 0 16 16" fill="currentColor"
                                                                      xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd"
-                                                                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                                    <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                                 </svg>
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <h6 class="col-auto"><spring:message code="listProjects.createdby"/> ${project.owner.username}</h6>
+                                                        <h6 class="col-auto">
+                                                            <spring:message code="listProjects.createdby"/>
+                                                                ${project.owner.username}</h6>
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
                                                 </div>
@@ -90,11 +95,12 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- accordion 1 ------------------------------------------------------------- -->
 
 
-
                 <!-- accordion 2 ------------------------------------------------------------- -->
+
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
@@ -120,7 +126,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <h6 class="col-lg-9"><spring:message code="listProjects.createdby"/> ${project.owner.username}</h6>
+                                                    <h6 class="col-lg-9"><spring:message
+                                                        code="listProjects.createdby"/> ${project.owner.username}</h6>
                                                 </div>
                                                 <p class="card-text">${project.description}</p>
                                             </div>
@@ -131,11 +138,12 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- accordion 2 ------------------------------------------------------------- -->
 
 
-
                 <!-- accordion 3 ------------------------------------------------------------- -->
+
                 <sec:authorize access="hasAuthority('ROLE_ADMIN')">
                     <div class="card">
                         <div class="card-header" id="adminHeading">
@@ -147,8 +155,7 @@
                                 </button>
                             </h5>
                         </div>
-                        <div id="adminCollapse" class="collapse" aria-labelledby="adminHeading"
-                             data-parent="#accordion">
+                        <div id="adminCollapse" class="collapse" aria-labelledby="adminHeading" data-parent="#accordion">
                             <div class="row">
                                 <c:forEach items="${projects}" var="project">
                                     <div class="col-lg-4">
@@ -170,8 +177,7 @@
                                                                          viewBox="0 0 16 16" fill="currentColor"
                                                                          xmlns="http://www.w3.org/2000/svg">
                                                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                                        <path fill-rule="evenodd"
-                                                                              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                                                     </svg>
                                                                 </button>
                                                             </form:form>
@@ -182,14 +188,15 @@
                                                                 <svg class="bi bi-three-dots-vertical" height="1.1em"
                                                                      viewBox="0 0 16 16" fill="currentColor"
                                                                      xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd"
-                                                                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                                                    <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                                                                 </svg>
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <h6 class="col-auto"><spring:message code="listProjects.createdby"/> ${project.owner.username}</h6>
+                                                        <h6 class="col-auto">
+                                                            <spring:message code="listProjects.createdby"/>
+                                                                ${project.owner.username}</h6>
                                                     </div>
                                                     <p class="card-text">${project.description}</p>
                                                 </div>
@@ -201,9 +208,11 @@
                         </div>
                     </div>
                 </sec:authorize>
+
                 <!-- accordion 3 ------------------------------------------------------------- -->
+
             </div>
         </div>
     </div>
-    </div> <!-- End of container -->
+
 </layout:page-container>
