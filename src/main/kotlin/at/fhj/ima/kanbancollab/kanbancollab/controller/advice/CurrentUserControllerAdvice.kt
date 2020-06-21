@@ -7,6 +7,13 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ModelAttribute
 
+/**
+ *
+ * This class is a controller that, if logged in, adds the current username to the model.
+ *
+ *
+ */
+
 @ControllerAdvice
 class CurrentUserControllerAdvice(val userRepository: UserRepository) {
 

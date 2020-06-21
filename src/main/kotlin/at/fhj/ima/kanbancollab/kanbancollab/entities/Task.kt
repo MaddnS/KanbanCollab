@@ -4,6 +4,16 @@ import javax.persistence.*
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
+/**
+ *
+ * This class is implemented in order to store all our tasks in the database.
+ *
+ * Every task has a project attribute with which they are linked to their corresponding project.
+ * The segment attribute is important for the drag'n'drop process and for displaying the tasks in the correct columns
+ * on the Kanban board.
+ *
+ */
+
 @Entity
 class Task(
         @Id

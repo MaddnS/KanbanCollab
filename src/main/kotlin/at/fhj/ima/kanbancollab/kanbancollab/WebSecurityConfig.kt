@@ -1,4 +1,4 @@
-package at.fhj.ima.kanbancollab.kanbancollab.at.fhj.ima.kanbancollab.kanbancollab
+package at.fhj.ima.kanbancollab.kanbancollab
 
 import at.fhj.ima.kanbancollab.kanbancollab.security.MyUserDetailsService
 import org.springframework.beans.factory.annotation.Autowired
@@ -9,6 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
+/**
+ *
+ * This class manages the main security configurations of our application. This class defines which pages can be
+ * accessed by anonymous and logged in users. It also specifies which files (such as js and css) can be used by
+ * anonymous users.
+ *
+ */
 
 @Configuration
 @EnableWebSecurity

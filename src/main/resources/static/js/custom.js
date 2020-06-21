@@ -1,3 +1,9 @@
+/**
+ *
+ * This javascript file hold almost of our implemented javascript, dragula, ajax and jquery functionalities.
+ *
+ */
+
 /** ----------------------------------------- csrf Token for all ajax actions------------------------------------------*/
 
 $(function () {
@@ -16,7 +22,7 @@ $(document).ready(function () {
 
 
 /** --------------------------------------- Warning message when
- viewing viewProject with mobile device --------------------------------------------------*/
+ *                          viewing viewProject with mobile device --------------------------------------------------*/
 
 $(function () {
     if ($(window).width() < 500 && window.location.pathname == '/viewProject') {
@@ -37,7 +43,7 @@ dragula([
     .on("drag", function (el) {
         el.className.replace("ex-moved", "");
     })
-    /** -------------------------------------------- Change segment on Drop ----------------------------------------------*/
+    /** -------------------------------------------- Change segment on Drop -----------------------------------------*/
 
     .on("drop", function (el) {
         var taskId = $(el).data('task-id');
@@ -97,7 +103,7 @@ $(document).on("click", ".open-changeTask", function () {
     var taId = $(this).closest('li').data('task-id');
 
 
-    /** ----------------------------------------------- Change Task ----------------------------------------------------- */
+    /** ----------------------------------------------- Change Task ------------------------------------------------ */
 
     $("#changeTaskForm").submit(function (ele) {
 
@@ -152,25 +158,3 @@ $(".delete-Task-Form").submit(function (e) {
         });
 
 });
-
-
-/** ----------------------------------------- MAIL ------------------------------------------------- */
-
-$(document).on("click", "#invite_email_address", function () {
-
-    var email = document.getElementById("invite_email_address").value
-    console.log(email);
-    $.ajax({
-        method: "GET",
-        url: "/inviteUser?email" + email,
-        cache: false
-    })
-
-        .done(function () {
-            alert('email is nice')
-        })
-});
-
-
-
-

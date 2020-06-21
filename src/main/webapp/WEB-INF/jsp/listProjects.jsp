@@ -53,7 +53,7 @@
                                                         <div class="col-8">
                                                             <a href="viewProject?projectId=${project.projectId}"
                                                                class="card-link" style="color: #4b4b4b">
-                                                                <h5 class="card-title"> ${project.name}</h5>
+                                                                <h5 class="card-title" style="font-weight: bold"> ${project.name}</h5>
                                                             </a>
                                                         </div>
                                                         <div class="col-2-auto">
@@ -121,7 +121,7 @@
                                                     <div class="col">
                                                         <a href="viewProject?projectId=${project.projectId}"
                                                            class="card-link" style="color: #4b4b4b">
-                                                            <h5 class="card-title"> ${project.name}</h5>
+                                                            <h5 class="card-title" style="font-weight: bold"> ${project.name}</h5>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -166,7 +166,7 @@
                                                         <div class="col-8">
                                                             <a href="viewProject?projectId=${project.projectId}"
                                                                class="card-link" style="color: #4b4b4b">
-                                                                <h5 class="card-title"> ${project.name}</h5>
+                                                                <h5 class="card-title" style="font-weight: bold">${project.name}</h5>
                                                             </a>
                                                         </div>
                                                         <div class="col-2-auto">

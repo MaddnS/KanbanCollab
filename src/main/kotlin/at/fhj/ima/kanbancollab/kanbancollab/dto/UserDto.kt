@@ -5,6 +5,14 @@ import at.fhj.ima.kanbancollab.kanbancollab.entities.UserRole
 import java.io.Serializable
 import javax.validation.constraints.Size
 
+/**
+ *
+ * This class is our dto for the user entity.
+ *
+ * Its main purpose is the implementation of a valid user registration.
+ *
+ */
+
 class UserDto(
         var userId: Int?,
         @field:Size(min = 1, max = 32)

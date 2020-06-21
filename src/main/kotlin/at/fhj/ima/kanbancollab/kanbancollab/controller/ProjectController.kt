@@ -24,6 +24,15 @@ import javax.validation.Valid
 import org.springframework.mail.MailSendException
 
 
+/**
+ *
+ * This class is the main controller for our MVC Spring application.
+ *
+ * This class is separated into different areas: the Functions, the Project Area, the Task Area and the Register Area.
+ * The relevant methods and logic for each webpage are implemented in the corresponding areas.
+ *
+ */
+
 @Controller
 class ProjectController(val projectRepository: ProjectRepository,
                         val userRepository: UserRepository,
@@ -33,18 +42,30 @@ class ProjectController(val projectRepository: ProjectRepository,
 
     /** ---------------------------------------------------- Functions ---------------------------------------------- */
 
-    fun findSharedProjects(user: User, allProj: List<Project>): List<Project> {
-        val uId = user.userId
-        return allProj.filter { it.members.any { it.userId == uId } }
-    }
-
-
+        /** --------------------- this function returns the user that is currently logged in --------------------- */
     fun getCurrentUser(): User {
         return userRepository.findByUsername(SecurityContextHolder.getContext().authentication.name)
     }
 
+        /** --------------- this function returns all the projects the current user is a member of --------------- */
+    fun projectsSharedWithMe(): List<Project> {
+        return projectRepository.findAll().filter{it.members.any{it.userId == getCurrentUser().userId}}
+    }
 
-    /** ---------------------------------------------------- Project ------------------------------------------------ */
+        /** --------------- this function checks whether the current user is the owner
+         *                                          of the given project and returns true or false --------------- */
+    fun isCurrentUserProjectOwner(project: Project): Boolean {
+        return getCurrentUser() == project.owner
+    }
+
+        /** --------------- this function checks whether the current user
+         *                                       is an admin and returns true or false --------------------------- */
+    fun isCurrentUserAdminRole(): Boolean {
+        return getCurrentUser().role.toString() == "ROLE_ADMIN"
+    }
+
+
+    /** ----------------------------------------------- PROJECT AREA ------------------------------------------------ */
 
     fun showEditProjectView(model: Model): String {
         val usersWithoutOwner = userRepository.findAll().filter { it.userId != getCurrentUser().userId }
@@ -56,10 +77,8 @@ class ProjectController(val projectRepository: ProjectRepository,
 
     @RequestMapping("/listProjects", method = [RequestMethod.GET])
     fun listProjects(model: Model): String {
-        val allProjects = projectRepository.findAll()
-        val sharedProjects = findSharedProjects(getCurrentUser(), allProjects)
-        model.set("projects", allProjects)
-        model.set("sharedProjects", sharedProjects)
+        model.set("projects", projectRepository.findAll())
+        model.set("sharedProjects", projectsSharedWithMe())
         return "listProjects"
     }
 
@@ -68,7 +87,7 @@ class ProjectController(val projectRepository: ProjectRepository,
     fun editProject(model: Model, @RequestParam(required = false) projectId: Int?): String {
         if (projectId != null) {
             val project = projectRepository.findByProjectId(projectId)
-            if (getCurrentUser().userId == project.owner?.userId || getCurrentUser().role.toString() == "ROLE_ADMIN") {
+            if (isCurrentUserProjectOwner(project) || isCurrentUserAdminRole()) {
                 model.set("project", project)
             } else {
                 model.set("exception","This page is only available for the project's owner.")
@@ -85,7 +104,6 @@ class ProjectController(val projectRepository: ProjectRepository,
 
     @RequestMapping("/changeProject", method = [RequestMethod.POST])
     fun changeProject(@ModelAttribute("project") @Valid project: Project, bindingResult: BindingResult, model: Model): String {
-
             if (bindingResult.hasErrors()) {
                 return showEditProjectView(model)
             }
@@ -101,7 +119,7 @@ class ProjectController(val projectRepository: ProjectRepository,
     @RequestMapping("/deleteProject", method = [RequestMethod.POST])
     fun deleteProject(model: Model, @RequestParam projectId: Int): String {
         val project = projectRepository.findByProjectId(projectId)
-        if (getCurrentUser() == project.owner || getCurrentUser().username == "admin") {
+        if (isCurrentUserProjectOwner(project) || isCurrentUserAdminRole()) {
             projectRepository.delete(projectRepository.findByProjectId(projectId))
             model.set("message", "Project was deleted")
             return listProjects(model)
@@ -114,13 +132,10 @@ class ProjectController(val projectRepository: ProjectRepository,
 
     @RequestMapping("/viewProject", method = [RequestMethod.GET])
     fun viewProject(model: Model, @RequestParam(required = false) projectId: Int): String {
-        val allProjects = projectRepository.findAll()
-        val sharedProjects = findSharedProjects(getCurrentUser(), allProjects)
         val project = projectRepository.findByProjectId(projectId)
         val projectTasks = taskRepository.findTaskByProject(projectId)
-        print(sharedProjects.toString())
-        if (project.owner?.userId == getCurrentUser().userId || sharedProjects.contains(project)
-                || getCurrentUser().role.toString() == "ROLE_ADMIN") {
+        if (isCurrentUserProjectOwner(project) || projectsSharedWithMe().contains(project)
+                || isCurrentUserAdminRole()) {
             model.set("tasks", projectTasks)
             model.set("project", project)
             return "viewProject"

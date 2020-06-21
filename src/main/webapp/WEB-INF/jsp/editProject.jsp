@@ -33,7 +33,7 @@
                                 <spring:message code="editProject.projectname"/></label>
                             <div class="col-md-10">
                                 <form:input id="inputProjectName" path="name" type="text" class="form-control"
-                                            maxLength="50" required="required"/>
+                                            maxlength="50" required="required"/>
                                 <form:errors path="name" cssClass="invalid-feedback d-block"/>
                                 <div class="invalid-feedback">
                                     Projectname may not be longer than 50 characters
@@ -54,7 +54,7 @@
                             <label for="inputDescription" class="col-md-2 control-label">
                                 <spring:message code="editProject.description"/></label>
                             <div class="col-md-10">
-                                <form:textarea id="inputDescription" rows="6" path="description" maxLength="240"
+                                <form:textarea id="inputDescription" rows="6" path="description" maxlength="240"
                                                type="text" class="form-control"/>
                                 <form:errors path="description" cssClass="invalid-feedback d-block"/>
                             </div>
@@ -82,7 +82,7 @@
                                     <spring:message code="editProject.submit"/></button>
                                 <c:if test="${project.projectId != null}">
                                     <a href="viewProject?projectId=${project.projectId}"
-                                       maxLength="20" class="btn btn-info">View ${project.name}</a>
+                                       maxlength="20" class="btn btn-info">View ${project.name}</a>
                                 </c:if>
                                 <a href="listProjects" class="btn btn-default">
                                     <spring:message code="editProject.cancel"/></a>

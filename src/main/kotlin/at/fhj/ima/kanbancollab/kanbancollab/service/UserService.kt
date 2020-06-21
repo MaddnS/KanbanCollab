@@ -10,6 +10,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
+/**
+ *
+ * This service allows for accessing in the database.
+ *
+ */
+
 @Service
 class UserService(val userRepository: UserRepository,
                   val mailSender: MailSender) {

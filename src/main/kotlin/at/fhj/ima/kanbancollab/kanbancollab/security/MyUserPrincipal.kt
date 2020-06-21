@@ -6,6 +6,13 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
+/**
+ *
+ * This class is used for the login and authentication process and also makes sure that
+ * the different user roles are implemented correctly.
+ *
+ */
+
 class MyUserPrincipal(val user: User) : UserDetails {
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {

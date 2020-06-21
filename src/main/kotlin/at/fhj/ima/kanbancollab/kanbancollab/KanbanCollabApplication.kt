@@ -11,6 +11,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter
 
+/**
+ *
+ * This Kotlin file is the main point of entry for our application.
+ *
+ */
+
 @SpringBootApplication
 @EnableGlobalMethodSecurity(securedEnabled = true)
 class KanbanCollabApplication : SpringBootServletInitializer() {

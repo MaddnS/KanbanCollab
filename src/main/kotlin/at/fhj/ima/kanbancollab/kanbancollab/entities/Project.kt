@@ -4,6 +4,16 @@ import javax.persistence.*
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
+/**
+ *
+ * This class is implemented in order to store all our projects in the database.
+ *
+ * It also holds the project's owner and the project members, which can be added by the owner.
+ * The members attribute creates an intermediate entity in the database in order to show all affiliations between users
+ * and their shared projects.
+ *
+ */
+
 @Entity
 class Project(
         @Id
